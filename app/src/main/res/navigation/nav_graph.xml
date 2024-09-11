@@ -3,10 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/welcomeFragment">
+    app:startDestination="@id/signUpFragment">
 <fragment
     android:name="com.example.gohealthy.WelcomeFragment"
     android:id="@+id/welcomeFragment"
     tools:layout="@layout/fragment_welcome"></fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.gohealthy.SignUpFragment"
+        android:label="fragment_signup"
+        tools:layout="@layout/fragment_signup" />
 
 </navigation>

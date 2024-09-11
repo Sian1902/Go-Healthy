@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/custom_orange"
+    tools:context=".SignUpFragment">
+
+
+
+
+    <ImageView
+        android:id="@+id/signup_bg"
+        android:layout_width="384dp"
+        android:layout_height="384dp"
+        android:src="@drawable/signup_bg"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <ImageView
+        android:id="@+id/nameIcon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/account_circle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/nameTextField"
+        android:layout_marginTop="365dp"/>
+    <ImageView
+        android:id="@+id/genderIcon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/person"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nameIcon"
+        app:layout_constraintEnd_toStartOf="@id/genderTextField"
+        android:layout_marginTop="45dp"/>
+    <ImageView
+        android:id="@+id/weightIcon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/scale_svgrepo_com"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/genderIcon"
+        app:layout_constraintEnd_toStartOf="@id/genderTextField"
+        android:layout_marginTop="50dp"/>
+    <ImageView
+        android:id="@+id/heightIcon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/up_down_arrow_svgrepo_com"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/weightIcon"
+        app:layout_constraintEnd_toStartOf="@id/genderTextField"
+        android:layout_marginTop="48dp"/>
+    <ImageView
+        android:id="@+id/weightImage"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/weightfab"
+        android:layout_marginTop="500dp"/>
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/weightImage"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/scale"
+        />
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/nameTextField"
+        android:layout_width="285dp"
+        android:layout_height="56dp"
+        android:hint="Name"
+        android:textColorHint="@color/test"
+        app:boxStrokeColor ="@color/test"
+        app:hintTextColor="@color/test"
+        app:boxBackgroundColor="@color/textField_color"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="350dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:boxCornerRadiusTopStart="28dp"
+        app:boxCornerRadiusTopEnd="28dp"
+        app:boxCornerRadiusBottomEnd="28dp"
+        app:boxCornerRadiusBottomStart="28dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        android:id="@+id/genderTextField"
+        android:layout_width="285dp"
+        android:layout_height="56dp"
+        android:textColorHint="@color/test"
+        app:boxStrokeColor ="@color/custom_orange"
+        app:boxStrokeWidth = "0dp"
+        app:hintTextColor="@color/test"
+        app:boxBackgroundColor="@color/textField_color"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nameTextField"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
+        app:boxCornerRadiusTopStart="28dp"
+        app:boxCornerRadiusTopEnd="28dp"
+        app:boxCornerRadiusBottomEnd="28dp"
+        app:boxCornerRadiusBottomStart="28dp">
+        <AutoCompleteTextView
+            android:layout_width="285dp"
+            android:layout_height="56dp"
+            android:padding="10dp"
+            android:inputType="none"
+            android:text="Gender"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/weightTextField"
+        android:layout_width="285dp"
+        android:layout_height="56dp"
+        android:hint="Weight"
+        android:textColorHint="@color/test"
+        app:boxStrokeColor ="@color/test"
+        app:hintTextColor="@color/test"
+        app:boxBackgroundColor="@color/textField_color"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/genderTextField"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:boxCornerRadiusTopStart="28dp"
+        app:boxCornerRadiusTopEnd="28dp"
+        app:boxCornerRadiusBottomEnd="28dp"
+        app:boxCornerRadiusBottomStart="28dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:inputType="numberDecimal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/heightTextField"
+        android:layout_width="285dp"
+        android:layout_height="56dp"
+        android:hint="Height"
+        android:textColorHint="@color/test"
+        app:boxStrokeColor ="@color/test"
+        app:hintTextColor="@color/test"
+        app:boxBackgroundColor="@color/textField_color"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/weightTextField"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:boxCornerRadiusTopStart="28dp"
+        app:boxCornerRadiusTopEnd="28dp"
+        app:boxCornerRadiusBottomEnd="28dp"
+        app:boxCornerRadiusBottomStart="28dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:inputType="numberDecimal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
