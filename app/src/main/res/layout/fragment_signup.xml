@@ -12,11 +12,13 @@
 
     <ImageView
         android:id="@+id/signup_bg"
-        android:layout_width="384dp"
-        android:layout_height="384dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:src="@drawable/signup_bg"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/nameTextField"
         app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="10dp"
         app:layout_constraintEnd_toEndOf="parent"/>
     <ImageView
         android:id="@+id/nameIcon"
@@ -89,10 +91,12 @@
         app:boxCornerRadiusTopStart="28dp"
         app:boxCornerRadiusTopEnd="28dp"
         app:boxCornerRadiusBottomEnd="28dp"
-        app:boxCornerRadiusBottomStart="28dp">
+        app:boxCornerRadiusBottomStart="28dp"
+        >
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            />
     </com.google.android.material.textfield.TextInputLayout>
 
 

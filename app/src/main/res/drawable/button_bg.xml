@@ -2,8 +2,8 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="@color/white" /> <!-- Light Blue Background -->
-            <size android:width="250dp" android:height="40dp"/>
+            <solid android:color="@color/light_blue" /> <!-- Light Blue Background -->
+
             <corners android:radius="100dp" />
         </shape>
     </item>

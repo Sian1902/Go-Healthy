@@ -17,7 +17,7 @@
       app:layout_constraintBottom_toBottomOf="parent"
       android:fontFamily="@font/volkorn"
       android:textSize="23sp"
-      android:textColor="@color/black"
+      android:textColor="@color/white"
       android:text="@string/welcome_text"/>
     <TextView
         android:id="@+id/appName"
@@ -29,13 +29,15 @@
         android:fontFamily="@font/uni_sans"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
 
         android:text="@string/app_name"
         />
     <ImageView
-        android:layout_width="268dp"
-        android:layout_height="268dp"
+        android:id="@+id/welcomeImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="50dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/welcomeText"
@@ -44,7 +46,7 @@
         />
 
   <androidx.appcompat.widget.AppCompatButton
-      android:layout_width="wrap_content"
+      android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:background="@drawable/button_bg"
       android:layout_marginTop="200dp"
@@ -53,10 +55,13 @@
       android:fontFamily="@font/roboto_medium"
       android:text="Get Started"
       android:textAllCaps="false"
-      android:textColor="@color/black"
+      android:textColor="@color/white"
+      android:textStyle="bold"
       android:textSize="19sp"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
+      android:layout_marginLeft="30dp"
+      android:layout_marginRight="30dp"
+      app:layout_constraintEnd_toEndOf="@id/welcomeImage"
+      app:layout_constraintStart_toStartOf="@id/welcomeImage"
       app:layout_constraintTop_toBottomOf="@id/appName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
