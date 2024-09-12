@@ -3,11 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/signUpFragment">
+    app:startDestination="@id/welcomeFragment">
 <fragment
     android:name="com.example.gohealthy.WelcomeFragment"
     android:id="@+id/welcomeFragment"
-    tools:layout="@layout/fragment_welcome"></fragment>
+    tools:layout="@layout/fragment_welcome">
+    <action
+        android:id="@+id/welcomeToSignup"
+        app:destination="@id/signUpFragment"
+
+        />
+</fragment>
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.example.gohealthy.SignUpFragment"
