@@ -5,7 +5,7 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/welcomeFragment">
 <fragment
-    android:name="com.example.gohealthy.WelcomeFragment"
+    android:name="com.example.gohealthy.view.WelcomeFragment"
     android:id="@+id/welcomeFragment"
     tools:layout="@layout/fragment_welcome">
     <action
@@ -16,7 +16,7 @@
 </fragment>
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.example.gohealthy.SignUpFragment"
+        android:name="com.example.gohealthy.view.SignUpFragment"
         android:label="fragment_signup"
         tools:layout="@layout/fragment_signup" />
 
