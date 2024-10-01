@@ -1,0 +1,31 @@
+package com.example.gohealthy.NutritionixAPI
+
+import com.example.gohealthy.Exercise.ExerciseData
+import com.example.gohealthy.foodData.NutritionData
+import retrofit2.Call
+import retrofit2.http.Body
+import retrofit2.http.Headers
+import retrofit2.http.POST
+
+interface NutritionixAPIService {
+
+    @Headers(
+        "x-app-id: e073c307",           // Replace with actual app ID if different
+        "x-app-key: 47499142459d5e028e702ff273edbf5c",  // Replace with actual app key
+        "Content-Type: application/json"
+    )
+    @POST("/v2/natural/nutrients")
+    fun getNutritionData(
+        @Body nutritionQuery: NutritionixQuery
+    ): Call<NutritionData>
+
+    @Headers(
+        "x-app-id: e073c307",           // Replace with actual app ID if different
+        "x-app-key: 47499142459d5e028e702ff273edbf5c",  // Replace with actual app key
+        "Content-Type: application/json"
+    )
+    @POST("/v2/natural/exercise")
+    fun getExerciseData(
+    @Body exerciseQuery: NutritionixQuery
+    ):Call<ExerciseData>
+}

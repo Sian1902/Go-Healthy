@@ -7,7 +7,7 @@ android {
     namespace = "com.example.gohealthy"
     compileSdk = 34
     buildFeatures{
-        viewBinding=true
+        dataBinding=true
     }
 
     defaultConfig {
@@ -50,5 +50,4 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
 }

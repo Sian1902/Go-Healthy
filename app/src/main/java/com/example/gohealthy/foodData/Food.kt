@@ -1,0 +1,33 @@
+package com.example.gohealthy.foodData
+
+data class Food(
+    val food_name: String,
+    val brand_name: String?,
+    val serving_qty: Int,
+    val serving_unit: String,
+    val serving_weight_grams: Double,
+    val nf_calories: Double,
+    val nf_total_fat: Double,
+    val nf_saturated_fat: Double,
+    val nf_cholesterol: Double,
+    val nf_sodium: Double,
+    val nf_total_carbohydrate: Double,
+    val nf_dietary_fiber: Double,
+    val nf_sugars: Double,
+    val nf_protein: Double,
+    val nf_potassium: Double,
+    val nf_p: Double,
+    val full_nutrients: List<Nutrient>,
+    val nix_brand_name: String?,
+    val nix_brand_id: String?,
+    val nix_item_name: String?,
+    val nix_item_id: String?,
+    val upc: String?,
+    val consumed_at: String,
+    val metadata: Metadata,
+    val source: Int,
+    val ndb_no: Int,
+    val tags: Tags,
+    val alt_measures: List<AltMeasure>,
+    val photo: Photo
+)
