@@ -154,6 +154,7 @@
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/singUpButton"
             android:minHeight="48dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

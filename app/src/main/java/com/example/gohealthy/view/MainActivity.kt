@@ -1,10 +1,13 @@
 package com.example.gohealthy.view
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import com.example.gohealthy.R
+import com.google.firebase.Firebase
+import com.google.firebase.database.database
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,5 +18,8 @@ class MainActivity : AppCompatActivity() {
 
         val navController = navHostFragment.navController
 
+
     }
 }
+
+
