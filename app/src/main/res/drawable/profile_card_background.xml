@@ -10,7 +10,7 @@
         <!-- Define the stroke (border) -->
         <stroke
             android:width="2dp"
-            android:color="@color/orange_bg"/> <!-- Red stroke -->
+            android:color="@color/custom_orange"/> <!-- Red stroke -->
 
         <!-- Optional padding inside the shape -->
 

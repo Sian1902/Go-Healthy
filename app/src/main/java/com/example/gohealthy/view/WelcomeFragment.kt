@@ -43,11 +43,11 @@ class WelcomeFragment : Fragment(), SensorEventListener {
 
         binding.welcomeButton.setOnClickListener {
            // findNavController().navigate(R.id.welcomeToSignup)
-           // nutritionCall()
+            nutritionCall()
            // exerciseCall()
-            loadData()
+            /*loadData()
             restSteps()
-            sensorManager = requireContext().getSystemService(Context.SENSOR_SERVICE) as SensorManager
+            sensorManager = requireContext().getSystemService(Context.SENSOR_SERVICE) as SensorManager*/
 
 
         }
@@ -85,7 +85,7 @@ class WelcomeFragment : Fragment(), SensorEventListener {
     }
 
     fun nutritionCall(){
-        val nutritionQuery = NutritionixQuery("100 gram meat")
+        val nutritionQuery = NutritionixQuery("عنب")
         val call = RetrofitClient.instance.getNutritionData(nutritionQuery)
 
         call.enqueue(object : Callback<NutritionData> {

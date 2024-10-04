@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:text="@string/stats"
         android:fontFamily="@font/playpen_sans"
-        android:textColor="@color/orange_bg"
+        android:textColor="@color/custom_orange"
         android:textSize="25sp"
         android:textStyle="bold"
         android:gravity="center"

@@ -106,7 +106,7 @@
         app:cardElevation="4dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/profile_card"
-        app:strokeColor="@color/orange_bg"
+        app:strokeColor="@color/custom_orange"
         app:strokeWidth="2dp"
         android:layout_marginRight="16dp"
         android:layout_marginLeft="16dp"
@@ -146,11 +146,12 @@
 
             <!-- Divider -->
             <View
-                android:layout_width="280dp"
+                android:layout_width="match_parent"
                 android:layout_gravity="center"
-                android:layout_height="1dp"
-                android:layout_marginTop="8dp"
-                android:background="@color/orange_bg" />
+                android:layout_height="2dp"
+                android:layout_marginVertical="8dp"
+                android:layout_marginHorizontal="30dp"
+                android:background="@color/custom_orange" />
 
             <!-- Second Row: Gender -->
             <LinearLayout
@@ -181,11 +182,12 @@
 
             <!-- Divider -->
             <View
-                android:layout_width="280dp"
+                android:layout_width="match_parent"
                 android:layout_gravity="center"
-                android:layout_height="1dp"
+                android:layout_height="2dp"
                 android:layout_marginVertical="8dp"
-                android:background="@color/orange_bg" />
+                android:layout_marginHorizontal="30dp"
+                android:background="@color/custom_orange" />
 
             <!-- Third Row: Weight -->
             <LinearLayout
@@ -216,11 +218,12 @@
 
             <!-- Divider -->
             <View
-                android:layout_width="280dp"
+                android:layout_width="match_parent"
                 android:layout_gravity="center"
-                android:layout_height="1dp"
+                android:layout_height="2dp"
                 android:layout_marginVertical="8dp"
-                android:background="@color/orange_bg" />
+                android:layout_marginHorizontal="30dp"
+                android:background="@color/custom_orange" />
 
             <!-- Fourth Row: Height -->
             <LinearLayout
@@ -251,11 +254,12 @@
 
             <!-- Divider -->
             <View
-                android:layout_width="280dp"
+                android:layout_width="match_parent"
                 android:layout_gravity="center"
-                android:layout_height="1dp"
+                android:layout_height="2dp"
                 android:layout_marginVertical="8dp"
-                android:background="@color/orange_bg" />
+                android:layout_marginHorizontal="30dp"
+                android:background="@color/custom_orange" />
 
             <!-- Fifth Row: Language -->
             <LinearLayout

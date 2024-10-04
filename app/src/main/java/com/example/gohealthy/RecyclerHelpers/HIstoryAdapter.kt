@@ -1,8 +1,10 @@
+package com.example.gohealthy.RecyclerHelpers
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.gohealthy.HistoryItem
 import com.example.gohealthy.databinding.HistoryItemBinding
+
 
 class HistoryAdapter(private val historyList: List<HistoryItem>) : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
 

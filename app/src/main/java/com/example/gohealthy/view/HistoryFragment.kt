@@ -1,15 +1,14 @@
-package com.example.gohealthy
+package com.example.gohealthy.view
 
-import HistoryAdapter
+import com.example.gohealthy.RecyclerHelpers.HistoryAdapter
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.enableEdgeToEdge
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.gohealthy.RecyclerHelpers.HistoryItem
 import com.example.gohealthy.databinding.FragmentHistoryBinding
-
 
 class HistoryFragment : Fragment() {
     lateinit var binding: FragmentHistoryBinding
@@ -20,7 +19,7 @@ class HistoryFragment : Fragment() {
        , HistoryItem("Mon 8th of September", 180, 120, 9000),
         HistoryItem("Mon 8th of September", 180, 120, 9000)
        , HistoryItem("Mon 8th of September", 180, 120, 9000)
-      ,  HistoryItem("Mon 8th of September", 180, 120, 9000)
+      , HistoryItem("Mon 8th of September", 180, 120, 9000)
        , HistoryItem("Mon 8th of September", 180, 120, 9000)
         // Add more items
     )
