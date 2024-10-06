@@ -39,7 +39,14 @@ android {
 }
 
 dependencies {
+    // Retrofit for HTTP requests
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
 
+    // Gson Converter for parsing JSON
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    // OkHttp for logging (optional but useful for debugging)
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
