@@ -1,21 +1,30 @@
 package com.example.gohealthy.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
-import androidx.fragment.app.Fragment
-import com.example.gohealthy.databinding.FragmentSignupBinding
-import com.google.firebase.firestore.FirebaseFirestore
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.gohealthy.R
 import com.example.gohealthy.UserData.User
+import com.example.gohealthy.databinding.FragmentSignupBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class SignUpFragment : Fragment() {
     private lateinit var binding: FragmentSignupBinding
     private val db = FirebaseFirestore.getInstance()
+    private lateinit var auth: FirebaseAuth
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        auth = FirebaseAuth.getInstance() // Initialize Firebase Auth
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,64 +41,83 @@ class SignUpFragment : Fragment() {
 
         // Set the button click listener
         binding.singUpButton.setOnClickListener {
-            saveUserData()
+            createUserAccount()
         }
 
         return binding.root
     }
 
-    private fun saveUserData() {
-
+    private fun createUserAccount() {
         val name = binding.nameTextField.editText?.text.toString().trim()
-        val gender = binding.genderTextField.editText?.text.toString().trim()
-        val weight = binding.weightTextField.editText?.text.toString().trim()
-        val height = binding.heightTextField.editText?.text.toString().trim()
+        val gender = binding.genderTextField.editText?.text.toString().trim().takeIf { it.isNotEmpty() }
+        val weightStr = binding.weightTextField.editText?.text.toString().trim()
+        val heightStr = binding.heightTextField.editText?.text.toString().trim()
+        val email = binding.emailTextField.editText?.text.toString().trim()
+        val password = binding.passwordTextField.editText?.text.toString().trim()
+        val ageStr = binding.ageTextField.editText?.text.toString().trim()
 
-        // Validate the fields ( make sure they are not empty)
+        // Convert the weight, height, and age to numbers
+        val weight = weightStr.toFloatOrNull()
+        val height = heightStr.toFloatOrNull()
+        val age = ageStr.toIntOrNull()
+
+        // Validation
         if (name.isEmpty()) {
             binding.nameTextField.error = "Please enter your name"
             return
         }
-        if (gender.isEmpty()) {
-            binding.genderTextField.error = "Please select your gender"
+        if (weight == null) {
+            binding.weightTextField.error = "Please enter a valid weight"
             return
         }
-        if (weight.isEmpty()) {
-            binding.weightTextField.error = "Please enter your weight"
+        if (height == null) {
+            binding.heightTextField.error = "Please enter a valid height"
             return
         }
-        if (height.isEmpty()) {
-            binding.heightTextField.error = "Please enter your height"
+        if (email.isEmpty()) {
+            binding.emailTextField.error = "Please enter your email"
+            return
+        }
+        if (password.isEmpty()) {
+            binding.passwordTextField.error = "Please enter your password"
+            return
+        }
+        if (age == null) {
+            binding.ageTextField.error = "Please enter a valid age"
             return
         }
 
-        // Create a User object using the data class
-        val user = User(name, gender, weight, height)
-
-        // Save data to Firebase Firestore
-        db.collection("users")
-            .add(user)
-            .addOnSuccessListener {
-                Toast.makeText(requireContext(), "User data saved successfully!", Toast.LENGTH_SHORT).show()
-            }
-            .addOnFailureListener { e ->
-                Toast.makeText(requireContext(), "Failed to save data: ${e.message}", Toast.LENGTH_SHORT).show()
+        // Create a user account with Firebase Authentication
+        auth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    // Save user data to Firestore
+                    val user = User(name, gender, weight, height, email, password, age)
+                    db.collection("users")
+                        .add(user)
+                        .addOnSuccessListener {
+                            Toast.makeText(requireContext(), "User data saved successfully!", Toast.LENGTH_SHORT).show()
+                            // Navigate to the next fragment after successful signup
+                            findNavController().navigate(R.id.action_signUpFragment_to_welcomeFragment)
+                        }
+                        .addOnFailureListener { e ->
+                            Toast.makeText(requireContext(), "Failed to save data: ${e.message}", Toast.LENGTH_SHORT).show()
+                        }
+                } else {
+                    // Registration failed
+                    Toast.makeText(requireContext(), "Registration failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                }
             }
     }
 
-   /* // Method to retrieve user data from Firestore
-    private fun getUserData(userId: String) {
-        db.collection("users").document(userId).get().addOnSuccessListener { documentSnapshot ->
-            val user = documentSnapshot.toObject(User::class.java)
-            if (user != null) {
-                // Use user data, for example:
-                binding.nameTextField.editText?.setText(user.name)
-                binding.genderTextField.editText?.setText(user.gender)
-                binding.weightTextField.editText?.setText(user.weight)
-                binding.heightTextField.editText?.setText(user.height)
+    private fun sendVerificationEmail() {
+        val user = auth.currentUser
+        user?.sendEmailVerification()?.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                Toast.makeText(requireContext(), "Verification email sent! Please check your inbox.", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(requireContext(), "Failed to send verification email: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
             }
-        }.addOnFailureListener { e ->
-            Toast.makeText(requireContext(), "Failed to retrieve data: ${e.message}", Toast.LENGTH_SHORT).show()
         }
-    }*/
+    }
 }
