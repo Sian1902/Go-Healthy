@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.HomePageFragment">
+        
+        <androidx.cardview.widget.CardView
+            android:layout_width="39dp"
+            android:layout_height="39dp"
+            app:cardCornerRadius="50dp"
+            app:cardElevation="10dp"
+            app:layout_constraintStart_toEndOf="@id/app_name"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="120dp">
+                <ImageView
+                    android:scaleType="centerCrop"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/whatsapp_image_2023_05_12_at_13_47_30"/>
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="39dp"
+            android:layout_height="39dp"
+            app:cardCornerRadius="50dp"
+            app:cardElevation="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            app:strokeColor="@color/black">
+                <ImageView
+                    android:scaleType=""
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/logoapp"/>
+        </com.google.android.material.card.MaterialCardView>
+
+        <ImageView
+            android:id="@+id/map_image"
+            android:layout_width="match_parent"
+            android:layout_height="308dp"
+            android:alpha="0.2"
+            android:background="@drawable/mapsimage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="57dp"
+            android:fontFamily="@font/playpen_sans"
+            android:textColor="@color/orangeText"
+            android:textStyle="bold"
+            android:textSize="24dp"
+            android:text="GO HEALTHY" />
+
+<!--        Lunch Card-->
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/Lunch"
+            android:layout_width="120dp"
+            android:layout_height="125dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/map_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="12dp"
+            app:strokeColor="@color/orangeText"
+            app:cardBackgroundColor="@color/bgCard">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/lunch_image"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/fork_and_knife_svgrepo_com"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="10dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lunch"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textColor="@color/orangeText"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/add_lunch_button"
+                    app:layout_constraintEnd_toEndOf="parent" />
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/add_lunch_button"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:layout_marginBottom="5dp"
+                            android:layout_width="95dp"
+                            android:layout_height="21dp"
+                            android:text="Add"
+                            android:background="@drawable/transparent_bg_bordered"
+                            android:textSize="13sp"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cal"
+                            android:fontFamily="@font/poppins_semibolditalic"
+                            android:textSize="10sp"
+                            app:layout_constraintTop_toBottomOf="@+id/lunch_image"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="@+id/lunch_image"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="70dp"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+<!--        Breakfast card-->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/breakfast"
+            android:layout_width="120dp"
+            android:layout_height="125dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/map_image"
+            app:layout_constraintEnd_toEndOf="@id/Lunch"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginRight="120dp"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="12dp"
+            app:strokeColor="@color/orangeText"
+            app:cardBackgroundColor="@color/bgCard">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                        <ImageView
+                            android:id="@+id/breakfast_image"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/breakfast_svgrepo_com"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginTop="10dp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Breakfast"
+                            android:fontFamily="@font/poppins_bold"
+                            android:textColor="@color/orangeText"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintBottom_toTopOf="@id/add_breakfast_button"
+                            app:layout_constraintEnd_toEndOf="parent" />
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/add_breakfast_button"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:layout_marginBottom="5dp"
+                            android:layout_width="95dp"
+                            android:layout_height="21dp"
+                            android:text="Add"
+                            android:background="@drawable/transparent_bg_bordered"
+                            android:textSize="13sp"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cal"
+                            android:fontFamily="@font/poppins_semibolditalic"
+                            android:textSize="10sp"
+                            app:layout_constraintTop_toBottomOf="@+id/breakfast_image"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="@+id/breakfast_image"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="70dp"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+<!--        Dinner-->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/Dinner"
+            android:layout_width="120dp"
+            android:layout_height="125dp"
+            app:layout_constraintStart_toEndOf="@id/Lunch"
+            app:layout_constraintTop_toBottomOf="@+id/map_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginleft="120dp"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="12dp"
+            app:strokeColor="@color/orangeText"
+            app:cardBackgroundColor="@color/bgCard">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                        <ImageView
+                            android:id="@+id/dinner_image"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/dinner_svgrepo_com"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginTop="10dp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Dinner"
+                            android:fontFamily="@font/poppins_bold"
+                            android:textColor="@color/orangeText"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintBottom_toTopOf="@id/add_dinner_button"
+                            app:layout_constraintEnd_toEndOf="parent" />
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/add_dinner_button"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:layout_marginBottom="5dp"
+                            android:layout_width="95dp"
+                            android:layout_height="21dp"
+                            android:text="Add"
+                            android:background="@drawable/transparent_bg_bordered"
+                            android:textSize="13sp"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cal"
+                            android:fontFamily="@font/poppins_semibolditalic"
+                            android:textSize="10sp"
+                            app:layout_constraintTop_toBottomOf="@+id/dinner_image"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="@+id/dinner_image"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="70dp"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+<!--                Calories Card -->
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/burnt_calories"
+            android:layout_width="120dp"
+            android:layout_height="125dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/breakfast"
+            app:layout_constraintEnd_toEndOf="@id/Lunch"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginRight="120dp"
+            app:cardCornerRadius="12dp"
+            app:strokeColor="@color/orangeText"
+            app:cardBackgroundColor="@color/bgCard">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                        <ImageView
+                            android:id="@+id/lunch2_image"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/fork_and_knife_svgrepo_com"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginTop="10dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="CALORIES"
+                            android:textColor="@color/orangeText"
+                            android:fontFamily="@font/poppins_semibolditalic"
+                            android:textSize="10sp"
+                            app:layout_constraintTop_toBottomOf="@+id/lunch2_image"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="@+id/lunch2_image"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="70dp"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+<!--        Water Card-->
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/water"
+            android:layout_width="120dp"
+            android:layout_height="125dp"
+            app:layout_constraintTop_toBottomOf="@+id/Dinner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:cardCornerRadius="12dp"
+            android:layout_marginRight="10dp"
+            app:strokeColor="@color/orangeText"
+            app:cardBackgroundColor="@color/bgCard">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                        <ImageView
+                            android:id="@+id/water_image"
+                            android:layout_width="53dp"
+                            android:layout_height="53dp"
+                            android:src="@drawable/glass_of_water_drink_svgrepo_com"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginTop="20dp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Water"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:textSize="11sp"
+                            android:textColor="@color/orangeText"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/water_image"
+                            app:layout_constraintEnd_toEndOf="parent"/>
+                        <ImageView
+                            android:layout_width="26dp"
+                            android:layout_height="26dp"
+                            android:src="@drawable/circle_add_svgrepo_com"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:translationX="90dp"
+                            android:translationY="89dp"/>
+                        <ImageView
+                            android:layout_width="26dp"
+                            android:layout_height="26dp"
+                            android:src="@drawable/circle_minus_svgrepo_com"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:translationX="8dp"
+                            android:translationY="89dp"/>
+
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
