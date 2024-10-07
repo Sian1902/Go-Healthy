@@ -5,7 +5,32 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.HomePageFragment">
-        
+
+        <ImageView
+            android:id="@+id/map_image"
+            android:layout_width="match_parent"
+            android:layout_height="308dp"
+            android:alpha="0.2"
+            android:background="@drawable/mapsimage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/app_name"
+                app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="80dp"
+            android:id="@+id/circularProgressBar"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            app:cpb_background_progressbar_color="@color/orangeText"
+            app:cpb_background_progressbar_width="5dp"
+            app:cpb_progress_direction="to_right"
+            app:cpb_progressbar_color="#3f51b5"
+            app:cpb_progressbar_width="10dp"
+            app:cpb_round_border="false" />
         <androidx.cardview.widget.CardView
             android:layout_width="39dp"
             android:layout_height="39dp"
@@ -15,7 +40,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="120dp">
+            android:layout_marginStart="120dp">
                 <ImageView
                     android:scaleType="centerCrop"
                     android:layout_width="match_parent"
@@ -34,22 +59,11 @@
             android:layout_marginLeft="10dp"
             app:strokeColor="@color/black">
                 <ImageView
-                    android:scaleType=""
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/logoapp"/>
         </com.google.android.material.card.MaterialCardView>
 
-        <ImageView
-            android:id="@+id/map_image"
-            android:layout_width="match_parent"
-            android:layout_height="308dp"
-            android:alpha="0.2"
-            android:background="@drawable/mapsimage"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/app_name"
@@ -200,7 +214,6 @@
             app:layout_constraintTop_toBottomOf="@+id/map_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginleft="120dp"
             android:layout_marginTop="20dp"
             app:cardCornerRadius="12dp"
             app:strokeColor="@color/orangeText"
@@ -299,6 +312,78 @@
 
         </com.google.android.material.card.MaterialCardView>
 
+
+<!--        Workout Card-->
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/workout_card"
+            android:layout_width="120dp"
+            android:layout_height="125dp"
+            app:layout_constraintStart_toEndOf="@+id/burnt_calories"
+            app:layout_constraintTop_toBottomOf="@+id/breakfast"
+            app:layout_constraintEnd_toStartOf="@id/water"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:cardCornerRadius="12dp"
+            app:strokeColor="@color/orangeText"
+            app:cardBackgroundColor="@color/bgCard">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                        <ImageView
+                            android:id="@+id/weightlifting_img"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:src="@drawable/_05389444_weight_lifting_cartoon_shape_design_removebg_preview"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginTop="10dp" />
+
+                        <TextView
+                            android:id="@+id/CaloriesBurnt_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="CALORIES BURNT"
+                            android:textColor="@color/orangeText"
+                            android:fontFamily="@font/poppins_semibolditalic"
+                            android:textSize="8sp"
+                            app:layout_constraintTop_toBottomOf="@+id/weightlifting_img"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="@+id/weightlifting_img"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="80dp"/>
+
+                        <TextView
+                            android:id="@+id/Workout_calories_no"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="10000"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/CaloriesBurnt_text"
+                            android:layout_marginTop="70dp"
+                            android:fontFamily="@font/poppins_bold"
+                            />
+
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/Add_workout_button"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:layout_marginBottom="5dp"
+                            android:layout_width="95dp"
+                            android:layout_height="21dp"
+                            android:text="Add"
+                            android:background="@drawable/transparent_bg_bordered"
+                            android:textSize="13sp"
+                            />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
 <!--        Water Card-->
 
         <com.google.android.material.card.MaterialCardView
@@ -323,18 +408,31 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            android:layout_marginTop="20dp" />
+                            android:layout_marginTop="10dp" />
                         <TextView
+                            android:id="@+id/water_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Water"
                             android:fontFamily="@font/poppins_semibold"
-                            android:textSize="11sp"
+                            android:textSize="9sp"
                             android:textColor="@color/orangeText"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/water_image"
                             app:layout_constraintEnd_toEndOf="parent"/>
+                        <TextView
+                            android:id="@+id/no_waters"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="6"
+                            app:layout_constraintTop_toBottomOf="@+id/water_text"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:fontFamily="@font/poppins_bold"
+                            android:textSize="33dp"
+                            />
                         <ImageView
+                            android:id="@+id/plus_img"
                             android:layout_width="26dp"
                             android:layout_height="26dp"
                             android:src="@drawable/circle_add_svgrepo_com"
@@ -343,6 +441,7 @@
                             android:translationX="90dp"
                             android:translationY="89dp"/>
                         <ImageView
+                            android:id="@+id/minus_img"
                             android:layout_width="26dp"
                             android:layout_height="26dp"
                             android:src="@drawable/circle_minus_svgrepo_com"
