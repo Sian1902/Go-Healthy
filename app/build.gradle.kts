@@ -45,7 +45,7 @@ dependencies {
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-firestore-ktx")
 
-        implementation("com.github.mukeshsolanki:android-otpview-pinview:3.1.0")
+    implementation("com.github.mukeshsolanki:android-otpview-pinview:3.1.0")
     implementation("com.github.mukeshsolanki:android-otpview-pinview:2.1.2")
     implementation ("com.github.GoodieBag:Pinview:v1.5")
     implementation ("com.google.firebase:firebase-functions:20.1.2")
