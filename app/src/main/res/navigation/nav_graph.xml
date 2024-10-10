@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homePageFragment">
+    app:startDestination="@id/welcomeFragment">
 <fragment
     android:name="com.example.gohealthy.view.WelcomeFragment"
     android:id="@+id/welcomeFragment"
@@ -18,21 +18,25 @@
         android:id="@+id/signUpFragment"
         android:name="com.example.gohealthy.view.SignUpFragment"
         android:label="fragment_signup"
-        tools:layout="@layout/fragment_signup" />
+        tools:layout="@layout/fragment_signup" >
+
+
+        <action
+            android:id="@+id/action_signUpFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
+    </fragment>
     <fragment
-        android:id="@+id/homePageFragment"
-        android:name="com.example.gohealthy.view.HomePageFragment"
-        android:label="fragment_home_page"
-        tools:layout="@layout/fragment_home_page" />
+        android:id="@+id/signinFragment"
+        android:name="com.example.gohealthy.view.signinFragment"
+        android:label="signinFragment" >
+        <action
+            android:id="@+id/action_signinFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
+    </fragment>
     <fragment
-        android:id="@+id/history_fragment"
-        android:label="History"
-        android:name="com.example.gohealthy.view.HistoryFragment"
-        tools:layout="@layout/fragment_history"/>
-    <fragment
-        android:id="@+id/profile_fragment"
-        android:name="com.example.gohealthy.view.ProfilePageFragment"
-        tools:layout="@layout/fragment_profile_page"
-        android:label="Profile"/>
+        android:id="@+id/historyFragment"
+        android:name="com.example.gohealthy.History.HistoryFragment"
+        android:label="HistoryFragment" />
+
 
 </navigation>

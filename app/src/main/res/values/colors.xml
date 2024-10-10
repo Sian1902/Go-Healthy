@@ -13,5 +13,6 @@
     <color name="bgCard">#fffef7ff</color>
     <color name="button">#79747E</color>
 
+    <color name="red">#FF0000</color>
 
 </resources>
