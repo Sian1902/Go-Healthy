@@ -3,6 +3,7 @@ package com.example.gohealthy.NutritionixAPI
 import com.example.gohealthy.Exercise.ExerciseData
 import com.example.gohealthy.foodData.NutritionData
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.Headers
 import retrofit2.http.POST
@@ -15,9 +16,9 @@ interface NutritionixAPIService {
         "Content-Type: application/json"
     )
     @POST("/v2/natural/nutrients")
-    fun getNutritionData(
+    suspend fun getNutritionData(
         @Body nutritionQuery: NutritionixQuery
-    ): Call<NutritionData>
+    ): Response<NutritionData>
 
     @Headers(
         "x-app-id: e073c307",           // Replace with actual app ID if different
@@ -25,7 +26,7 @@ interface NutritionixAPIService {
         "Content-Type: application/json"
     )
     @POST("/v2/natural/exercise")
-    fun getExerciseData(
+    suspend fun getExerciseData(
     @Body exerciseQuery: NutritionixQuery
-    ):Call<ExerciseData>
+    ):Response<ExerciseData>
 }

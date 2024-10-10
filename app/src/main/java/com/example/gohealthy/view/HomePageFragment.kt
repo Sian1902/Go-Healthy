@@ -16,13 +16,16 @@ import com.mikhaellopez.circularprogressbar.CircularProgressBar
 import androidx.appcompat.widget.AppCompatButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import com.example.gohealthy.NutritionixAPI.CallDecider
+import com.example.gohealthy.ViewModel.NutritionixVM
 
 class HomePageFragment : Fragment() {
 
     private var waterCount: Int = 0
-
-    lateinit var binding: FragmentHomePageBinding
-    val stepsCounterVM:StepsCounterVM by activityViewModels()
+    private val nutritionixVM:NutritionixVM by activityViewModels()
+    private lateinit var binding: FragmentHomePageBinding
+    private val stepsCounterVM:StepsCounterVM by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,102 +36,74 @@ class HomePageFragment : Fragment() {
        binding=FragmentHomePageBinding.inflate(inflater,container,false)
        stepsCounterVM.currentSteps.observe(viewLifecycleOwner){
            binding.circularProgressBar.progress=it.toFloat()
-           binding.currentStepstext.text=it.toString()+" /"
+           binding.currentStepstext.text= "$it/"
        }
-
-
-        binding.circularProgressBar.apply {
-            // Set Progress
-            progress = 0f
-
-
-            // Set Progress Max
-            progressMax = 8000f
-
-            // Set ProgressBar Color
-            progressBarColor = Color.rgb(230,97,4)
-            // or with gradient
-//            progressBarColorStart = Color.RED
-//            progressBarColorEnd = Color.rgb(230,97,4)
-//            progressBarColorDirection = CircularProgressBar.GradientDirection.TOP_TO_BOTTOM
-
-            // Set background ProgressBar Color
-            backgroundProgressBarColor = Color.rgb(230,97,4)
-            // or with gradient
-//            backgroundProgressBarColorStart = Color.WHITE
-//            backgroundProgressBarColorEnd = Color.RED
-            backgroundProgressBarColorDirection = CircularProgressBar.GradientDirection.RIGHT_TO_LEFT
-
-            // Set Width
-            progressBarWidth = 7f // in DP
-            backgroundProgressBarWidth = 3f // in DP
-
-            // Other
-            roundBorder = true
-            startAngle = 0f
-            progressDirection = CircularProgressBar.ProgressDirection.TO_RIGHT
+        nutritionixVM.breakFastCalories.observe(viewLifecycleOwner){
+            binding.breakfastCal.text="${it.toInt()} KCal "
         }
+        nutritionixVM.lunchCalories.observe(viewLifecycleOwner){
+            binding.lunchCal.text="${it.toInt()} KCal "
+        }
+        nutritionixVM.dinnerCalories.observe(viewLifecycleOwner){
+            binding.DinnerCal.text="${it.toInt()} KCal "
+        }
+        nutritionixVM.workoutCalories.observe(viewLifecycleOwner){
+            binding.WorkoutCaloriesNo.text="${it.toInt()} KCal "
+        }
+       setCircularProgress()
 
-        return binding.root // Return the inflated view
-        view.findViewById<AppCompatButton>(R.id.add_breakfast_button).setOnClickListener {
-            val dialogFragment = AddBreakfastDialogFragment()
-            dialogFragment.show(parentFragmentManager, "AddBreakfastDialog")
+        binding.addBreakfastButton.setOnClickListener {
+            val dialogFragment = ApiCallPopUp(CallDecider.BreakFast)
+            dialogFragment.show((activity as AppCompatActivity).supportFragmentManager,"breakfast")
         }
-        view.findViewById<AppCompatButton>(R.id.add_lunch_button).setOnClickListener {
-            val dialogFragment = AddLunchDialogFragment()
-            dialogFragment.show(parentFragmentManager, "AddLunchDialog")
+        binding.addLunchButton.setOnClickListener{
+            val dialogFragment = ApiCallPopUp(CallDecider.Lunch)
+            dialogFragment.show((activity as AppCompatActivity).supportFragmentManager,"Lunch")
         }
-        view.findViewById<AppCompatButton>(R.id.add_dinner_button).setOnClickListener {
-            val dialogFragment = AddDinnerDialogFragment()
-            dialogFragment.show(parentFragmentManager, "AddDinnerDialog")
+        binding.addDinnerButton.setOnClickListener{
+            val dialogFragment = ApiCallPopUp(CallDecider.Dinner)
+            dialogFragment.show((activity as AppCompatActivity).supportFragmentManager,"Dinner")
         }
-        view.findViewById<AppCompatButton>(R.id.Add_workout_button).setOnClickListener {
-            val dialogFragment = AddWorkoutDialogFragment()
-            dialogFragment.show(parentFragmentManager, "AddWorkoutDialog")
+        binding.AddWorkoutButton.setOnClickListener{
+            val dialogFragment = ApiCallPopUp(CallDecider.Exercise)
+            dialogFragment.show((activity as AppCompatActivity).supportFragmentManager,"Workout")
         }
 
         val noWatersTextView = view.findViewById<TextView>(R.id.no_waters)
-        val plusImg = view.findViewById<ImageView>(R.id.plus_img)
-        val minusImg = view.findViewById<ImageView>(R.id.minus_img)
-
         noWatersTextView.text = waterCount.toString()
 
-        plusImg.setOnClickListener {
+        binding.plusImg.setOnClickListener {
             waterCount++
             noWatersTextView.text = waterCount.toString()
         }
-
-        minusImg.setOnClickListener {
+        binding.minusImg.setOnClickListener {
             if (waterCount > 0) {
                 waterCount--
                 noWatersTextView.text = waterCount.toString()
             }
         }
 
-        return view
-    }
+        return binding.root // Return the inflated view
 
-    private val addBreakfastDialog: Dialog by lazy {
-        Dialog(requireContext()).apply {
-            setContentView(R.layout.dialog_fragment_b)
+    }
+   private fun setCircularProgress(){
+
+        binding.circularProgressBar.apply {
+            progress = 0f
+            progressMax = 8000f
+            progressBarColor = Color.rgb(230,97,4)
+            backgroundProgressBarColor = Color.rgb(230,97,4)
+            backgroundProgressBarColorDirection = CircularProgressBar.GradientDirection.RIGHT_TO_LEFT
+            progressBarWidth = 7f // in DP
+            backgroundProgressBarWidth = 3f // in DP
+            roundBorder = true
+            startAngle = 0f
+            progressDirection = CircularProgressBar.ProgressDirection.TO_RIGHT
         }
     }
 
-    private val addLunchDialog: Dialog by lazy {
-        Dialog(requireContext()).apply {
-            setContentView(R.layout.dialog_fragment_l)
-        }
+
     }
 
-    private val addDinnerDialog: Dialog by lazy {
-        Dialog(requireContext()).apply {
-            setContentView(R.layout.dialog_fragment_d)
-        }
-    }
 
-    private val addWorkoutDialog: Dialog by lazy {
-        Dialog(requireContext()).apply {
-            setContentView(R.layout.dialog_fragment_workout)
-        }
-    }
-}
+

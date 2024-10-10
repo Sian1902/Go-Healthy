@@ -132,6 +132,8 @@
                     app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginTop="10dp" />
                         <TextView
+                            android:id="@+id/lunchCal"
+
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
 
@@ -142,7 +144,7 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="@+id/lunch_image"
                             android:layout_marginTop="5dp"
-                            android:layout_gravity="right"
+                            android:layout_gravity="center"
                             />
                 <TextView
                     android:layout_width="wrap_content"
@@ -204,6 +206,7 @@
                             android:layout_marginTop="10dp"
                             android:layout_gravity="center"/>
                         <TextView
+                            android:id="@+id/breakfastCal"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Cal"
@@ -213,7 +216,7 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="@+id/breakfast_image"
                             android:layout_marginTop="5dp"
-                            android:layout_gravity="end"
+                            android:layout_gravity="center"
                             />
                         <TextView
                             android:layout_width="wrap_content"
@@ -273,6 +276,7 @@
                             app:layout_constraintTop_toTopOf="parent"
                             android:layout_marginTop="10dp" />
                         <TextView
+                            android:id="@+id/DinnerCal"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Cal"
@@ -282,7 +286,7 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="@+id/dinner_image"
                             android:layout_marginTop="5dp"
-                            android:layout_gravity="end"
+                            android:layout_gravity="center"
                             />
                         <TextView
                             android:layout_width="wrap_content"
@@ -415,6 +419,7 @@
 
                         <androidx.appcompat.widget.AppCompatButton
                             android:id="@+id/Add_workout_button"
+
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent"

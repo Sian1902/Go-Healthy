@@ -22,6 +22,10 @@
     <string name="KcalInCount">1234</string>
     <string name="KcalOutCount">1234</string>
     <string name="StepsCount">1234</string>
+    <string name="breakfastHint">ex:2 Eggs</string>
+    <string name="lunchHint">ex:chicken curry</string>
+    <string name="dinnerHint">ex:Alfredo pasta</string>
+    <string name="workoutHint">ex:30 min run</string>
 
 
 </resources>
