@@ -6,29 +6,36 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import com.example.gohealthy.R
+import com.example.gohealthy.ViewModel.StepsCounterVM
+import com.example.gohealthy.databinding.FragmentHomePageBinding
+import com.example.gohealthy.databinding.FragmentWelcomeBinding
 import com.mikhaellopez.circularprogressbar.CircularProgressBar
 
 class HomePageFragment : Fragment() {
-
+    lateinit var binding: FragmentHomePageBinding
+    val stepsCounterVM:StepsCounterVM by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_home_page, container, false)
 
-        // Access the CircularProgressBar using the inflated view
-        val circularProgressBar = view.findViewById<CircularProgressBar>(R.id.circularProgressBar)
+       binding=FragmentHomePageBinding.inflate(inflater,container,false)
+       stepsCounterVM.currentSteps.observe(viewLifecycleOwner){
+           binding.circularProgressBar.progress=it.toFloat()
+           binding.currentStepstext.text=it.toString()+" /"
+       }
 
-        circularProgressBar.apply {
+
+        binding.circularProgressBar.apply {
             // Set Progress
             progress = 0f
-            // or with animation
-            setProgressWithAnimation(200f, 10000) // =1s // Awel parameter bey2ol eno hayewsal l 200f b3d 10 seconds
+
 
             // Set Progress Max
-            progressMax = 200f
+            progressMax = 8000f
 
             // Set ProgressBar Color
             progressBarColor = Color.rgb(230,97,4)
@@ -54,6 +61,6 @@ class HomePageFragment : Fragment() {
             progressDirection = CircularProgressBar.ProgressDirection.TO_RIGHT
         }
 
-        return view // Return the inflated view
+        return binding.root // Return the inflated view
     }
 }

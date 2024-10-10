@@ -24,5 +24,15 @@
         android:name="com.example.gohealthy.view.HomePageFragment"
         android:label="fragment_home_page"
         tools:layout="@layout/fragment_home_page" />
+    <fragment
+        android:id="@+id/history_fragment"
+        android:label="History"
+        android:name="com.example.gohealthy.view.HistoryFragment"
+        tools:layout="@layout/fragment_history"/>
+    <fragment
+        android:id="@+id/profile_fragment"
+        android:name="com.example.gohealthy.view.ProfilePageFragment"
+        tools:layout="@layout/fragment_profile_page"
+        android:label="Profile"/>
 
 </navigation>
