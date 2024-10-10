@@ -40,7 +40,7 @@ class ApiCallPopUp(val callDecider: CallDecider) : DialogFragment() {
                     nutritionixVM.exercisCall(query)
                 }
             }
-            dismiss()
+           // dismiss()
         }
         return dialog
     }

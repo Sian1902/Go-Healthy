@@ -37,7 +37,7 @@ class NutritionixVM:ViewModel() {
             CallDecider.Dinner->_dinnerCalories.value!!.plus(calories)
             else-> return
         }
-        Log.d("response", " calories $calories")
+        Log.d("response", " calories ${_breakfastCalories.value}")
 
     }
     suspend fun exercisCall(workout:String){
