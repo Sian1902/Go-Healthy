@@ -1,10 +1,16 @@
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gohealthy.HistoryItem
 import com.example.gohealthy.databinding.HistoryItemBinding
+import com.google.firebase.firestore.FirebaseFirestore
 
-class HistoryAdapter(private val historyList: List<HistoryItem>) : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
+class HistoryAdapter(
+    private val historyList: MutableList<HistoryItem>,
+    private val userId: String
+) : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
 
     inner class HistoryViewHolder(private val binding: HistoryItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: HistoryItem) {
@@ -12,6 +18,31 @@ class HistoryAdapter(private val historyList: List<HistoryItem>) : RecyclerView.
             binding.KcalIn.text = item.kcalIn.toString()
             binding.KcalOut.text = item.kcalOut.toString()
             binding.Steps.text = item.steps.toString()
+
+            // Set up the delete button's OnClickListener
+            binding.deleteButton.setOnClickListener {
+                // Call the delete method with the document ID
+                deleteHistoryItem(item)
+            }
+        }
+
+        private fun deleteHistoryItem(item: HistoryItem) {
+            val db = FirebaseFirestore.getInstance()
+            db.collection("users")
+                .document(userId)
+                .collection("history")
+                .document(item.id) // Assuming you have a unique ID for each HistoryItem
+                .delete()
+                .addOnSuccessListener {
+                    // Remove the item from the local list
+                    historyList.remove(item)
+                    Toast.makeText(binding.root.context, "Item deleted successfully", Toast.LENGTH_SHORT).show()
+                    // Notify the adapter that an item has been removed
+                    notifyDataSetChanged()
+                }
+                .addOnFailureListener { e ->
+                    Log.w("HistoryAdapter", "Error deleting document", e)
+                }
         }
     }
 

@@ -8,4 +8,17 @@
         <item>Male</item>
         <item>Female</item>
     </string-array>
+        <string name="stats">Your Lifetime Stats</string>
+        <string name="date">Mon 8th of October</string>
+        <string name="KcalIn">Kcal In</string>
+        <string name="KcalOut">Kcal Out</string>
+        <string name="Steps">Steps</string>
+        <string name="KcalInCount">1234</string>
+        <string name="KcalOutCount">1234</string>
+        <string name="StepsCount">1234</string>
+        <string name="delete">delete</string>
+
+
+
+
 </resources>

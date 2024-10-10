@@ -1,8 +1,7 @@
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
+/*import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-
+import okhttp3.logging.HttpLoggingInterceptor
 object RetrofitInstance {
 
     // The base URL of LibreTranslate
@@ -28,3 +27,4 @@ object RetrofitInstance {
             .create(TranslationApiService::class.java)  // Create the API service
     }
 }
+*/

@@ -32,6 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Name"
+
             android:textColorHint="@color/hint_color_state"
             app:boxStrokeColor ="@color/test"
             app:hintTextColor="@color/hint_color_state"
@@ -49,7 +50,9 @@
             app:startIconTint="@color/black">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                />
         </com.google.android.material.textfield.TextInputLayout>
         <!--Email Field -->
 
@@ -77,6 +80,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
+
                 android:inputType="textEmailAddress"/>
         </com.google.android.material.textfield.TextInputLayout>
         <!-- New Password Field -->
@@ -104,6 +109,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
+
                 android:inputType="textPassword"/>
         </com.google.android.material.textfield.TextInputLayout>
         <LinearLayout
@@ -139,6 +146,8 @@
             app:startIconTint="@color/black"
             app:endIconTint="@color/black">
             <AutoCompleteTextView
+                android:textColor="@color/black"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
@@ -161,6 +170,7 @@
 
 
 
+
                 app:boxBackgroundColor="@color/textField_color"
                 android:layout_marginStart="0dp"
                 android:layout_marginEnd="20dp"
@@ -174,7 +184,9 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPassword"/>
+                    android:textColor="@color/black"
+
+                    android:inputType="number"/>
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
     <LinearLayout
@@ -209,6 +221,8 @@
             app:endIconTint="@color/black">
             <com.google.android.material.textfield.TextInputEditText
                 android:inputType="numberDecimal"
+                android:textColor="@color/black"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -241,6 +255,8 @@
             app:endIconTint="@color/black">
             <com.google.android.material.textfield.TextInputEditText
                 android:inputType="numberDecimal"
+                android:textColor="@color/black"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>

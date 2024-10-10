@@ -6,10 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.gohealthy.Exercise.Exercise
 import com.example.gohealthy.Exercise.ExerciseData
 import com.example.gohealthy.NutritionixAPI.NutritionixQuery
 import com.example.gohealthy.NutritionixAPI.RetrofitClient
+import com.example.gohealthy.R
 import com.example.gohealthy.databinding.FragmentWelcomeBinding
 import com.example.gohealthy.foodData.NutritionData
 import retrofit2.Call
@@ -31,7 +34,7 @@ class WelcomeFragment : Fragment() {
         binding = FragmentWelcomeBinding.inflate(inflater, container, false)
 
         binding.welcomeButton.setOnClickListener {
-           // findNavController().navigate(R.id.welcomeToSignup)
+           findNavController().navigate(R.id.signUpFragment)
          nutritionCall()
             exerciseCall()
 

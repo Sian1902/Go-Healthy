@@ -9,16 +9,16 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.gohealthy.R
 import com.example.gohealthy.databinding.FragmentSigninBinding
-import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.auth.FirebaseAuth
 
 class signinFragment : Fragment() {
 
     private lateinit var binding: FragmentSigninBinding
-    private lateinit var db: FirebaseFirestore
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        db = FirebaseFirestore.getInstance() // Initialize Firestore instance
+        auth = FirebaseAuth.getInstance()
     }
 
     override fun onCreateView(
@@ -41,26 +41,24 @@ class signinFragment : Fragment() {
                 return@setOnClickListener
             }
 
-            // Check Firestore for the user credentials
+            // Authenticate user with Firebase
             authenticateUser(email, password)
         }
 
         return binding.root
     }
 
+    // Firebase Authentication Method
     private fun authenticateUser(email: String, password: String) {
-        db.collection("users")
-            .whereEqualTo("email", email)
-            .whereEqualTo("password", password)
-            .get()
-            .addOnSuccessListener { querySnapshot ->
-                if (!querySnapshot.isEmpty) {
-                    //  navigate to WelcomeFragment
-                    findNavController().navigate(R.id.action_signinFragment_to_welcomeFragment)
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+
+                    findNavController().navigate(R.id.historyFragment)
                     Toast.makeText(requireContext(), "Login successful!", Toast.LENGTH_SHORT).show()
                 } else {
-                    // No match found
-                    Toast.makeText(requireContext(), "Invalid email or password", Toast.LENGTH_SHORT).show()
+                    // Login failed
+                    Toast.makeText(requireContext(), "Authentication failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
             }
             .addOnFailureListener { e ->

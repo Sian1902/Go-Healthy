@@ -1,7 +1,8 @@
 package com.example.gohealthy
 data class HistoryItem(
-    val date: String,
-    val kcalIn: Int,
-    val kcalOut: Int,
-    val steps: Int
+    var id:String ="",
+    val date: String="",
+    val kcalIn: Int=0,
+    val kcalOut: Int=0,
+    val steps: Int=0
 )

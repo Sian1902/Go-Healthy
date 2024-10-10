@@ -7,77 +7,75 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gohealthy.databinding.FragmentHistoryBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
 class HistoryFragment : Fragment() {
-    lateinit var binding: FragmentHistoryBinding
-    val historyList = listOf(
-        HistoryItem("Sat 10th of October", 200, 150, 1000),
-        HistoryItem("Mon 8th of September", 180, 120, 9000)
-       , HistoryItem("Mon 8th of September", 180, 120, 9000)
-       , HistoryItem("Mon 8th of September", 180, 120, 9000),
-        HistoryItem("Mon 8th of September", 180, 120, 9000)
-       , HistoryItem("Mon 8th of September", 180, 120, 9000)
-      ,  HistoryItem("Mon 8th of September", 180, 120, 9000)
-       , HistoryItem("Mon 8th of September", 180, 120, 9000)
-        // Add more items
-    )
-
+    private val auth = FirebaseAuth.getInstance()
+    private var _binding: FragmentHistoryBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var historyAdapter: HistoryAdapter
+    private val historyList = mutableListOf<HistoryItem>()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-
     ): View {
-        binding= FragmentHistoryBinding.inflate(inflater,container,false)
+        _binding = FragmentHistoryBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val adapter = HistoryAdapter(historyList)
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerView.adapter = adapter
-        translateText("Hello, how are you?", "en", "es")
+        binding.logOutButton.setOnClickListener {
+            logOut()
+        }
+        val userId = FirebaseAuth.getInstance().currentUser?.uid
+        userId?.let {
+            fetchHistoryData(it)
+        }
     }
 
-    fun translateText(text: String, sourceLang: String, targetLang: String) {
-        // Create the request object
-        val request = TranslationRequest(
-            q = text,
-            source = sourceLang,
-            target = targetLang
-        )
+    private fun  logOut(){
+        auth.signOut()
+        Toast.makeText(requireContext(), "Logged out successfully", Toast.LENGTH_SHORT).show()
 
-        // Make the API call
-        RetrofitInstance.api.translate(request).enqueue(object : Callback<TranslationResponse> {
-            override fun onResponse(
-                call: Call<TranslationResponse>,
-                response: Response<TranslationResponse>
-            ) {
-                // Check if the response was successful
-                if (response.isSuccessful) {
-                    // Get the translated text
-                    val translatedText = response.body()?.translatedText
-                    Log.d("Translation","Translated Text: $translatedText")
-                } else {
-                    // Handle error
-                    Log.e("Translation", "Failed to translate: ${response.errorBody()?.string()}")
+        findNavController().navigate(R.id.signinFragment)
+    }
+
+    private fun fetchHistoryData(userId: String) {
+        val db = FirebaseFirestore.getInstance()
+        db.collection("users")
+            .document(userId)
+            .collection("history")
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    val historyItem = document.toObject(HistoryItem::class.java)
+                    historyItem.id = document.id // Store the document ID in the HistoryItem
+                    historyList.add(historyItem)
                 }
+                historyAdapter = HistoryAdapter(historyList, userId) // Pass userId to the adapter
+                binding.recyclerView.adapter = historyAdapter
             }
-
-            override fun onFailure(call: Call<TranslationResponse>, t: Throwable) {
-                // Handle failure
-                Log.e("Translation","Error: ${t.message}")
+            .addOnFailureListener { exception ->
+                Log.w("HistoryFragment", "Error getting documents: ", exception)
             }
-        })
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

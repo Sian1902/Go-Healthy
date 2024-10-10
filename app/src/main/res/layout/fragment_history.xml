@@ -6,6 +6,18 @@
 
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/logOutButton"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/baseline_logout_24"
+        app:layout_constraintStart_toEndOf="@id/urLifeStats"
+        app:layout_constraintTop_toBottomOf="@id/urLifeStats"
+        app:layout_constraintTop_toTopOf="@id/urLifeStats" />
+
     <TextView
         android:id="@+id/urLifeStats"
         android:layout_width="wrap_content"
@@ -15,7 +27,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:text="@string/stats"
         android:fontFamily="@font/playpen_sans"
-        android:textColor="@color/orange_bg"
+        android:textColor="@color/custom_orange"
         android:textSize="25sp"
         android:textStyle="bold"
         android:gravity="center"
@@ -27,6 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:itemCount="8"
+        android:padding="4dp"
 
         tools:listitem="@layout/history_item"
 

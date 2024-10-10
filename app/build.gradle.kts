@@ -41,6 +41,7 @@ android {
 }
 
 dependencies {
+
     implementation(platform("com.google.firebase:firebase-bom:33.4.0"))
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-firestore-ktx")
@@ -49,7 +50,6 @@ dependencies {
     implementation("com.github.mukeshsolanki:android-otpview-pinview:2.1.2")
     implementation ("com.github.GoodieBag:Pinview:v1.5")
     implementation ("com.google.firebase:firebase-functions:20.1.2")
-
 
 
 

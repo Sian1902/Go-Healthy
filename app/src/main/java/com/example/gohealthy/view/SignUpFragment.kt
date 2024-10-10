@@ -15,11 +15,10 @@ import com.example.gohealthy.UserData.User
 import com.example.gohealthy.databinding.FragmentSignupBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-
 class SignUpFragment : Fragment() {
     private lateinit var binding: FragmentSignupBinding
-    private val db = FirebaseFirestore.getInstance()
     private lateinit var auth: FirebaseAuth
+    private val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +31,7 @@ class SignUpFragment : Fragment() {
     ): View {
         binding = FragmentSignupBinding.inflate(inflater, container, false)
 
-        // Set the gender dropdown
+        // Set up the gender dropdown
         val gender = resources.getStringArray(R.array.Gender)
         val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdownmenu, gender)
         binding.genderTextField.editText?.let { autoCompleteTextView ->
@@ -56,34 +55,13 @@ class SignUpFragment : Fragment() {
         val password = binding.passwordTextField.editText?.text.toString().trim()
         val ageStr = binding.ageTextField.editText?.text.toString().trim()
 
-        // Convert the weight, height, and age to numbers
         val weight = weightStr.toFloatOrNull()
         val height = heightStr.toFloatOrNull()
         val age = ageStr.toIntOrNull()
 
         // Validation
-        if (name.isEmpty()) {
-            binding.nameTextField.error = "Please enter your name"
-            return
-        }
-        if (weight == null) {
-            binding.weightTextField.error = "Please enter a valid weight"
-            return
-        }
-        if (height == null) {
-            binding.heightTextField.error = "Please enter a valid height"
-            return
-        }
-        if (email.isEmpty()) {
-            binding.emailTextField.error = "Please enter your email"
-            return
-        }
-        if (password.isEmpty()) {
-            binding.passwordTextField.error = "Please enter your password"
-            return
-        }
-        if (age == null) {
-            binding.ageTextField.error = "Please enter a valid age"
+        if (name.isEmpty() || weight == null || height == null || email.isEmpty() || password.isEmpty() || age == null) {
+            Toast.makeText(requireContext(), "Please fill in all fields correctly", Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -91,33 +69,42 @@ class SignUpFragment : Fragment() {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
+                    // Get the user's unique ID
+                    val userId = auth.currentUser?.uid ?: return@addOnCompleteListener
+
                     // Save user data to Firestore
                     val user = User(name, gender, weight, height, email, password, age)
-                    db.collection("users")
-                        .add(user)
+                    db.collection("users").document(userId).set(user)
                         .addOnSuccessListener {
-                            Toast.makeText(requireContext(), "User data saved successfully!", Toast.LENGTH_SHORT).show()
-                            // Navigate to the next fragment after successful signup
-                            findNavController().navigate(R.id.action_signUpFragment_to_welcomeFragment)
+                            // Initialize the 'history' subcollection for the user
+                          //  initializeHistorySubcollection(userId)
+
+                            // After successful signup, navigate to welcome screen
+                            findNavController().navigate(R.id.signinFragment)
                         }
                         .addOnFailureListener { e ->
-                            Toast.makeText(requireContext(), "Failed to save data: ${e.message}", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), "Failed to save user data: ${e.message}", Toast.LENGTH_SHORT).show()
                         }
                 } else {
-                    // Registration failed
                     Toast.makeText(requireContext(), "Registration failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
             }
     }
 
-    private fun sendVerificationEmail() {
-        val user = auth.currentUser
-        user?.sendEmailVerification()?.addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                Toast.makeText(requireContext(), "Verification email sent! Please check your inbox.", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(requireContext(), "Failed to send verification email: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+    private fun initializeHistorySubcollection(userId: String) {
+        // Create an initial entry in the 'history' subcollection
+        db.collection("users").document(userId).collection("history")
+            .add(hashMapOf(
+                "date" to "Today", // Example initial values
+                "kcalIn" to 0,
+                "kcalOut" to 0,
+                "steps" to 0
+            ))
+            .addOnSuccessListener {
+                Log.d("Firestore", "Initial history entry created successfully")
             }
-        }
+            .addOnFailureListener { e ->
+                Log.w("Firestore", "Error creating initial history entry", e)
+            }
     }
 }
