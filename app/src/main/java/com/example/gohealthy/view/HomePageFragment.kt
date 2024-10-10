@@ -1,5 +1,6 @@
 package com.example.gohealthy.view
 
+import android.app.Dialog
 import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,8 +13,14 @@ import com.example.gohealthy.ViewModel.StepsCounterVM
 import com.example.gohealthy.databinding.FragmentHomePageBinding
 import com.example.gohealthy.databinding.FragmentWelcomeBinding
 import com.mikhaellopez.circularprogressbar.CircularProgressBar
+import androidx.appcompat.widget.AppCompatButton
+import android.widget.ImageView
+import android.widget.TextView
 
 class HomePageFragment : Fragment() {
+
+    private var waterCount: Int = 0
+
     lateinit var binding: FragmentHomePageBinding
     val stepsCounterVM:StepsCounterVM by activityViewModels()
     override fun onCreateView(
@@ -21,6 +28,7 @@ class HomePageFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        val view = inflater.inflate(R.layout.fragment_home_page, container, false)
 
        binding=FragmentHomePageBinding.inflate(inflater,container,false)
        stepsCounterVM.currentSteps.observe(viewLifecycleOwner){
@@ -62,5 +70,65 @@ class HomePageFragment : Fragment() {
         }
 
         return binding.root // Return the inflated view
+        view.findViewById<AppCompatButton>(R.id.add_breakfast_button).setOnClickListener {
+            val dialogFragment = AddBreakfastDialogFragment()
+            dialogFragment.show(parentFragmentManager, "AddBreakfastDialog")
+        }
+        view.findViewById<AppCompatButton>(R.id.add_lunch_button).setOnClickListener {
+            val dialogFragment = AddLunchDialogFragment()
+            dialogFragment.show(parentFragmentManager, "AddLunchDialog")
+        }
+        view.findViewById<AppCompatButton>(R.id.add_dinner_button).setOnClickListener {
+            val dialogFragment = AddDinnerDialogFragment()
+            dialogFragment.show(parentFragmentManager, "AddDinnerDialog")
+        }
+        view.findViewById<AppCompatButton>(R.id.Add_workout_button).setOnClickListener {
+            val dialogFragment = AddWorkoutDialogFragment()
+            dialogFragment.show(parentFragmentManager, "AddWorkoutDialog")
+        }
+
+        val noWatersTextView = view.findViewById<TextView>(R.id.no_waters)
+        val plusImg = view.findViewById<ImageView>(R.id.plus_img)
+        val minusImg = view.findViewById<ImageView>(R.id.minus_img)
+
+        noWatersTextView.text = waterCount.toString()
+
+        plusImg.setOnClickListener {
+            waterCount++
+            noWatersTextView.text = waterCount.toString()
+        }
+
+        minusImg.setOnClickListener {
+            if (waterCount > 0) {
+                waterCount--
+                noWatersTextView.text = waterCount.toString()
+            }
+        }
+
+        return view
+    }
+
+    private val addBreakfastDialog: Dialog by lazy {
+        Dialog(requireContext()).apply {
+            setContentView(R.layout.dialog_fragment_b)
+        }
+    }
+
+    private val addLunchDialog: Dialog by lazy {
+        Dialog(requireContext()).apply {
+            setContentView(R.layout.dialog_fragment_l)
+        }
+    }
+
+    private val addDinnerDialog: Dialog by lazy {
+        Dialog(requireContext()).apply {
+            setContentView(R.layout.dialog_fragment_d)
+        }
+    }
+
+    private val addWorkoutDialog: Dialog by lazy {
+        Dialog(requireContext()).apply {
+            setContentView(R.layout.dialog_fragment_workout)
+        }
     }
 }
