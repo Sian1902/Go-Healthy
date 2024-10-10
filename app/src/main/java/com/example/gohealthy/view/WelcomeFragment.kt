@@ -1,5 +1,4 @@
 package com.example.gohealthy.view
-
 import android.content.Context
 import android.hardware.Sensor
 import android.hardware.SensorEvent
@@ -12,8 +11,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.content.ContextCompat.getSystemService
-import com.example.gohealthy.Exercise.Exercise
 import com.example.gohealthy.Exercise.ExerciseData
 import com.example.gohealthy.NutritionixAPI.NutritionixQuery
 import com.example.gohealthy.NutritionixAPI.RetrofitClient
@@ -24,7 +21,13 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
+    interface LocalizationHelper {
+        fun changeToArabic()
+        fun changeToEnglish()
+    }
+
 class WelcomeFragment : Fragment(), SensorEventListener {
+
 
     lateinit var binding: FragmentWelcomeBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,6 +43,22 @@ class WelcomeFragment : Fragment(), SensorEventListener {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentWelcomeBinding.inflate(inflater, container, false)
+
+        binding.arabicButton.setOnClickListener {
+            val context = requireContext()
+            if (context is LocalizationHelper){
+                val localizer = context as LocalizationHelper
+                localizer.changeToArabic()
+            }
+        }
+
+        binding.englishButton.setOnClickListener {
+            val context = requireContext()
+            if (context is LocalizationHelper){
+                val localizer = context as LocalizationHelper
+                localizer.changeToEnglish()
+            }
+        }
 
         binding.welcomeButton.setOnClickListener {
            // findNavController().navigate(R.id.welcomeToSignup)

@@ -7,15 +7,26 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.fragment.NavHostFragment
 import com.example.gohealthy.R
+import com.zeugmasolutions.localehelper.Locales
 
-class MainActivity : BaseActivity(){
+class MainActivity : BaseActivity(), LocalizationHelper{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
 
         val navController = navHostFragment.navController
 
     }
+    override fun changeToArabic() {
+        updateLocale(Locales.Arabic)
+    }
+
+    override fun changeToEnglish() {
+        updateLocale(Locales.English)
+    }
+
+
 }

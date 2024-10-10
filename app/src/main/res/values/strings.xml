@@ -16,6 +16,9 @@
     <string name="KcalInCount">1234</string>
     <string name="KcalOutCount">1234</string>
     <string name="StepsCount">1234</string>
+    <string name="english">English</string>
+    <string name="arabic">Arabic</string>
+    <string name="get_started">Get Started</string>
 
 
 </resources>

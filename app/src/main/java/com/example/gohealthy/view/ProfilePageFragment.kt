@@ -10,6 +10,7 @@ import com.example.gohealthy.R
 
 class ProfilePageFragment : Fragment() {
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

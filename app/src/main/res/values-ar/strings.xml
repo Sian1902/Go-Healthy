@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="arabic">العربيه</string>
+    <string name="app_name">GO HEALTHY</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="appp_Name">GO HEALTHY</string>
+    <string name="welcome_text">مرحبا بكم في</string>
+    <string-array name="Gender">
+        <item>ذكر</item>
+        <item>أنثي</item>
+    </string-array>
+    <string name="stats">إحصائيات عمرك</string>
+    <string name="date">الإثنين 8 أكتوبر</string>
+    <string name="KcalIn">"السعرات الداخله "</string>
+    <string name="KcalOut">السعرات الخارجه</string>
+    <string name="Steps">خطوه</string>
+    <string name="KcalInCount">1234</string>
+    <string name="KcalOutCount">1234</string>
+    <string name="StepsCount">1234</string>
+    <string name="english">الانجليزيه</string>
+    <string name="get_started">أبدأ</string>
+</resources>

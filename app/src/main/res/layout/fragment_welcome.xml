@@ -65,7 +65,7 @@
       android:paddingLeft="40dp"
       android:paddingRight="40dp"
       android:fontFamily="@font/roboto_medium"
-      android:text="Get Started"
+      android:text="@string/get_started"
       android:textAllCaps="false"
       android:textColor="@color/white"
       android:textStyle="bold"
@@ -75,5 +75,21 @@
       app:layout_constraintEnd_toEndOf="@id/welcomeImage"
       app:layout_constraintStart_toStartOf="@id/welcomeImage"
       app:layout_constraintTop_toBottomOf="@id/appName" />
+
+  <Button
+      android:id="@+id/arabic_button"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/arabic"
+      app:layout_constraintBottom_toTopOf="@+id/welcomeButton"
+      app:layout_constraintEnd_toEndOf="parent" />
+
+  <Button
+      android:id="@+id/english_button"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/english"
+      app:layout_constraintBottom_toTopOf="@+id/welcomeButton"
+      app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
