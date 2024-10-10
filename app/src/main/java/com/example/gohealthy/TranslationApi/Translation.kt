@@ -1,4 +1,4 @@
-package com.example.gohealthy
+package com.example.gohealthy.TranslationApi
 
 data class TranslationRequest(
     val q: String,     // The text to be translated

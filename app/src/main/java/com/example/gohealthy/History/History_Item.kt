@@ -1,4 +1,4 @@
-package com.example.gohealthy
+package com.example.gohealthy.History
 data class HistoryItem(
     var id:String ="",
     val date: String="",

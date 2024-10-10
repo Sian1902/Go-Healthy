@@ -1,4 +1,4 @@
-/*import okhttp3.OkHttpClient
+package com.example.gohealthy.TranslationApi/*import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import okhttp3.logging.HttpLoggingInterceptor

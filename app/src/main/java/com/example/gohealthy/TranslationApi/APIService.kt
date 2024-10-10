@@ -1,5 +1,4 @@
-import com.example.gohealthy.TranslationRequest
-import com.example.gohealthy.TranslationResponse
+package com.example.gohealthy.TranslationApi
 
 import retrofit2.Call
 import retrofit2.http.Body
