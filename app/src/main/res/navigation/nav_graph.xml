@@ -35,7 +35,7 @@
     </fragment>
     <fragment
         android:id="@+id/historyFragment"
-        android:name="com.example.gohealthy.History.HistoryFragment"
+        android:name="com.example.gohealthy.history.HistoryFragment"
         android:label="HistoryFragment" />
 
 

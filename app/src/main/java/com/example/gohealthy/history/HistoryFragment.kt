@@ -1,4 +1,4 @@
-package com.example.gohealthy.History
+package com.example.gohealthy.history
 
 import android.os.Bundle
 import android.util.Log
