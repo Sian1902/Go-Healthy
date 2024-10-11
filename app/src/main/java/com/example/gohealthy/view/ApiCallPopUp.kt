@@ -1,3 +1,4 @@
+/*
 package com.example.gohealthy.view
 
 import android.app.AlertDialog
@@ -68,3 +69,5 @@ class ApiCallPopUp(val callDecider: CallDecider) : DialogFragment() {
         }
     }
 }
+
+ */

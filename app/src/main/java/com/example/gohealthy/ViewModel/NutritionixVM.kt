@@ -1,3 +1,4 @@
+/*
 package com.example.gohealthy.ViewModel
 
 import android.util.Log
@@ -55,3 +56,4 @@ class NutritionixVM:ViewModel() {
         _workoutCalories.value!!.plus(calories)
     }
 }
+*/

@@ -1,3 +1,4 @@
+/*
 package com.example.gohealthy.view
 
 import android.app.Dialog
@@ -104,6 +105,8 @@ class HomePageFragment : Fragment() {
 
 
     }
+
+ */
 
 
 

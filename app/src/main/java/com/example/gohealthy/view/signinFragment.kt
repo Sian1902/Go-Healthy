@@ -54,7 +54,7 @@ class signinFragment : Fragment() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
 
-                    findNavController().navigate(R.id.historyFragment)
+                    findNavController().navigate(R.id.profilePageFragment)
                     Toast.makeText(requireContext(), "Login successful!", Toast.LENGTH_SHORT).show()
                 } else {
                     // Login failed

@@ -39,7 +39,7 @@
             app:boxStrokeColor="@color/orangeText"
             app:boxStrokeWidth="2dp"
             app:boxBackgroundMode="outline"
-            tools:hint="@string/breakfastHint"
+            tools:hint="@string/enter_your_breakfast"
             android:padding="20dp"
             app:boxCornerRadiusBottomStart="30dp"
             app:boxCornerRadiusTopStart="30dp"

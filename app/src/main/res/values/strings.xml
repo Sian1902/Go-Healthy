@@ -18,7 +18,13 @@
         <string name="StepsCount">1234</string>
         <string name="delete">delete</string>
 
-
+    <string name="toast">Toast</string>
+    <string name="add">Add</string>
+    <string name="add_your_lunch">Add Your Lunch</string>
+    <string name="add_your_breakfast">Add Your Breakfast</string>
+    <string name="add_your_dinner">Add Your Dinner</string>
+    <string name="add_your_workout">Add Your Workout</string>
+    <string name="enter_your_breakfast">Enter your breakfast</string>
 
 
 </resources>

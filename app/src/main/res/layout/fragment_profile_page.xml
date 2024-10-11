@@ -130,18 +130,15 @@
                     android:src="@drawable/ic_calender" />
 
                 <TextView
+                    android:id="@+id/profile_age"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_weight="1"
-                    android:text="26/11/2003"
+                    android:text="21"
                     android:textColor="@android:color/black"
                     android:textSize="16sp" />
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_edit" />
             </LinearLayout>
 
             <!-- Divider -->
@@ -166,6 +163,7 @@
                     android:src="@drawable/ic_gender" />
 
                 <TextView
+                    android:id="@+id/profile_gender"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -174,10 +172,7 @@
                     android:textColor="@android:color/black"
                     android:textSize="16sp" />
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_edit" />
+
             </LinearLayout>
 
             <!-- Divider -->
@@ -202,6 +197,7 @@
                     android:src="@drawable/ic_weight" />
 
                 <TextView
+                    android:id="@+id/profile_weight"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -210,10 +206,7 @@
                     android:textColor="@android:color/black"
                     android:textSize="16sp" />
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_edit" />
+
             </LinearLayout>
 
             <!-- Divider -->
@@ -238,6 +231,7 @@
                     android:src="@drawable/ic_height" />
 
                 <TextView
+                    android:id="@+id/profile_height"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -246,10 +240,7 @@
                     android:textColor="@android:color/black"
                     android:textSize="16sp" />
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_edit" />
+
             </LinearLayout>
 
             <!-- Divider -->
@@ -282,10 +273,7 @@
                     android:textColor="@android:color/black"
                     android:textSize="16sp" />
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_edit" />
+
             </LinearLayout>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>

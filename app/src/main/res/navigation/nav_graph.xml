@@ -37,6 +37,10 @@
         android:id="@+id/historyFragment"
         android:name="com.example.gohealthy.History.HistoryFragment"
         android:label="HistoryFragment" />
+    <fragment
+        android:id="@+id/profilePageFragment"
+        android:name="com.example.gohealthy.view.ProfilePageFragment"
+        android:label="ProfilePageFragment" />
 
 
 </navigation>
