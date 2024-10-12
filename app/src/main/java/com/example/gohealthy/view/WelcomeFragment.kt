@@ -6,12 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.Navigation.findNavController
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.findNavController
-import com.example.gohealthy.Exercise.Exercise
 import com.example.gohealthy.Exercise.ExerciseData
 import com.example.gohealthy.NutritionixAPI.NutritionixQuery
 import com.example.gohealthy.NutritionixAPI.RetrofitClient
+import com.example.gohealthy.PrefManager
 import com.example.gohealthy.R
 import com.example.gohealthy.databinding.FragmentWelcomeBinding
 import com.example.gohealthy.foodData.NutritionData
@@ -19,30 +19,40 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-
 class WelcomeFragment : Fragment() {
 
-    lateinit var binding: FragmentWelcomeBinding
+    private lateinit var binding: FragmentWelcomeBinding
+    private lateinit var prefManager: PrefManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        prefManager = PrefManager(requireContext())
 
+        // Handle back press to prevent going back to WelcomeFragment
+        requireActivity().onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // Do nothing to prevent going back
+            }
+        })
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentWelcomeBinding.inflate(inflater, container, false)
 
         binding.welcomeButton.setOnClickListener {
-           findNavController().navigate(R.id.signUpFragment)
-         nutritionCall()
+            prefManager.setFirstTimeLaunch(false)
+            findNavController().navigate(R.id.signinFragment)
+            nutritionCall()
             exerciseCall()
-
         }
 
         return binding.root
     }
-    fun nutritionCall(){
+
+    fun nutritionCall() {
         val nutritionQuery = NutritionixQuery("100 gram meat")
         val call = RetrofitClient.instance.getNutritionData(nutritionQuery)
 
@@ -56,11 +66,8 @@ class WelcomeFragment : Fragment() {
                         }
                     } ?: Log.e("NutritionAPI", "Response body is null")
                 } else {
-                    // Log the entire response body to get more details about the error
                     Log.e("NutritionAPI", "Response failed with code: ${response.code()} and message: ${response.message()}")
-                    response.errorBody()?.let { errorBody ->
-                        Log.e("NutritionAPI", "Error body: ${errorBody.string()}")
-                    }
+                    response.errorBody()?.let { errorBody -> Log.e("NutritionAPI", "Error body: ${errorBody.string()}") }
                 }
             }
 
@@ -70,11 +77,12 @@ class WelcomeFragment : Fragment() {
             }
         })
     }
+
     fun exerciseCall() {
-        val exerciseQuery = NutritionixQuery("ran for 1 hour")  // Use ExerciseQuery, not NutritionixQuery
+        val exerciseQuery = NutritionixQuery("ran for 1 hour")
         val call = RetrofitClient.instance.getExerciseData(exerciseQuery)
 
-        call.enqueue(object : Callback<ExerciseData> {  // Expect ExerciseResponse here
+        call.enqueue(object : Callback<ExerciseData> {
             override fun onResponse(call: Call<ExerciseData>, response: Response<ExerciseData>) {
                 if (response.isSuccessful) {
                     val exerciseData = response.body()
@@ -84,11 +92,8 @@ class WelcomeFragment : Fragment() {
                         }
                     } ?: Log.e("ExerciseAPI", "Response body is null")
                 } else {
-                    // Log the entire response body to get more details about the error
                     Log.e("ExerciseAPI", "Response failed with code: ${response.code()} and message: ${response.message()}")
-                    response.errorBody()?.let { errorBody ->
-                        Log.e("ExerciseAPI", "Error body: ${errorBody.string()}")
-                    }
+                    response.errorBody()?.let { errorBody -> Log.e("ExerciseAPI", "Error body: ${errorBody.string()}") }
                 }
             }
 
@@ -98,5 +103,4 @@ class WelcomeFragment : Fragment() {
             }
         })
     }
-
 }
