@@ -26,7 +26,7 @@
             android:fontFamily="sans-serif-black"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="@color/orangeText"
+            android:textColor="@color/custom_orange"
             android:padding="10dp"
             />
         <com.google.android.material.textfield.TextInputLayout
@@ -36,7 +36,7 @@
             app:layout_constraintTop_toBottomOf="@id/title"
             app:layout_constraintStart_toStartOf="parent"
 
-            app:boxStrokeColor="@color/orangeText"
+            app:boxStrokeColor="@color/custom_orange"
             app:boxStrokeWidth="2dp"
             app:boxBackgroundMode="outline"
             tools:hint="@string/breakfastHint"

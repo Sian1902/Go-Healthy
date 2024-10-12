@@ -1,8 +1,7 @@
-package com.example.gohealthy.NutritionixAPI
+package com.example.gohealthy.nutritionixAPI
 
-import com.example.gohealthy.Exercise.ExerciseData
+import com.example.gohealthy.exercise.ExerciseData
 import com.example.gohealthy.foodData.NutritionData
-import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.Headers

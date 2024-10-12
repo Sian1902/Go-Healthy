@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homePageFragment">
+    app:startDestination="@id/welcomeFragment">
 <fragment
     android:name="com.example.gohealthy.view.WelcomeFragment"
     android:id="@+id/welcomeFragment"
@@ -11,8 +11,17 @@
     <action
         android:id="@+id/welcomeToSignup"
         app:destination="@id/signUpFragment"
-
+        app:exitAnim="@anim/nav_default_enter_anim"
+        app:enterAnim="@anim/nav_default_enter_anim"
         />
+    <action
+        android:id="@+id/welcomeToHomePage"
+        app:destination="@id/homePageFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+
 </fragment>
     <fragment
         android:id="@+id/signUpFragment"
@@ -23,16 +32,64 @@
         android:id="@+id/homePageFragment"
         android:name="com.example.gohealthy.view.HomePageFragment"
         android:label="fragment_home_page"
-        tools:layout="@layout/fragment_home_page" />
+        tools:layout="@layout/fragment_home_page" >
+        <action
+            android:id="@+id/homeToHistory"
+            app:destination="@id/historyFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"  />
+        <action
+            android:id="@+id/homeToProfile"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+    </fragment>
     <fragment
-        android:id="@+id/history_fragment"
+        android:id="@+id/historyFragment"
         android:label="History"
         android:name="com.example.gohealthy.view.HistoryFragment"
-        tools:layout="@layout/fragment_history"/>
+        tools:layout="@layout/fragment_history"
+        >
+
+        <action
+            android:id="@+id/historyToProfile"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/historyToHome"
+            app:destination="@id/historyFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+    </fragment>
     <fragment
-        android:id="@+id/profile_fragment"
+        android:id="@+id/profileFragment"
         android:name="com.example.gohealthy.view.ProfilePageFragment"
         tools:layout="@layout/fragment_profile_page"
-        android:label="Profile"/>
+        android:label="Profile">
+        <action
+            android:id="@+id/profileToHome"
+            app:destination="@id/homePageFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/profileToHistory"
+            app:destination="@id/historyFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+    </fragment>
 
 </navigation>

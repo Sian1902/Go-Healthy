@@ -1,6 +1,5 @@
 package com.example.gohealthy.view
 
-import android.app.Dialog
 import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,23 +8,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.example.gohealthy.R
-import com.example.gohealthy.ViewModel.StepsCounterVM
+import com.example.gohealthy.viewModel.StepsCounterVM
 import com.example.gohealthy.databinding.FragmentHomePageBinding
-import com.example.gohealthy.databinding.FragmentWelcomeBinding
 import com.mikhaellopez.circularprogressbar.CircularProgressBar
-import androidx.appcompat.widget.AppCompatButton
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.gohealthy.NutritionixAPI.CallDecider
-import com.example.gohealthy.ViewModel.NutritionixVM
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
+import com.example.gohealthy.nutritionixAPI.CallDecider
+import com.example.gohealthy.viewModel.NutritionixVM
+import com.example.gohealthy.viewModel.WaterVM
 
 class HomePageFragment : Fragment() {
 
-    private var waterCount: Int = 0
     private val nutritionixVM:NutritionixVM by activityViewModels()
     private lateinit var binding: FragmentHomePageBinding
     private val stepsCounterVM:StepsCounterVM by activityViewModels()
+    private val waterVM:WaterVM by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,10 +33,20 @@ class HomePageFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home_page, container, false)
 
        binding=FragmentHomePageBinding.inflate(inflater,container,false)
-       stepsCounterVM.currentSteps.observe(viewLifecycleOwner){
-           binding.circularProgressBar.progress=it.toFloat()
-           binding.currentStepstext.text= "$it/"
-       }
+        waterVM.setContext(requireContext())
+        return binding.root // Return the inflated view
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        stepsCounterVM.currentSteps.observe(viewLifecycleOwner){
+            binding.circularProgressBar.progress=it.toFloat()
+            binding.currentStepstext.text= "$it/"
+        }
+        waterVM.waterIntake.observe(viewLifecycleOwner){
+            binding.noWaters.text="$it"
+        }
         nutritionixVM.breakFastCalories.observe(viewLifecycleOwner){
             binding.breakfastCal.text="${it.toInt()} KCal "
         }
@@ -50,7 +59,7 @@ class HomePageFragment : Fragment() {
         nutritionixVM.workoutCalories.observe(viewLifecycleOwner){
             binding.WorkoutCaloriesNo.text="${it.toInt()} KCal "
         }
-       setCircularProgress()
+        setCircularProgress()
 
         binding.addBreakfastButton.setOnClickListener {
             val dialogFragment = ApiCallPopUp(CallDecider.BreakFast)
@@ -68,23 +77,12 @@ class HomePageFragment : Fragment() {
             val dialogFragment = ApiCallPopUp(CallDecider.Exercise)
             dialogFragment.show((activity as AppCompatActivity).supportFragmentManager,"Workout")
         }
-
-        val noWatersTextView = view.findViewById<TextView>(R.id.no_waters)
-        noWatersTextView.text = waterCount.toString()
-
-        binding.plusImg.setOnClickListener {
-            waterCount++
-            noWatersTextView.text = waterCount.toString()
+        binding.minusImg.setOnClickListener{
+            waterVM.decWater()
         }
-        binding.minusImg.setOnClickListener {
-            if (waterCount > 0) {
-                waterCount--
-                noWatersTextView.text = waterCount.toString()
-            }
+        binding.plusImg.setOnClickListener{
+            waterVM.incWater()
         }
-
-        return binding.root // Return the inflated view
-
     }
    private fun setCircularProgress(){
 

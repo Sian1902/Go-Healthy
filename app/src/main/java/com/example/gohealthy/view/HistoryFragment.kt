@@ -1,13 +1,13 @@
 package com.example.gohealthy.view
 
-import com.example.gohealthy.RecyclerHelpers.HistoryAdapter
+import com.example.gohealthy.recyclerHelpers.HistoryAdapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.gohealthy.RecyclerHelpers.HistoryItem
+import com.example.gohealthy.recyclerHelpers.HistoryItem
 import com.example.gohealthy.databinding.FragmentHistoryBinding
 
 class HistoryFragment : Fragment() {

@@ -1,3 +1,3 @@
-package com.example.gohealthy.NutritionixAPI
+package com.example.gohealthy.nutritionixAPI
 
 data class NutritionixQuery(val query: String)

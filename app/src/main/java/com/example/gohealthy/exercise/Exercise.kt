@@ -1,4 +1,4 @@
-package com.example.gohealthy.Exercise
+package com.example.gohealthy.exercise
 
 import com.example.gohealthy.foodData.Photo
 

@@ -1,4 +1,4 @@
-package com.example.gohealthy.RecyclerHelpers
+package com.example.gohealthy.recyclerHelpers
 data class HistoryItem(
     val date: String,
     val kcalIn: Int,

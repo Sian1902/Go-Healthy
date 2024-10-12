@@ -2,7 +2,7 @@
 
     <shape xmlns:android="http://schemas.android.com/apk/res/android">
         <!-- Define the solid fill color for the rectangle -->
-        <solid android:color="#FFFFFF"/> <!-- White background -->
+        <solid android:color="#00000000"/> <!-- White background -->
 
         <!-- Define the rounded corners -->
         <corners android:radius="8dp"/>

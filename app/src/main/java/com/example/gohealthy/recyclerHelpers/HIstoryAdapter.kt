@@ -1,4 +1,4 @@
-package com.example.gohealthy.RecyclerHelpers
+package com.example.gohealthy.recyclerHelpers
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
