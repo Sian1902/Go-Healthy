@@ -107,29 +107,48 @@
             android:paddingRight="60dp"
             />
     </LinearLayout>
-    <TextView
-        android:layout_marginStart="3dp"
-        android:textSize="18dp"
-        android:id="@+id/textdont"
-        android:layout_marginBottom="30dp"
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="Don't have an account?"
-        android:textColor="@color/white"/>
-    <TextView
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-        android:textSize="18dp"
-        android:id="@+id/registerNowTextView"
-        android:layout_marginBottom="30dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/textdont"
-        android:text="Register now"
-        android:textColor="@color/text_color_selector"
+        <TextView
 
-        />
+            android:id="@+id/textdont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:layout_marginBottom="30dp"
+            android:gravity="center"
+            android:text="Don't have an account?"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
 
+            app:layout_constraintEnd_toEndOf="parent"
+
+
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+        <TextView
+
+            android:id="@+id/registerNowTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+android:layout_marginStart="8dp"
+            android:layout_marginBottom="30dp"
+            android:text="Register Now"
+            android:textColor="@color/text_color_selector"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/textdont"
+
+            />
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

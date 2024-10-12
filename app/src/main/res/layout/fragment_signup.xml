@@ -212,6 +212,7 @@
                 app:boxCornerRadiusTopStart="28dp"
                 app:boxStrokeColor="@color/test"
                 app:endIconDrawable="@drawable/centimeter"
+
                 app:endIconMode="custom"
                 app:endIconTint="@color/black"
                 app:hintTextColor="@color/hint_color_state"
@@ -280,27 +281,40 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <TextView
-        android:layout_marginStart="3dp"
-        android:textSize="18dp"
-        android:id="@+id/textdont"
-        android:layout_marginBottom="29dp"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="already have an account?"
-        android:textColor="@color/white"/>
-    <TextView
-        android:layout_marginLeft="3dp"
-        android:id="@+id/singinrNowTextView"
-        android:layout_marginBottom="29dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/textdont"
-        android:text="signin  now"
-        android:textSize="18dp"
-        android:textColor="@color/text_color_selector"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
+        <TextView
+
+            android:id="@+id/textdont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginBottom="18dp"
+            android:gravity="center"
+            android:text="Already have an account?"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+
+            android:id="@+id/singinrNowTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="18dp"
+            android:text="Sign In"
+            android:textColor="@color/text_color_selector"
+            android:textSize="18dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/textdont" />
+
+    </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
