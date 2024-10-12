@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.gohealthy.R
@@ -23,6 +24,11 @@ class SignUpFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = FirebaseAuth.getInstance() // Initialize Firebase Auth
+        requireActivity().onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // Prevent going back
+            }
+        })
     }
 
     override fun onCreateView(
@@ -91,20 +97,5 @@ class SignUpFragment : Fragment() {
             }
     }
 
-    private fun initializeHistorySubcollection(userId: String) {
-        // Create an initial entry in the 'history' subcollection
-        db.collection("users").document(userId).collection("history")
-            .add(hashMapOf(
-                "date" to "Today", // Example initial values
-                "kcalIn" to 0,
-                "kcalOut" to 0,
-                "steps" to 0
-            ))
-            .addOnSuccessListener {
-                Log.d("Firestore", "Initial history entry created successfully")
-            }
-            .addOnFailureListener { e ->
-                Log.w("Firestore", "Error creating initial history entry", e)
-            }
-    }
+
 }
