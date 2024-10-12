@@ -27,6 +27,7 @@ class signinFragment : Fragment() {
     ): View? {
         binding = FragmentSigninBinding.inflate(inflater, container, false)
 
+        // Set up sign-in button
         binding.singUpButton.setOnClickListener {
             val email = binding.nameTextField.editText?.text.toString().trim()
             val password = binding.weightTextField.editText?.text.toString().trim()
@@ -43,6 +44,11 @@ class signinFragment : Fragment() {
 
             // Authenticate user with Firebase
             authenticateUser(email, password)
+        }
+
+        // Set up register now click listener
+        binding.registerNowTextView.setOnClickListener {
+            findNavController().navigate(R.id.action_signinFragment_to_signUpFragment)
         }
 
         return binding.root

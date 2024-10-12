@@ -1,7 +1,6 @@
 package com.example.gohealthy.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,9 +38,14 @@ class SignUpFragment : Fragment() {
             (autoCompleteTextView as AutoCompleteTextView).setAdapter(arrayAdapter)
         }
 
-        // Set the button click listener
+        // Set the button click listener for sign-up
         binding.singUpButton.setOnClickListener {
             createUserAccount()
+        }
+
+        // Navigate to SignInFragment when "signin now" is clicked
+        binding.singinrNowTextView.setOnClickListener {
+            findNavController().navigate(R.id.action_signUpFragment_to_signinFragment)
         }
 
         return binding.root
@@ -97,8 +101,8 @@ class SignUpFragment : Fragment() {
                         .add(user)
                         .addOnSuccessListener {
                             Toast.makeText(requireContext(), "User data saved successfully!", Toast.LENGTH_SHORT).show()
-                            // Navigate to the next fragment after successful signup
-                            findNavController().navigate(R.id.action_signUpFragment_to_welcomeFragment)
+                            // Navigate to the welcome fragment after successful signup
+                            findNavController().navigate(R.id.action_signUpFragment_to_signinFragment)
                         }
                         .addOnFailureListener { e ->
                             Toast.makeText(requireContext(), "Failed to save data: ${e.message}", Toast.LENGTH_SHORT).show()

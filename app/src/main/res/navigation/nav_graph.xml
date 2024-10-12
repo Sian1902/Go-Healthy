@@ -3,16 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/welcomeFragment">
+    app:startDestination="@id/signinFragment">
 <fragment
     android:name="com.example.gohealthy.view.WelcomeFragment"
     android:id="@+id/welcomeFragment"
     tools:layout="@layout/fragment_welcome">
     <action
-        android:id="@+id/welcomeToSignup"
-        app:destination="@id/signUpFragment"
-
-        />
+        android:id="@+id/action_welcomeFragment_to_signinFragment"
+        app:destination="@id/signinFragment" />
 </fragment>
     <fragment
         android:id="@+id/signUpFragment"
@@ -22,8 +20,8 @@
 
 
         <action
-            android:id="@+id/action_signUpFragment_to_welcomeFragment"
-            app:destination="@id/welcomeFragment" />
+            android:id="@+id/action_signUpFragment_to_signinFragment"
+            app:destination="@id/signinFragment" />
     </fragment>
     <fragment
         android:id="@+id/signinFragment"
@@ -32,6 +30,9 @@
         <action
             android:id="@+id/action_signinFragment_to_welcomeFragment"
             app:destination="@id/welcomeFragment" />
+        <action
+            android:id="@+id/action_signinFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
     </fragment>
 
 

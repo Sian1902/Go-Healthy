@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Color when pressed -->
+    <item android:color="@color/navey" android:state_pressed="true"/>
+    <!-- Color when focused -->
+    <item android:color="@color/navey" android:state_focused="true"/>
+    <!-- Default color -->
+    <item android:color="@color/baby_blue"/>
+</selector>
