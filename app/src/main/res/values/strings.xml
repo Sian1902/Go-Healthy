@@ -4,8 +4,28 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="appp_Name">GO HEALTHY</string>
     <string name="welcome_text">Welcome To</string>
+    <string name="toast">Toast</string>
+    <string name="add">Add</string>
+    <string name="add_your_lunch">Add Your Lunch</string>
+    <string name="add_your_breakfast">Add Your Breakfast</string>
+    <string name="add_your_dinner">Add Your Dinner</string>
+    <string name="add_your_workout">Add Your Workout</string>
     <string-array name="Gender">
         <item>Male</item>
         <item>Female</item>
     </string-array>
+    <string name="stats">Your Lifetime Stats</string>
+    <string name="date">Mon 8th of October</string>
+    <string name="KcalIn">Kcal In</string>
+    <string name="KcalOut">Kcal Out</string>
+    <string name="Steps">Steps</string>
+    <string name="KcalInCount">1234</string>
+    <string name="KcalOutCount">1234</string>
+    <string name="StepsCount">1234</string>
+    <string name="breakfastHint">ex:2 Eggs</string>
+    <string name="lunchHint">ex:chicken curry</string>
+    <string name="dinnerHint">ex:Alfredo pasta</string>
+    <string name="workoutHint">ex:30 min run</string>
+
+
 </resources>

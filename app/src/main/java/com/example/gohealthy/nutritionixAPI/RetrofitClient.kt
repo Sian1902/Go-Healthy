@@ -1,4 +1,4 @@
-package com.example.gohealthy.NutritionixAPI
+package com.example.gohealthy.nutritionixAPI
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
