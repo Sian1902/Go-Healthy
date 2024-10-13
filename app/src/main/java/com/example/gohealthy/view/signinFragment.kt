@@ -48,7 +48,7 @@ class signinFragment : Fragment() {
 
         // Set up register now click listener
         binding.registerNowTextView.setOnClickListener {
-            findNavController().navigate(R.id.action_signinFragment_to_signUpFragment)
+            //findNavController().navigate(R.id.action_signinFragment_to_signUpFragment)
         }
 
         return binding.root
@@ -60,7 +60,7 @@ class signinFragment : Fragment() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     // Login successful, navigate to WelcomeFragment
-                    findNavController().navigate(R.id.action_signinFragment_to_welcomeFragment)
+                    //findNavController().navigate(R.id.action_signinFragment_to_welcomeFragment)
                     Toast.makeText(requireContext(), "Login successful!", Toast.LENGTH_SHORT).show()
                 } else {
                     // Login failed

@@ -4,7 +4,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
+    <TextView
+        android:id="@+id/chatHint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ask me anything about health and fitness"
+        android:layout_gravity="center"
+        android:textColor="@color/custom_orange"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:fontFamily="@font/roboto_medium"
+        android:layout_marginTop="150dp"
+        android:alpha="0.7"/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chatRecyclerView"
         android:layout_width="match_parent"
@@ -15,6 +26,7 @@
         android:layout_marginTop="40dp"
        />
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,7 +36,7 @@
 
         <EditText
             android:id="@+id/inputMessage"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="Type a message" />

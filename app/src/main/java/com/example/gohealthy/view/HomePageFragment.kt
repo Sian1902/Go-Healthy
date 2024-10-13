@@ -15,6 +15,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.gohealthy.nutritionixAPI.CallDecider
 import com.example.gohealthy.viewModel.NutritionixVM
 import com.example.gohealthy.viewModel.WaterVM
@@ -60,7 +61,9 @@ class HomePageFragment : Fragment() {
             binding.WorkoutCaloriesNo.text="${it.toInt()} KCal "
         }
         setCircularProgress()
-
+        binding.chatButton.setOnClickListener{
+            findNavController().navigate(R.id.homeToChat)
+        }
         binding.addBreakfastButton.setOnClickListener {
             val dialogFragment = ApiCallPopUp(CallDecider.BreakFast)
             dialogFragment.show((activity as AppCompatActivity).supportFragmentManager,"breakfast")

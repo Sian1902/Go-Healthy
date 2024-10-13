@@ -45,7 +45,7 @@ class SignUpFragment : Fragment() {
 
         // Navigate to SignInFragment when "signin now" is clicked
         binding.singinrNowTextView.setOnClickListener {
-            findNavController().navigate(R.id.action_signUpFragment_to_signinFragment)
+            findNavController().navigate(R.id.welcomeToHomePage)
         }
 
         return binding.root
@@ -102,7 +102,7 @@ class SignUpFragment : Fragment() {
                         .addOnSuccessListener {
                             Toast.makeText(requireContext(), "User data saved successfully!", Toast.LENGTH_SHORT).show()
                             // Navigate to the welcome fragment after successful signup
-                            findNavController().navigate(R.id.action_signUpFragment_to_signinFragment)
+                          //  findNavController().navigate(R.id.action_signUpFragment_to_signinFragment)
                         }
                         .addOnFailureListener { e ->
                             Toast.makeText(requireContext(), "Failed to save data: ${e.message}", Toast.LENGTH_SHORT).show()

@@ -1,6 +1,8 @@
 package com.example.gohealthy.view
 
 import android.Manifest
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -24,9 +26,13 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.gohealthy.R
+import com.example.gohealthy.alarm.AlarmItem
+import com.example.gohealthy.alarm.AndroidAlarmScheduler
+import com.example.gohealthy.notification.NotificationService
 import com.google.firebase.FirebaseApp
 import com.example.gohealthy.viewModel.StepsCounterVM
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import java.time.LocalDateTime
 
 class MainActivity : AppCompatActivity(), SensorEventListener {
     private val stepsCounterVM: StepsCounterVM by viewModels()
@@ -36,7 +42,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-
+        createNotificationChannel()
         // Initialize Firebase
         FirebaseApp.initializeApp(this)
 
@@ -59,7 +65,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         // Hide/show bottom navigation based on fragment
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.welcomeFragment, R.id.signUpFragment -> {
+                R.id.welcomeFragment, R.id.signUpFragment,R.id.chatFragment -> {
                     bottomNavigationView.visibility = View.GONE
                 }
                 else -> {
@@ -70,6 +76,19 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
         // Manage battery optimizations
         requestBatteryOptimizationExemption()
+    }
+
+    private fun createNotificationChannel() {
+        if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.O){
+         val channel= NotificationChannel(
+            NotificationService.DAILY_REPORTS_CHANNEL_ID,
+            "Daily Report",
+            NotificationManager.IMPORTANCE_HIGH
+         )
+            channel.description="Notifies you that yor daily report is generated"
+            val notificationManager=getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
+        }
     }
 
     private fun requestBatteryOptimizationExemption() {

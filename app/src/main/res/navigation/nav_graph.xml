@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/welcomeFragment">
-<fragment
+    <fragment
     android:name="com.example.gohealthy.view.WelcomeFragment"
     android:id="@+id/welcomeFragment"
     tools:layout="@layout/fragment_welcome">
@@ -33,6 +33,10 @@
         android:name="com.example.gohealthy.view.HomePageFragment"
         android:label="fragment_home_page"
         tools:layout="@layout/fragment_home_page" >
+        <action
+            android:id="@+id/homeToChat"
+            app:destination="@id/chatFragment"
+            />
         <action
             android:id="@+id/homeToHistory"
             app:destination="@id/historyFragment"
@@ -91,5 +95,13 @@
             app:popEnterAnim="@anim/slide_in_right"
             app:popExitAnim="@anim/slide_out_left" />
     </fragment>
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.example.gohealthy.view.ChatFragment"
+        android:label="chatFragment"
+        tools:layout="@layout/fragment_chat">
+
+    </fragment>
+
 
 </navigation>

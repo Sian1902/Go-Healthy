@@ -8,8 +8,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.gohealthy.R
+import com.example.gohealthy.alarm.AlarmItem
+import com.example.gohealthy.alarm.AndroidAlarmScheduler
 import com.example.gohealthy.viewModel.StepsCounterVM
 import com.example.gohealthy.databinding.FragmentWelcomeBinding
+import java.time.LocalDateTime
 
 
 class WelcomeFragment : Fragment() {
@@ -27,13 +30,20 @@ class WelcomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentWelcomeBinding.inflate(inflater, container, false)
-
         binding.welcomeButton.setOnClickListener {
             findNavController().navigate((R.id.welcomeToHomePage))
         }
 
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        var alarmItem= AlarmItem(LocalDateTime.now().withHour(17).withMinute(20),"test")
+        val scheduler= AndroidAlarmScheduler(requireContext())
+        alarmItem.let(scheduler::schedule)
+
     }
 
 
