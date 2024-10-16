@@ -1,6 +1,8 @@
 package com.example.gohealthy.view
 
 import android.Manifest
+import android.content.res.Configuration
+import android.content.res.Resources
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
@@ -32,8 +34,9 @@ import com.example.gohealthy.notification.NotificationService
 import com.google.firebase.FirebaseApp
 import com.example.gohealthy.viewModel.StepsCounterVM
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import org.intellij.lang.annotations.Language
 import java.time.LocalDateTime
-
+import java.util.Locale
 class MainActivity : AppCompatActivity(), SensorEventListener {
     private val stepsCounterVM: StepsCounterVM by viewModels()
     private var running = false
@@ -43,6 +46,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         createNotificationChannel()
+
         // Initialize Firebase
         FirebaseApp.initializeApp(this)
 
@@ -65,7 +69,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         // Hide/show bottom navigation based on fragment
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.welcomeFragment, R.id.signUpFragment,R.id.chatFragment -> {
+                R.id.welcomeFragment, R.id.signUpFragment, R.id.chatFragment, R.id.signinFragment,R.id.dailyReportFragment-> {
                     bottomNavigationView.visibility = View.GONE
                 }
                 else -> {
@@ -74,9 +78,15 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
             }
         }
 
+        // Check if the intent contains the extra to open the DailyReportFragment
+        if (intent?.getStringExtra("openFragment") == "DailyReport") {
+            navController.navigate(R.id.dailyReportFragment)  // Use navigation component to navigate to the fragment
+        }
+
         // Manage battery optimizations
         requestBatteryOptimizationExemption()
     }
+
 
     private fun createNotificationChannel() {
         if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.O){
@@ -105,7 +115,11 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
             }
         }
     }
-
+    private fun openDailyReportFragment() {
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragmentContainerView, DailyReportFragment())
+        fragmentTransaction.commit()
+    }
     override fun onResume() {
         super.onResume()
         running = true

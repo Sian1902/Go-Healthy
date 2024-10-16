@@ -1,12 +1,12 @@
 package com.example.gohealthy.UserData
 
 data class User(
-    val name: String = "",
+    var name: String = "",
     val gender: String? = null,
-    val weight: Float = 0.0f,
-    val height: Float = 0.0f,
+    var weight: Float = 0.0f,
+    var height: Float = 0.0f,
     val email: String = "",
-    val password: String = "",
-    val age: Int = 0
+    var password: String = "",
+    var age: Float = 0.0f
 )
 

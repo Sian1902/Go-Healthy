@@ -1,5 +1,7 @@
 package com.example.gohealthy.view
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,7 +15,10 @@ import com.example.gohealthy.alarm.AndroidAlarmScheduler
 import com.example.gohealthy.viewModel.StepsCounterVM
 import com.example.gohealthy.databinding.FragmentWelcomeBinding
 import java.time.LocalDateTime
-
+import android.content.res.Configuration
+import android.content.res.Resources
+import android.os.Build
+import java.util.Locale
 
 class WelcomeFragment : Fragment() {
 
@@ -29,22 +34,30 @@ class WelcomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentWelcomeBinding.inflate(inflater, container, false)
-        binding.welcomeButton.setOnClickListener {
-            findNavController().navigate((R.id.welcomeToHomePage))
-        }
 
+        binding = FragmentWelcomeBinding.inflate(inflater, container, false)
+
+        binding.welcomeButton.setOnClickListener {
+            findNavController().navigate((R.id.welcomeToSignIn))
+        }
+        binding.lang.setOnClickListener {
+            val intent = Intent(requireContext(), MainActivity::class.java)
+            startActivity(intent)
+            if (activity != null) activity?.finish() else throw NullPointerException("Expression 'activity' must not be null")
+        }
 
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var alarmItem= AlarmItem(LocalDateTime.now().withHour(17).withMinute(20),"test")
+        var alarmItem= AlarmItem(LocalDateTime.now().plusSeconds(10),"test")
         val scheduler= AndroidAlarmScheduler(requireContext())
         alarmItem.let(scheduler::schedule)
 
     }
+
+
 
 
 

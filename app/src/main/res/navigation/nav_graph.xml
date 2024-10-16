@@ -5,12 +5,15 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/welcomeFragment">
     <fragment
+        android:id="@+id/dailyReportFragment"
+        android:name="com.example.gohealthy.view.DailyReportFragment"/>
+    <fragment
     android:name="com.example.gohealthy.view.WelcomeFragment"
     android:id="@+id/welcomeFragment"
     tools:layout="@layout/fragment_welcome">
     <action
-        android:id="@+id/welcomeToSignup"
-        app:destination="@id/signUpFragment"
+        android:id="@+id/welcomeToSignIn"
+        app:destination="@id/signinFragment"
         app:exitAnim="@anim/nav_default_enter_anim"
         app:enterAnim="@anim/nav_default_enter_anim"
         />
@@ -27,7 +30,22 @@
         android:id="@+id/signUpFragment"
         android:name="com.example.gohealthy.view.SignUpFragment"
         android:label="fragment_signup"
-        tools:layout="@layout/fragment_signup" />
+        tools:layout="@layout/fragment_signup">
+        <action
+            android:id="@+id/signupToSignin"
+            app:destination="@id/signinFragment"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/signinFragment"
+        android:name="com.example.gohealthy.view.signinFragment"
+        android:label="fragment_signin"
+        tools:layout="@layout/fragment_signin">
+        <action
+            android:id="@+id/signinToHome"
+            app:destination="@id/homePageFragment"
+            />
+    </fragment>
     <fragment
         android:id="@+id/homePageFragment"
         android:name="com.example.gohealthy.view.HomePageFragment"

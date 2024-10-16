@@ -5,15 +5,17 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.DailyReportFragment"
-    android:background="#E66104">
+    android:background="@color/custom_orange">
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="50sp"
-        android:text="Your Daily Report"
+        android:textSize="45sp"
+        android:layout_marginTop="30dp"
+        android:text="@string/your_daily_report"
         android:textStyle="bold"
         android:textColor="@color/white"
+        android:gravity="center"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -25,7 +27,7 @@
        app:layout_constraintTop_toBottomOf="@id/title"
        app:layout_constraintEnd_toEndOf="parent"
        android:layout_marginTop="20dp"
-       android:src="@drawable/go_healthy_icon"
+       android:src="@drawable/arm"
        android:elevation="4dp"
        />
     <com.google.android.material.card.MaterialCardView
@@ -176,8 +178,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/kcalInCard"
         app:layout_constraintEnd_toStartOf="@id/stepsCard"
-        android:text="Back To Home"
+        android:text="@string/back_to_home"
         android:textSize="20sp"
+        android:textColor="@color/white"
         android:textStyle="bold"
         android:textAlignment="center"
         android:backgroundTint="@color/light_blue"

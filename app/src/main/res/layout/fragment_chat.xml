@@ -8,7 +8,7 @@
         android:id="@+id/chatHint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ask me anything about health and fitness"
+        android:text="@string/chat_hint"
         android:layout_gravity="center"
         android:textColor="@color/custom_orange"
         android:textSize="30sp"
@@ -39,14 +39,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Type a message" />
+            android:hint="@string/type_a_message" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/sendButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/button_bg"
-            android:text="Send"
+            android:text="@string/send"
             android:textColor="@color/white"
             android:fontFamily="@font/roboto_medium" />
     </LinearLayout>

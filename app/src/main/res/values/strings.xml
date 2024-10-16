@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Go Healthy</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="appp_Name">GO HEALTHY</string>
     <string name="welcome_text">Welcome To</string>
     <string name="toast">Toast</string>
@@ -15,7 +14,6 @@
         <item>Female</item>
     </string-array>
     <string name="stats">Your Lifetime Stats</string>
-    <string name="date">Mon 8th of October</string>
     <string name="KcalIn">Kcal In</string>
     <string name="KcalOut">Kcal Out</string>
     <string name="Steps">Steps</string>
@@ -26,6 +24,41 @@
     <string name="lunchHint">ex:chicken curry</string>
     <string name="dinnerHint">ex:Alfredo pasta</string>
     <string name="workoutHint">ex:30 min run</string>
-
+    <string name="english">English</string>
+    <string name="get_started">Get Started</string>
+    <string name="arabic">Arabic</string>
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="your_data">Your Data</string>
+    <string name="save">save</string>
+    <string name="edit_your_data">Edit Your Data</string>
+    <string name="chat_hint">ask me anything about health and fitness</string>
+    <string name="type_a_message">Type a message</string>
+    <string name="your_daily_report">Your Daily Report</string>
+    <string name="back_to_home">Back To Home</string>
+    <string name="language">"Language "</string>
+    <string name="bio">ِReady to break a sweat?</string>
+    <string name="password">password</string>
+    <string name="email">Email</string>
+    <string name="sign_in">Sign in</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="register_now">Register Now</string>
+    <string name="name">Name</string>
+    <string name="your_gender">Gender</string>
+    <string name="age">Age</string>
+    <string name="height">Height</string>
+    <string name="weight">Weight</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="_8000_step">8000 step</string>
+    <string name="breakfast">Breakfast</string>
+    <string name="lunch">Lunch</string>
+    <string name="dinner" >Dinner</string>
+    <string name="calories_burnt">CALORIES BURNT</string>
+    <string name="water">Water</string>
+    <string name="send">Send</string>
+    <string name="logout">Logout</string>
+    <string name="home">Home</string>
+    <string name="history">History</string>
+    <string name="profile">profile</string>
 
 </resources>

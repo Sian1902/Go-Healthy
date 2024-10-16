@@ -1,4 +1,4 @@
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,15 +9,13 @@
     android:clipToPadding="false"
     android:layout_marginBottom="10dp">
 
-
-    <!-- Background Image -->
-
-    <!-- First Card (Profile Info) -->
     <ImageView
         android:id="@+id/background_image"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="2"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/profile_card"
+        android:layout_weight="1"
         android:alpha="0.6"
         android:scaleType="centerCrop"
         android:src="@drawable/background_image" />
@@ -28,9 +26,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/profile_card_background"
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:cardElevation="4dp"
-        android:layout_marginTop="-15dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="16dp"
         android:layout_marginLeft="16dp"
         android:clipChildren="false"
@@ -69,7 +70,7 @@
                 />
 
             <ImageButton
-                android:id="@+id/edit_name"
+                android:id="@+id/editBTN"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/baseline_edit_24"
@@ -84,7 +85,7 @@
                 android:id="@+id/steps_count"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="You have walked 98500 steps while using Go Healthy"
+                android:text="@string/bio"
                 android:textSize="14sp"
                 app:layout_constraintTop_toBottomOf="@id/profile_name"
                 app:layout_constraintStart_toStartOf="@id/profile_name"
@@ -100,7 +101,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
-
         android:layout_marginTop="10dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="4dp"
@@ -130,18 +130,15 @@
                     android:src="@drawable/ic_calender" />
 
                 <TextView
+                    android:id="@+id/ageText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_weight="1"
                     android:text="26/11/2003"
-                    android:textColor="@android:color/black"
                     android:textSize="16sp" />
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_edit" />
+
             </LinearLayout>
 
             <!-- Divider -->
@@ -154,40 +151,8 @@
                 android:background="@color/custom_orange" />
 
             <!-- Second Row: Gender -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_gender" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_weight="1"
-                    android:text="Male"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_edit" />
-            </LinearLayout>
-
-            <!-- Divider -->
-            <View
-                android:layout_width="match_parent"
-                android:layout_gravity="center"
-                android:layout_height="2dp"
-                android:layout_marginVertical="8dp"
-                android:layout_marginHorizontal="30dp"
-                android:background="@color/custom_orange" />
 
             <!-- Third Row: Weight -->
             <LinearLayout
@@ -202,18 +167,15 @@
                     android:src="@drawable/ic_weight" />
 
                 <TextView
+                    android:id="@+id/weightText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_weight="1"
-                    android:text="80 KG"
-                    android:textColor="@android:color/black"
+                    tools:text="80 KG"
                     android:textSize="16sp" />
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_edit" />
+
             </LinearLayout>
 
             <!-- Divider -->
@@ -234,22 +196,19 @@
 
                 <ImageView
                     android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_height="match_parent"
                     android:src="@drawable/ic_height" />
 
                 <TextView
+                    android:id="@+id/heightText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_weight="1"
                     android:text="183 cm"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    />
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_edit" />
             </LinearLayout>
 
             <!-- Divider -->
@@ -261,35 +220,53 @@
                 android:layout_marginHorizontal="30dp"
                 android:background="@color/custom_orange" />
 
-            <!-- Fifth Row: Language -->
             <LinearLayout
+                android:id="@+id/languageChanger"
+                xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_language" />
-
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/language"/>
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_weight="1"
-                    android:text="Language (EG)"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
+                    android:id="@+id/languageText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/arabic"
+                    android:layout_marginLeft="16dp"
+                    android:gravity="center"/>
 
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_gravity="center"
+                android:layout_height="2dp"
+                android:layout_marginVertical="8dp"
+                android:layout_marginHorizontal="30dp"
+                android:background="@color/custom_orange" />
+            <LinearLayout
+                android:id="@+id/logoutBTN"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_edit" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/logout"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/logout"
+                    android:layout_marginLeft="16dp"
+                    android:gravity="center"/>
+
             </LinearLayout>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 

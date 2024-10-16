@@ -45,7 +45,12 @@
         app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/welcome_bg"
         />
-
+<Button
+    android:id="@+id/lang"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
   <androidx.appcompat.widget.AppCompatButton
       android:id="@+id/welcomeButton"
       android:layout_width="0dp"
@@ -57,7 +62,7 @@
       android:fontFamily="@font/roboto_medium"
       android:paddingLeft="40dp"
       android:paddingRight="40dp"
-      android:text="Get Started"
+      android:text="@string/get_started"
       android:textAllCaps="false"
       android:textColor="@color/white"
       android:textSize="19sp"

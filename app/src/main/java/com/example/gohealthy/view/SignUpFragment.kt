@@ -8,17 +8,22 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.gohealthy.R
 import com.example.gohealthy.UserData.User
 import com.example.gohealthy.databinding.FragmentSignupBinding
+import com.example.gohealthy.viewModel.FirebaseVM
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.launch
 
 class SignUpFragment : Fragment() {
     private lateinit var binding: FragmentSignupBinding
     private val db = FirebaseFirestore.getInstance()
     private lateinit var auth: FirebaseAuth
+    private val firebaseVM: FirebaseVM by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,7 +68,7 @@ class SignUpFragment : Fragment() {
         // Convert the weight, height, and age to numbers
         val weight = weightStr.toFloatOrNull()
         val height = heightStr.toFloatOrNull()
-        val age = ageStr.toIntOrNull()
+        val age = ageStr.toFloatOrNull()
 
         // Validation
         if (name.isEmpty()) {
@@ -91,36 +96,13 @@ class SignUpFragment : Fragment() {
             return
         }
 
-        // Create a user account with Firebase Authentication
-        auth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    // Save user data to Firestore
-                    val user = User(name, gender, weight, height, email, password, age)
-                    db.collection("users")
-                        .add(user)
-                        .addOnSuccessListener {
-                            Toast.makeText(requireContext(), "User data saved successfully!", Toast.LENGTH_SHORT).show()
-                            // Navigate to the welcome fragment after successful signup
-                          //  findNavController().navigate(R.id.action_signUpFragment_to_signinFragment)
-                        }
-                        .addOnFailureListener { e ->
-                            Toast.makeText(requireContext(), "Failed to save data: ${e.message}", Toast.LENGTH_SHORT).show()
-                        }
-                } else {
-                    // Registration failed
-                    Toast.makeText(requireContext(), "Registration failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
-                }
-            }
-    }
-
-    private fun sendVerificationEmail() {
-        val user = auth.currentUser
-        user?.sendEmailVerification()?.addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                Toast.makeText(requireContext(), "Verification email sent! Please check your inbox.", Toast.LENGTH_SHORT).show()
+        // Launch the sign-up process asynchronously using lifecycleScope
+        viewLifecycleOwner.lifecycleScope.launch {
+            firebaseVM.signUp(User(name, gender, weight, height, email, password, age))
+            if (firebaseVM.status) {
+                findNavController().navigate(R.id.signupToSignin)
             } else {
-                Toast.makeText(requireContext(), "Failed to send verification email: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Authentication failed", Toast.LENGTH_SHORT).show()
             }
         }
     }

@@ -65,7 +65,7 @@
             android:textSize="30sp"
             android:textColor="@color/custom_orange"
             android:textStyle="bold"
-            android:text="8000 step"/>
+            android:text="@string/_8000_step"/>
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/logo"
@@ -144,7 +144,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Lunch"
+                    android:text="@string/lunch"
+                    android:textSize="11sp"
                     android:fontFamily="@font/poppins_bold"
                     android:textColor="@color/custom_orange"
                     />
@@ -157,7 +158,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="Add"
+                            android:text="@string/add"
                             android:background="@drawable/transparent_bg_bordered"
                             android:textColor="@color/white"
                             android:textStyle="bold"
@@ -207,17 +208,17 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Breakfast"
+                            android:text="@string/breakfast"
                             android:fontFamily="@font/poppins_bold"
                             android:textColor="@color/custom_orange"
                             android:layout_gravity="center"
-                            android:textSize="12sp"/>
+                            android:textSize="11sp"/>
                         <androidx.appcompat.widget.AppCompatButton
                             android:id="@+id/add_breakfast_button"
                             android:layout_marginBottom="5dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Add"
+                            android:text="@string/add"
                             android:background="@drawable/transparent_bg_bordered"
                             android:textStyle="bold"
                             android:textColor="@color/white"
@@ -267,8 +268,9 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Dinner"
+                            android:text="@string/dinner"
                             android:layout_gravity="center"
+                            android:textSize="11sp"
                             android:fontFamily="@font/poppins_bold"
                             android:textColor="@color/custom_orange"
                         />
@@ -279,7 +281,7 @@
                             android:layout_marginBottom="5dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Add"
+                            android:text="@string/add"
                             android:background="@drawable/transparent_bg_bordered"
                             android:textStyle="bold"
                             android:textColor="@color/white"
@@ -332,13 +334,14 @@
                             android:id="@+id/CaloriesBurnt_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="CALORIES BURNT"
+                            android:text="@string/calories_burnt"
                             android:textColor="@color/light_blue"
                             android:fontFamily="@font/poppins_semibolditalic"
                             android:padding="5dp"
+                            android:textSize="11sp"
                             android:gravity="center"
                             android:layout_gravity="center"
-                            android:textSize="10sp"
+
                             android:layout_weight="1"
                             android:textStyle="bold"
                             />
@@ -350,7 +353,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="Add"
+                            android:text="@string/add"
                             android:background="@drawable/button_bg_lightblue"
                             android:layout_marginBottom="5dp"
                             android:textStyle="bold"
@@ -390,9 +393,10 @@
                             android:id="@+id/water_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Water"
+                            android:text="@string/water"
+                            android:textSize="11sp"
                             android:fontFamily="@font/poppins_semibold"
-                            android:textSize="9sp"
+
                             android:textColor="@color/light_blue"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/water_image"
@@ -406,7 +410,7 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             android:fontFamily="@font/poppins_bold"
-                            android:textSize="33dp"
+                            android:textSize="30dp"
                             />
                         <ImageView
                             android:id="@+id/plus_img"

@@ -6,15 +6,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.gohealthy.R
 import com.example.gohealthy.databinding.FragmentSigninBinding
+import com.example.gohealthy.viewModel.FirebaseVM
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class signinFragment : Fragment() {
 
     private lateinit var binding: FragmentSigninBinding
     private lateinit var auth: FirebaseAuth
+    private val firebaseVM: FirebaseVM by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,33 +48,23 @@ class signinFragment : Fragment() {
                 return@setOnClickListener
             }
 
-            // Authenticate user with Firebase
-            authenticateUser(email, password)
+            viewLifecycleOwner.lifecycleScope.launch {
+                firebaseVM.signIn(email, password)
+                if (firebaseVM.status) {
+                    findNavController().navigate(R.id.signinToHome)
+                } else {
+                    Toast.makeText(requireContext(), "Authentication failed", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
 
         // Set up register now click listener
         binding.registerNowTextView.setOnClickListener {
-            //findNavController().navigate(R.id.action_signinFragment_to_signUpFragment)
+         //   findNavController().navigate(R.id.action_signinFragment_to_signUpFragment)
         }
 
         return binding.root
     }
 
-    // Firebase Authentication Method
-    private fun authenticateUser(email: String, password: String) {
-        auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    // Login successful, navigate to WelcomeFragment
-                    //findNavController().navigate(R.id.action_signinFragment_to_welcomeFragment)
-                    Toast.makeText(requireContext(), "Login successful!", Toast.LENGTH_SHORT).show()
-                } else {
-                    // Login failed
-                    Toast.makeText(requireContext(), "Authentication failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
-                }
-            }
-            .addOnFailureListener { e ->
-                Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
-            }
-    }
+
 }

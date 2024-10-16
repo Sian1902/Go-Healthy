@@ -15,7 +15,7 @@ class AndroidAlarmScheduler(
         val intent = Intent(context, AlarmReciever::class.java).apply {
             putExtra("EXTRA_MESSAGE",item.message)
         }
-       alarmManager.setRepeating(
+       /*alarmManager.setRepeating(
            AlarmManager.RTC_WAKEUP,
            item.time.atZone(ZoneId.systemDefault()).toEpochSecond()*1000,
            AlarmManager.INTERVAL_FIFTEEN_MINUTES,
@@ -25,7 +25,18 @@ class AndroidAlarmScheduler(
                intent,
                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
            )
-       )
+       )*/
+        alarmManager.setExact(
+            AlarmManager.RTC_WAKEUP,
+            item.time.atZone(ZoneId.systemDefault()).toEpochSecond()*1000,
+            PendingIntent.getBroadcast(
+                context,
+                item.hashCode(),
+                intent,
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            )
+
+        )
     }
 
     override fun cancel(alarmItem: AlarmItem) {
