@@ -88,7 +88,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         }
 
         // Handle back pressed events
-//        handleBackPress()
+        handleBackPress()
 
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.btmNavBar)
@@ -118,7 +118,22 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         requestBatteryOptimizationExemption()
     }
 
+    private fun handleBackPress() {
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                val currentTime = System.currentTimeMillis()
 
+                if (currentTime - backPressedTime < 2000) {
+                    toast.cancel() // Dismiss toast before closing app
+                    finish() // Close the app
+                } else {
+                    toast = Toast.makeText(this@MainActivity, "Press back again to exit", Toast.LENGTH_SHORT)
+                    toast.show()
+                    backPressedTime = currentTime // Update back press time
+                }
+            }
+        })
+    }
     private fun createNotificationChannel() {
         if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.O){
          val channel= NotificationChannel(
