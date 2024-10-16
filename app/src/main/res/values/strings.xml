@@ -31,7 +31,7 @@
     <string name="your_data">Your Data</string>
     <string name="save">save</string>
     <string name="edit_your_data">Edit Your Data</string>
-    <string name="chat_hint">ask me anything about health and fitness</string>
+    <string name="chat_hint">Ask me anything about health and fitness.</string>
     <string name="type_a_message">Type a message</string>
     <string name="your_daily_report">Your Daily Report</string>
     <string name="back_to_home">Back To Home</string>
@@ -57,10 +57,5 @@
     <string name="water">Water</string>
     <string name="send">Send</string>
     <string name="logout">Logout</string>
-    <string name="home">Home</string>
-    <string name="history">History</string>
-    <string name="profile">profile</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
