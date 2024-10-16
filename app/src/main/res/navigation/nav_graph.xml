@@ -3,36 +3,122 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/signinFragment">
-<fragment
+    app:startDestination="@id/welcomeFragment">
+    <fragment
+        android:id="@+id/dailyReportFragment"
+        android:name="com.example.gohealthy.view.DailyReportFragment"/>
+    <fragment
     android:name="com.example.gohealthy.view.WelcomeFragment"
     android:id="@+id/welcomeFragment"
     tools:layout="@layout/fragment_welcome">
     <action
-        android:id="@+id/action_welcomeFragment_to_signinFragment"
-        app:destination="@id/signinFragment" />
+        android:id="@+id/welcomeToSignIn"
+        app:destination="@id/signinFragment"
+        app:exitAnim="@anim/nav_default_enter_anim"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        />
+    <action
+        android:id="@+id/welcomeToHomePage"
+        app:destination="@id/homePageFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+
 </fragment>
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.example.gohealthy.view.SignUpFragment"
         android:label="fragment_signup"
-        tools:layout="@layout/fragment_signup" >
-
-
+        tools:layout="@layout/fragment_signup">
         <action
-            android:id="@+id/action_signUpFragment_to_signinFragment"
-            app:destination="@id/signinFragment" />
+            android:id="@+id/signupToSignin"
+            app:destination="@id/signinFragment"
+            />
     </fragment>
     <fragment
         android:id="@+id/signinFragment"
         android:name="com.example.gohealthy.view.signinFragment"
-        android:label="signinFragment" >
+        android:label="fragment_signin"
+        tools:layout="@layout/fragment_signin">
         <action
-            android:id="@+id/action_signinFragment_to_welcomeFragment"
-            app:destination="@id/welcomeFragment" />
+            android:id="@+id/signinToHome"
+            app:destination="@id/homePageFragment"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/homePageFragment"
+        android:name="com.example.gohealthy.view.HomePageFragment"
+        android:label="fragment_home_page"
+        tools:layout="@layout/fragment_home_page" >
         <action
-            android:id="@+id/action_signinFragment_to_signUpFragment"
-            app:destination="@id/signUpFragment" />
+            android:id="@+id/homeToChat"
+            app:destination="@id/chatFragment"
+            />
+        <action
+            android:id="@+id/homeToHistory"
+            app:destination="@id/historyFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"  />
+        <action
+            android:id="@+id/homeToProfile"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/historyFragment"
+        android:label="History"
+        android:name="com.example.gohealthy.view.HistoryFragment"
+        tools:layout="@layout/fragment_history"
+        >
+
+        <action
+            android:id="@+id/historyToProfile"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/historyToHome"
+            app:destination="@id/historyFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.gohealthy.view.ProfilePageFragment"
+        tools:layout="@layout/fragment_profile_page"
+        android:label="Profile">
+        <action
+            android:id="@+id/profileToHome"
+            app:destination="@id/homePageFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/profileToHistory"
+            app:destination="@id/historyFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.example.gohealthy.view.ChatFragment"
+        android:label="chatFragment"
+        tools:layout="@layout/fragment_chat">
+
     </fragment>
     <fragment
         android:id="@+id/historyFragment"

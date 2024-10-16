@@ -5,41 +5,35 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.example.gohealthy.PrefManager
 import com.example.gohealthy.R
 import com.example.gohealthy.databinding.FragmentSigninBinding
+import com.example.gohealthy.viewModel.FirebaseVM
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
-import com.google.firebase.auth.FirebaseAuthInvalidUserException
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class signinFragment : Fragment() {
 
     private lateinit var binding: FragmentSigninBinding
     private lateinit var auth: FirebaseAuth
-    private lateinit var prefManager: PrefManager
+    private val firebaseVM: FirebaseVM by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = FirebaseAuth.getInstance()
-        prefManager = PrefManager(requireContext())
-
-        // Handle back press to prevent going back to signinFragment
-        requireActivity().onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                // Do nothing to prevent going back
-            }
-        })
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         binding = FragmentSigninBinding.inflate(inflater, container, false)
 
+        // Set up sign-in button
         binding.singUpButton.setOnClickListener {
             val email = binding.nameTextField.editText?.text.toString().trim()
             val password = binding.weightTextField.editText?.text.toString().trim()
@@ -54,35 +48,23 @@ class signinFragment : Fragment() {
                 return@setOnClickListener
             }
 
-            // Authenticate user with Firebase
-            authenticateUser(email, password)
+            viewLifecycleOwner.lifecycleScope.launch {
+                firebaseVM.signIn(email, password)
+                if (firebaseVM.status) {
+                    findNavController().navigate(R.id.signinToHome)
+                } else {
+                    Toast.makeText(requireContext(), "Authentication failed", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
+        // Set up register now click listener
+        binding.registerNowTextView.setOnClickListener {
+         //   findNavController().navigate(R.id.action_signinFragment_to_signUpFragment)
         }
 
         return binding.root
     }
 
-    // Firebase Authentication Method
-    private fun authenticateUser(email: String, password: String) {
-        auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    // User signed in successfully
-                    prefManager.setLoggedIn(true)
-                    findNavController().navigate(R.id.historyFragment)
-                } else {
-                    // Sign in failed, show a message to the user
-                    handleAuthenticationError(task.exception)
-                }
-            }
-    }
-
-    private fun handleAuthenticationError(exception: Exception?) {
-        val message = when (exception) {
-            is FirebaseAuthInvalidUserException -> "No account found with this email."
-            is FirebaseAuthInvalidCredentialsException -> "Invalid password. Please try again."
-            else -> "Authentication failed. Please try again."
-        }
-        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
-    }
 
 }

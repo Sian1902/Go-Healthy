@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Go Healthy</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="appp_Name">GO HEALTHY</string>
+    <string name="welcome_text">مرحبا بكم في</string>
+    <string name="toast">خبز</string>
+    <string name="add">اضافة</string>
+    <string name="add_your_lunch">اضف وجبة الغداء</string>
+    <string name="add_your_breakfast">اضف وجبة الفطور</string>
+    <string name="add_your_dinner">اضف وجبة العشاء</string>
+    <string name="add_your_workout">اضف تمرين</string>
+    <string-array name="Gender">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+    <string name="stats">إحصائياتك</string>
+    <string name="KcalIn">سعراتك</string>
+     <string name="KcalOut">الحرق</string>
+    <string name="Steps">خطوه</string>
+    <string name="KcalInCount">1234</string>
+    <string name="KcalOutCount">1234</string>
+    <string name="StepsCount">1234</string>
+   <string name="breakfastHint">مثال: بيضتان</string>
+    <string name="lunchHint">مثال: دجاج بالكاري</string>
+    <string name="dinnerHint">مثال: معكرونة </string>
+    <string name="workoutHint">مثال: الجري ثلاثين دقيقة</string>
+    <string name="english">الانجليزيه</string>
+    <string name="get_started">أبدأ</string>
+    <string name="arabic">العربيه</string>
+    <string name="your_data">بياناتك</string>
+    <string name="save">حفظ</string>
+    <string name="edit_your_data">عدل بياناتك</string>
+    <string name="chat_hint">يمكنك سؤالي فيما يخص الصحة و الرياضة</string>
+    <string name="type_a_message">ادخل الامر</string>
+    <string name="your_daily_report">تقريرك اليومي</string>
+    <string name="back_to_home">الصفحة الرئيسية</string>
+    <string name="language">"اللغة "</string>
+    <string name="bio">دوما جاهز</string>
+    <string name="password">كلمة المرور</string>
+    <string name="email">البريد الالكتروني</string>
+    <string name="sign_in">تسجيل الدخول</string>
+    <string name="don_t_have_an_account">ليس لديك حساب؟</string>
+    <string name="register_now">سجل الان</string>
+    <string name="name">الاسم</string>
+    <string name="your_gender">الجنس</string>
+    <string name="age">السن</string>
+    <string name="height">الطول</string>
+    <string name="weight">االوزن</string>
+    <string name="sign_up">حساب جديد</string>
+    <string name="already_have_an_account">بالفعل لديك حساب؟</string>
+    <string name="_8000_step">8000 خطوة</string>
+    <string name="breakfast">افطار</string>
+    <string name="lunch">غداء</string>
+    <string name="dinner">عشاء</string>
+    <string name="calories_burnt">حرق السعرات</string>
+    <string name="water">مياه</string>
+    <string name="send">ارسل</string>
+    <string name="logout">خروج</string>
+
+
+</resources>

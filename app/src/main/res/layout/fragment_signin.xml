@@ -34,7 +34,7 @@
             android:id="@+id/nameTextField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
+            android:hint="@string/email"
             android:textColorHint="@color/hint_color_state"
             app:boxStrokeColor ="@color/test"
             app:hintTextColor="@color/hint_color_state"
@@ -55,6 +55,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -62,7 +63,7 @@
             android:id="@+id/weightTextField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="password"
+            android:hint="@string/password"
             android:textColorHint="@color/hint_color_state"
             app:boxStrokeColor ="@color/test"
             app:hintTextColor="@color/hint_color_state"
@@ -87,6 +88,8 @@
                 android:inputType="textPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                app:endIconTint="@color/black"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -97,7 +100,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@drawable/button_bg"
-            android:text="Sign in"
+            android:text="@string/sign_in"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textStyle="bold"
@@ -124,7 +127,7 @@
             android:layout_marginStart="3dp"
             android:layout_marginBottom="30dp"
             android:gravity="center"
-            android:text="Don't have an account?"
+            android:text="@string/don_t_have_an_account"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -142,7 +145,7 @@
             android:layout_height="wrap_content"
 android:layout_marginStart="8dp"
             android:layout_marginBottom="30dp"
-            android:text="Register Now"
+            android:text="@string/register_now"
             android:textColor="@color/text_color_selector"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"

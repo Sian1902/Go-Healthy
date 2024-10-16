@@ -33,6 +33,7 @@
 
         android:text="@string/app_name"
         />
+
     <ImageView
         android:id="@+id/welcomeImage"
         android:layout_width="0dp"
@@ -44,24 +45,30 @@
         app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/welcome_bg"
         />
-
+<Button
+    android:id="@+id/lang"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
   <androidx.appcompat.widget.AppCompatButton
       android:id="@+id/welcomeButton"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
-      android:background="@drawable/button_bg"
+      android:layout_marginLeft="30dp"
       android:layout_marginTop="200dp"
+      android:layout_marginRight="30dp"
+      android:background="@drawable/button_bg"
+      android:fontFamily="@font/roboto_medium"
       android:paddingLeft="40dp"
       android:paddingRight="40dp"
-      android:fontFamily="@font/roboto_medium"
-      android:text="Get Started"
+      android:text="@string/get_started"
       android:textAllCaps="false"
       android:textColor="@color/white"
-      android:textStyle="bold"
       android:textSize="19sp"
-      android:layout_marginLeft="30dp"
-      android:layout_marginRight="30dp"
+      android:textStyle="bold"
       app:layout_constraintEnd_toEndOf="@id/welcomeImage"
+      app:layout_constraintHorizontal_bias="0.491"
       app:layout_constraintStart_toStartOf="@id/welcomeImage"
       app:layout_constraintTop_toBottomOf="@id/appName" />
 

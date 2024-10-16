@@ -37,7 +37,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
-            android:hint="Name"
+            android:hint="@string/name"
             android:minHeight="48dp"
             android:textColorHint="@color/hint_color_state"
             app:boxBackgroundColor="@color/textField_color"
@@ -64,7 +64,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
-            android:hint="Email"
+            android:hint="@string/email"
             android:minHeight="48dp"
 
             android:textColorHint="@color/hint_color_state"
@@ -92,7 +92,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
-            android:hint="Password"
+            android:hint="@string/password"
             android:minHeight="48dp"
 
             android:textColorHint="@color/hint_color_state"
@@ -129,7 +129,7 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="2"
-                android:hint="Gender"
+                android:hint="@string/your_gender"
                 android:minHeight="48dp"
                 android:textColorHint="@color/hint_color_state"
                 app:boxBackgroundColor="@color/textField_color"
@@ -152,7 +152,7 @@
                     android:minHeight="48dp"
                     android:padding="16dp"
                     android:textSize="18dp"
-                  />
+                    />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- age Field -->
@@ -165,7 +165,7 @@
                 android:layout_marginTop="3dp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="2"
-                android:hint="age"
+                android:hint="@string/age"
                 android:minHeight="48dp"
                 android:textColorHint="@color/hint_color_state"
                 app:boxBackgroundColor="@color/textField_color"
@@ -202,7 +202,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="2"
-                android:hint="Height"
+                android:hint="@string/height"
                 android:minHeight="48dp"
                 android:textColorHint="@color/hint_color_state"
                 app:boxBackgroundColor="@color/textField_color"
@@ -234,7 +234,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="20dp"
                 android:layout_weight="2"
-                android:hint="Weight"
+                android:hint="@string/weight"
                 android:minHeight="48dp"
                 android:textColorHint="@color/hint_color_state"
                 app:boxBackgroundColor="@color/textField_color"
@@ -275,7 +275,7 @@
             android:minHeight="48dp"
             android:paddingLeft="60dp"
             android:paddingRight="60dp"
-            android:text="Sign Up"
+            android:text="@string/sign_up"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textStyle="bold" />
@@ -296,7 +296,7 @@
 
             android:layout_marginBottom="18dp"
             android:gravity="center"
-            android:text="Already have an account?"
+            android:text="@string/already_have_an_account"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -310,7 +310,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginBottom="18dp"
-            android:text="Sign In"
+            android:text="@string/sign_in"
             android:textColor="@color/text_color_selector"
             android:textSize="18dp"
             app:layout_constraintBottom_toBottomOf="parent"

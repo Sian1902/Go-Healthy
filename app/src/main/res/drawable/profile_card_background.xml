@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <shape xmlns:android="http://schemas.android.com/apk/res/android">
+        <!-- Define the solid fill color for the rectangle -->
+        <solid android:color="#00000000"/> <!-- White background -->
+
+        <!-- Define the rounded corners -->
+        <corners android:radius="8dp"/>
+
+        <!-- Define the stroke (border) -->
+        <stroke
+            android:width="2dp"
+            android:color="@color/custom_orange"/> <!-- Red stroke -->
+
+        <!-- Optional padding inside the shape -->
+
+    </shape>

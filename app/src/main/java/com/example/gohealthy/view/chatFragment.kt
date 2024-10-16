@@ -7,56 +7,54 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gohealthy.R
+import com.example.gohealthy.databinding.FragmentChatBinding
+import com.example.gohealthy.viewModel.GeminiVM
 
 class ChatFragment : Fragment() {
 
     private lateinit var chatAdapter: ChatAdapter
     private val messages = mutableListOf<Pair<String, Boolean>>() // List to hold messages
-
+    private lateinit var binding: FragmentChatBinding
+    private val GeminiVM: GeminiVM by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_chat, container, false)
-
+        binding=FragmentChatBinding.inflate(layoutInflater)
         // Initialize RecyclerView
-        val recyclerView: RecyclerView = view.findViewById(R.id.chatRecyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(context)
+        binding.chatRecyclerView.layoutManager = LinearLayoutManager(context)
         chatAdapter = ChatAdapter(messages)
-        recyclerView.adapter = chatAdapter
+        binding.chatRecyclerView.adapter = chatAdapter
 
-        // Setup message input and send button
-        val inputMessage: EditText = view.findViewById(R.id.inputMessage)
-        val sendButton: View = view.findViewById(R.id.sendButton)
 
-        sendButton.setOnClickListener {
-            val message = inputMessage.text.toString().trim()
+
+        binding.sendButton.setOnClickListener {
+            val message =binding.inputMessage.text.toString().trim()
             if (message.isNotEmpty()) {
                 sendMessage(message) // Send user message
-                inputMessage.text.clear() // Clear input field
+               binding.inputMessage.text.clear() // Clear input field
             } else {
                 Toast.makeText(context, "Please type a message", Toast.LENGTH_SHORT).show()
             }
         }
 
-        return view
+        return binding.root
     }
 
     private fun sendMessage(message: String) {
+        binding.chatHint.visibility=View.GONE
         // Add user message to the list
         messages.add(Pair(message, true))
         chatAdapter.notifyItemInserted(messages.size - 1)
+        messages.add(GeminiVM.getResponse(message))
+        chatAdapter.notifyItemInserted(messages.size-1)
 
-        // Simulate a bot response
-        receiveBotResponse()
     }
 
-    private fun receiveBotResponse() {
-        val botMessage = "This is a response from the bot." // Sample bot message
-        messages.add(Pair(botMessage, false)) // Add bot message to the list
-        chatAdapter.notifyItemInserted(messages.size - 1) // Notify adapter of new item
-    }
+
 }
