@@ -1,7 +1,7 @@
 package com.example.gohealthy.viewModel
 
 import android.content.Context
-import android.widget.Toast
+
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -22,6 +22,10 @@ class FirebaseVM : ViewModel() {
         DB = FirebaseFirestore.getInstance()
     }
 
+    // LiveData to expose errors
+    private val _errorMessage = MutableLiveData<String?>()
+    val errorMessage: LiveData<String?> get() = _errorMessage
+
     suspend fun signIn(email: String, password: String) {
         try {
             auth.signInWithEmailAndPassword(email, password).await()
@@ -29,17 +33,24 @@ class FirebaseVM : ViewModel() {
             getUser(email)
         } catch (e: Exception) {
             status = false
+            _errorMessage.value = e.message
         }
     }
-   suspend fun updateUserData(newUser: User,context: Context) {
+
+    suspend fun updateUserData(newUser: User, context: Context) {
         _user.value = newUser
-       try {
-           DB.collection("users").document(auth.currentUser!!.uid).set(newUser).await()
-       }
-       catch (e:Exception){
-           Toast.makeText(context,"Something went wrong ${e.message}",Toast.LENGTH_SHORT).show()
-       }
+        try {
+            val currentUser = auth.currentUser
+            if (currentUser != null) {
+                DB.collection("users").document(currentUser.uid).set(newUser).await()
+            } else {
+                _errorMessage.value = "User is not logged in"
+            }
+        } catch (e: Exception) {
+            _errorMessage.value = "Something went wrong: ${e.message}"
+        }
     }
+
     private suspend fun getUser(email: String) {
         try {
             val querySnapshot = DB.collection("users")
@@ -58,20 +69,27 @@ class FirebaseVM : ViewModel() {
                     document.getString("password") ?: "",
                     document.getDouble("age")?.toFloat() ?: 0f
                 )
+            } else {
+                _errorMessage.value = "User not found"
             }
         } catch (e: Exception) {
-            // Handle errors, log them if necessary
+            _errorMessage.value = "Failed to retrieve user: ${e.message}"
         }
     }
 
     suspend fun signUp(newUser: User) {
         try {
             auth.createUserWithEmailAndPassword(newUser.email, newUser.password).await()
+
+            val userId = auth.currentUser?.uid ?: throw Exception("User ID is null")
+
             status = true
             _user.value = newUser
-            DB.collection("users").document(auth.currentUser!!.uid).set(user).await()
+
+            DB.collection("users").document(userId).set(newUser).await()
         } catch (e: Exception) {
             status = false
+            _errorMessage.value = "Sign-up error: ${e.message}"
         }
     }
 }

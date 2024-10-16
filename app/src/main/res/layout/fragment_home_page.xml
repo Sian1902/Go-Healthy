@@ -34,7 +34,7 @@
             app:cpb_progressbar_width="10dp"
             app:cpb_round_border="false" />
 
-                <de.hdodenhof.circleimageview.CircleImageView
+              <!--  <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/profileIMG"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
@@ -43,7 +43,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginRight="10dp"
                     android:src="@drawable/whatsapp_image_2023_05_12_at_13_47_30"/>
-
+-->
         <TextView
             android:id="@+id/currentStepstext"
             android:layout_width="wrap_content"
@@ -82,13 +82,14 @@
             android:id="@+id/chatButton"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginTop="18dp"
+
             android:background="@drawable/button_bg"
             android:src="@drawable/baseline_chat_24"
-            app:layout_constraintEnd_toEndOf="@id/profileIMG"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.538"
-            app:layout_constraintStart_toStartOf="@id/profileIMG"
-            app:layout_constraintTop_toBottomOf="@id/profileIMG" />
+          app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:id="@+id/app_name"

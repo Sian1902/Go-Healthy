@@ -19,6 +19,7 @@ import android.os.PowerManager
 import android.provider.Settings
 import android.view.View
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
@@ -27,6 +28,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import com.example.gohealthy.PrefManager
 import com.example.gohealthy.R
 import com.example.gohealthy.alarm.AlarmItem
 import com.example.gohealthy.alarm.AndroidAlarmScheduler
@@ -34,10 +36,17 @@ import com.example.gohealthy.notification.NotificationService
 import com.google.firebase.FirebaseApp
 import com.example.gohealthy.viewModel.StepsCounterVM
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 import org.intellij.lang.annotations.Language
 import java.time.LocalDateTime
 import java.util.Locale
 class MainActivity : AppCompatActivity(), SensorEventListener {
+
+    private lateinit var prefManager: PrefManager
+    private var backPressedTime: Long = 0 // For tracking double back press to exit
+    private lateinit var toast: Toast
+    private val auth: FirebaseAuth by lazy { FirebaseAuth.getInstance() }
+
     private val stepsCounterVM: StepsCounterVM by viewModels()
     private var running = false
     private var sensorManager: SensorManager? = null
@@ -49,7 +58,8 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
         // Initialize Firebase
         FirebaseApp.initializeApp(this)
-
+        prefManager = PrefManager(this)
+        val currentUser = auth.currentUser
         // Set the content view to the activity_main layout
         setContentView(R.layout.activity_main)
 
@@ -63,7 +73,28 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         val navController = navHostFragment.navController
+
+        when {
+            prefManager.isFirstTimeLaunch() -> {
+                navController.navigate(R.id.welcomeFragment)
+            }
+            !prefManager.isLoggedIn() || currentUser == null -> {
+                navController.navigate(R.id.signinFragment)
+            }
+            else -> {
+                //replace with main screen
+                navController.navigate(R.id.homePageFragment)
+            }
+        }
+
+        // Handle back pressed events
+//        handleBackPress()
+
+
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.btmNavBar)
+
+
+
         NavigationUI.setupWithNavController(bottomNavigationView, navController)
 
         // Hide/show bottom navigation based on fragment

@@ -34,9 +34,7 @@ class HistoryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        binding.logOutButton.setOnClickListener {
-            logOut()
-        }
+
         val userId = FirebaseAuth.getInstance().currentUser?.uid
         userId?.let {
             fetchHistoryData(it)
@@ -59,7 +57,6 @@ class HistoryFragment : Fragment() {
             .addOnSuccessListener { documents ->
                 for (document in documents) {
                     val historyItem = document.toObject(HistoryItem::class.java)
-                    historyItem.id = document.id // Store the document ID in the HistoryItem
                     historyList.add(historyItem)
                 }
                 historyAdapter = HistoryAdapter(historyList, userId) // Pass userId to the adapter

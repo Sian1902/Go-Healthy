@@ -18,14 +18,26 @@ import java.time.LocalDateTime
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.Build
+import androidx.activity.OnBackPressedCallback
+import com.example.gohealthy.PrefManager
 import java.util.Locale
 
 class WelcomeFragment : Fragment() {
+    private lateinit var prefManager: PrefManager
 
     lateinit var binding: FragmentWelcomeBinding
     private val stepsCounterVM:StepsCounterVM by activityViewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        prefManager = PrefManager(requireContext())
+
+        // Handle back press to prevent going back to WelcomeFragment
+        requireActivity().onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // Do nothing to prevent going back
+            }
+        })
 
     }
 
@@ -33,11 +45,14 @@ class WelcomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+
+
+    ): View {
 
         binding = FragmentWelcomeBinding.inflate(inflater, container, false)
 
         binding.welcomeButton.setOnClickListener {
+            prefManager.setFirstTimeLaunch(false)
             findNavController().navigate((R.id.welcomeToSignIn))
         }
         binding.lang.setOnClickListener {

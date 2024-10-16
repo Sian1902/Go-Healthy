@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -28,6 +29,12 @@ class SignUpFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = FirebaseAuth.getInstance() // Initialize Firebase Auth
+
+        requireActivity().onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // Prevent going back
+            }
+        })
     }
 
     override fun onCreateView(
@@ -42,7 +49,9 @@ class SignUpFragment : Fragment() {
         binding.genderTextField.editText?.let { autoCompleteTextView ->
             (autoCompleteTextView as AutoCompleteTextView).setAdapter(arrayAdapter)
         }
-
+        binding.singinrNowTextView.setOnClickListener {
+               //findNavController().navigate(R.id.signinFragment)
+        }
         // Set the button click listener for sign-up
         binding.singUpButton.setOnClickListener {
             createUserAccount()

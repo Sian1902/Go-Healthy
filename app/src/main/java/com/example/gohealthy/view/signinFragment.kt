@@ -5,10 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.example.gohealthy.PrefManager
 import com.example.gohealthy.R
 import com.example.gohealthy.databinding.FragmentSigninBinding
 import com.example.gohealthy.viewModel.FirebaseVM
@@ -17,6 +19,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 class signinFragment : Fragment() {
+    private lateinit var prefManager: PrefManager
 
     private lateinit var binding: FragmentSigninBinding
     private lateinit var auth: FirebaseAuth
@@ -25,6 +28,12 @@ class signinFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = FirebaseAuth.getInstance()
+        prefManager = PrefManager(requireContext())
+        requireActivity().onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // Do nothing to prevent going back
+            }
+        })
     }
 
     override fun onCreateView(
@@ -47,15 +56,20 @@ class signinFragment : Fragment() {
                 binding.weightTextField.error = "Please enter your password"
                 return@setOnClickListener
             }
+            binding.registerNowTextView.setOnClickListener {
+                //   findNavController().navigate(R.id.action_signinFragment_to_signUpFragment)
+            }
 
             viewLifecycleOwner.lifecycleScope.launch {
                 firebaseVM.signIn(email, password)
                 if (firebaseVM.status) {
+                    prefManager.setLoggedIn(true)
                     findNavController().navigate(R.id.signinToHome)
                 } else {
                     Toast.makeText(requireContext(), "Authentication failed", Toast.LENGTH_SHORT).show()
                 }
             }
+
         }
 
         // Set up register now click listener

@@ -20,31 +20,10 @@ class HistoryAdapter(
             binding.KcalOut.text = item.kcalOut.toString()
             binding.Steps.text = item.steps.toString()
 
-            // Set up the delete button's OnClickListener
-            binding.deleteButton.setOnClickListener {
-                // Call the delete method with the document ID
-                deleteHistoryItem(item)
-            }
+
         }
 
-        private fun deleteHistoryItem(item: HistoryItem) {
-            val db = FirebaseFirestore.getInstance()
-            db.collection("users")
-                .document(userId)
-                .collection("history")
-                .document(item.id) // Assuming you have a unique ID for each HistoryItem
-                .delete()
-                .addOnSuccessListener {
-                    // Remove the item from the local list
-                    historyList.remove(item)
-                    Toast.makeText(binding.root.context, "Item deleted successfully", Toast.LENGTH_SHORT).show()
-                    // Notify the adapter that an item has been removed
-                    notifyDataSetChanged()
-                }
-                .addOnFailureListener { e ->
-                    Log.w("HistoryAdapter", "Error deleting document", e)
-                }
-        }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryViewHolder {

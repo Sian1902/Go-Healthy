@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gohealthy.R
@@ -23,7 +24,8 @@ class ChatFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
+
         val view = inflater.inflate(R.layout.fragment_chat, container, false)
         binding=FragmentChatBinding.inflate(layoutInflater)
         // Initialize RecyclerView
@@ -31,7 +33,8 @@ class ChatFragment : Fragment() {
         chatAdapter = ChatAdapter(messages)
         binding.chatRecyclerView.adapter = chatAdapter
 
-
+        binding.backButton.setOnClickListener {
+findNavController().navigate(R.id.homePageFragment)        }
 
         binding.sendButton.setOnClickListener {
             val message =binding.inputMessage.text.toString().trim()

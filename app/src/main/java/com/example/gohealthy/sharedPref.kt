@@ -2,6 +2,7 @@ package com.example.gohealthy
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.net.Uri
 
 class PrefManager(context: Context) {
     private val pref: SharedPreferences = context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
@@ -23,5 +24,15 @@ class PrefManager(context: Context) {
     fun setLoggedIn(isLoggedIn: Boolean) {
         editor.putBoolean("is_logged_in", isLoggedIn)
         editor.apply()
+    }
+
+    fun saveImageLocally(imageUri: Uri) {
+        editor.putString("profileImageUri", imageUri.toString())
+        editor.apply()
+    }
+
+    fun loadSavedImage(): Uri? {
+        val savedUri = pref.getString("profileImageUri", null)
+        return savedUri?.let { Uri.parse(it) }
     }
 }
