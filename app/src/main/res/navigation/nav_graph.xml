@@ -34,6 +34,10 @@
             android:id="@+id/action_signinFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.gohealthy.history.HistoryFragment"
+        android:label="HistoryFragment" />
 
 
 </navigation>

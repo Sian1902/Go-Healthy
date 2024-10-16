@@ -44,23 +44,21 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.4.0"))
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-firestore-ktx")
-    implementation ("androidx.cardview:cardview:1.0.0")
 
         implementation("com.github.mukeshsolanki:android-otpview-pinview:3.1.0")
     implementation("com.github.mukeshsolanki:android-otpview-pinview:2.1.2")
     implementation ("com.github.GoodieBag:Pinview:v1.5")
     implementation ("com.google.firebase:firebase-functions:20.1.2")
-    implementation ("androidx.recyclerview:recyclerview:1.2.1")
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
-    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.5.1")
-    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
-    implementation ("com.google.code.gson:gson:2.8.9")
-    implementation ("com.google.android.material:material:1.9.0")
-    implementation ("com.squareup.okhttp3:logging-interceptor:4.9.1")
-    implementation("com.google.android.gms:play-services-auth:21.2.0")
-    implementation ("androidx.navigation:navigation-fragment-ktx:2.8.2")
-    implementation ("androidx.navigation:navigation-ui-ktx:2.8.2")
 
+
+
+
+
+
+
+
+
+    implementation("com.google.android.gms:play-services-auth:21.2.0")
 
     implementation(libs.androidx.core.ktx)
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
