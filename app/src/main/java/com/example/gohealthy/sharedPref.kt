@@ -8,6 +8,15 @@ class PrefManager(context: Context) {
     private val pref: SharedPreferences = context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
     private val editor: SharedPreferences.Editor = pref.edit()
 
+    fun saveEmail(email: String){
+        editor.putString("email", email)
+        editor.apply()
+    }
+    fun loadEmail():String {
+      val s:String =  pref.getString("email", "")?:""
+        return s
+    }
+
     fun isFirstTimeLaunch(): Boolean {
         return pref.getBoolean("is_first_time_launch", true)
     }
@@ -35,4 +44,5 @@ class PrefManager(context: Context) {
         val savedUri = pref.getString("profileImageUri", null)
         return savedUri?.let { Uri.parse(it) }
     }
+
 }

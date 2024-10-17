@@ -22,12 +22,14 @@ class WaterVM(): ViewModel() {
         var water=_waterIntake.value?:0
         water++
         _waterIntake.value=water
+        saveWaterIntake(water)
     }
     fun decWater(){
         var water=_waterIntake.value?:0
         if(water==0) return
         water--
         _waterIntake.value=water
+        saveWaterIntake(water)
     }
     private fun saveWaterIntake(water: Int) {
         sharedPreferences.edit()

@@ -36,6 +36,7 @@
             app:destination="@id/signinFragment"
             />
     </fragment>
+
     <fragment
         android:id="@+id/signinFragment"
         android:name="com.example.gohealthy.view.signinFragment"
@@ -43,9 +44,16 @@
         tools:layout="@layout/fragment_signin">
         <action
             android:id="@+id/signinToHome"
-            app:destination="@id/homePageFragment"
-            />
+            app:destination="@id/homePageFragment" />
+        <action
+            android:id="@+id/signinToSignUp"
+            app:destination="@id/signUpFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
+
     <fragment
         android:id="@+id/homePageFragment"
         android:name="com.example.gohealthy.view.HomePageFragment"
@@ -120,10 +128,6 @@
         tools:layout="@layout/fragment_chat">
 
     </fragment>
-    <fragment
-        android:id="@+id/historyFragment"
-        android:name="com.example.gohealthy.history.HistoryFragment"
-        android:label="HistoryFragment" />
 
 
 </navigation>

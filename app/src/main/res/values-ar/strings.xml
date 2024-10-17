@@ -32,6 +32,7 @@
     <string name="save">حفظ</string>
     <string name="edit_your_data">عدل بياناتك</string>
     <string name="chat_hint">يمكنك سؤالي فيما يخص الصحة و الرياضة</string>
+    <string name="chatbot">المساعد الالي</string>
     <string name="type_a_message">ادخل الامر</string>
     <string name="your_daily_report">تقريرك اليومي</string>
     <string name="back_to_home">الصفحة الرئيسية</string>
@@ -57,6 +58,9 @@
     <string name="water">مياه</string>
     <string name="send">ارسل</string>
     <string name="logout">خروج</string>
+    <string name="home">Home</string>
+    <string name="history">History</string>
+    <string name="profile">Profile</string>
 
 
 </resources>

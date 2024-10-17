@@ -10,7 +10,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class HistoryAdapter(
     private val historyList: MutableList<HistoryItem>,
-    private val userId: String
 ) : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
 
     inner class HistoryViewHolder(private val binding: HistoryItemBinding) : RecyclerView.ViewHolder(binding.root) {

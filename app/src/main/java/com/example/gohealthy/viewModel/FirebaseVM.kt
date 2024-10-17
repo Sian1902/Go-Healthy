@@ -51,7 +51,7 @@ class FirebaseVM : ViewModel() {
         }
     }
 
-    private suspend fun getUser(email: String) {
+     suspend fun getUser(email: String) {
         try {
             val querySnapshot = DB.collection("users")
                 .whereEqualTo("email", email)
@@ -87,6 +87,9 @@ class FirebaseVM : ViewModel() {
             _user.value = newUser
 
             DB.collection("users").document(userId).set(newUser).await()
+            getUser(newUser.email)
+
+
         } catch (e: Exception) {
             status = false
             _errorMessage.value = "Sign-up error: ${e.message}"

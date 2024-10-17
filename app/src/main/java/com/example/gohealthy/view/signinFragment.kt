@@ -13,18 +13,17 @@ import androidx.navigation.fragment.findNavController
 import com.example.gohealthy.PrefManager
 import com.example.gohealthy.R
 import com.example.gohealthy.databinding.FragmentSigninBinding
+import com.example.gohealthy.viewModel.HistoryVM
 import com.example.gohealthy.viewModel.FirebaseVM
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 
 class signinFragment : Fragment() {
     private lateinit var prefManager: PrefManager
-
     private lateinit var binding: FragmentSigninBinding
     private lateinit var auth: FirebaseAuth
     private val firebaseVM: FirebaseVM by activityViewModels()
-
+    private val historyVM: HistoryVM by activityViewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = FirebaseAuth.getInstance()
@@ -57,14 +56,17 @@ class signinFragment : Fragment() {
                 return@setOnClickListener
             }
             binding.registerNowTextView.setOnClickListener {
-                //   findNavController().navigate(R.id.action_signinFragment_to_signUpFragment)
+                   findNavController().navigate(R.id.signUpFragment)
             }
 
             viewLifecycleOwner.lifecycleScope.launch {
                 firebaseVM.signIn(email, password)
                 if (firebaseVM.status) {
                     prefManager.setLoggedIn(true)
+                    prefManager.saveEmail(email)
+
                     findNavController().navigate(R.id.signinToHome)
+                    prefManager.saveEmail(email)
                 } else {
                     Toast.makeText(requireContext(), "Authentication failed", Toast.LENGTH_SHORT).show()
                 }
@@ -74,7 +76,7 @@ class signinFragment : Fragment() {
 
         // Set up register now click listener
         binding.registerNowTextView.setOnClickListener {
-         //   findNavController().navigate(R.id.action_signinFragment_to_signUpFragment)
+            findNavController().navigate(R.id.signUpFragment)
         }
 
         return binding.root

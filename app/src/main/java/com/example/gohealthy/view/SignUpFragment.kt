@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.example.gohealthy.PrefManager
 import com.example.gohealthy.R
 import com.example.gohealthy.UserData.User
 import com.example.gohealthy.databinding.FragmentSignupBinding
@@ -22,6 +23,7 @@ import kotlinx.coroutines.launch
 
 class SignUpFragment : Fragment() {
     private lateinit var binding: FragmentSignupBinding
+    private lateinit var prefManager: PrefManager
     private val db = FirebaseFirestore.getInstance()
     private lateinit var auth: FirebaseAuth
     private val firebaseVM: FirebaseVM by activityViewModels()
@@ -29,6 +31,7 @@ class SignUpFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = FirebaseAuth.getInstance() // Initialize Firebase Auth
+        prefManager = PrefManager(requireContext())
 
         requireActivity().onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -49,9 +52,7 @@ class SignUpFragment : Fragment() {
         binding.genderTextField.editText?.let { autoCompleteTextView ->
             (autoCompleteTextView as AutoCompleteTextView).setAdapter(arrayAdapter)
         }
-        binding.singinrNowTextView.setOnClickListener {
-               //findNavController().navigate(R.id.signinFragment)
-        }
+
         // Set the button click listener for sign-up
         binding.singUpButton.setOnClickListener {
             createUserAccount()
@@ -59,7 +60,7 @@ class SignUpFragment : Fragment() {
 
         // Navigate to SignInFragment when "signin now" is clicked
         binding.singinrNowTextView.setOnClickListener {
-            findNavController().navigate(R.id.welcomeToHomePage)
+            findNavController().navigate(R.id.signupToSignin)
         }
 
         return binding.root
@@ -109,7 +110,9 @@ class SignUpFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             firebaseVM.signUp(User(name, gender, weight, height, email, password, age))
             if (firebaseVM.status) {
-                findNavController().navigate(R.id.signupToSignin)
+                prefManager.saveEmail(email)
+                findNavController().navigate(R.id.homePageFragment)
+
             } else {
                 Toast.makeText(requireContext(), "Authentication failed", Toast.LENGTH_SHORT).show()
             }

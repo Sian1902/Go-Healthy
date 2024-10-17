@@ -24,30 +24,31 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.gohealthy.PrefManager
 import com.example.gohealthy.R
-import com.example.gohealthy.alarm.AlarmItem
-import com.example.gohealthy.alarm.AndroidAlarmScheduler
+import com.example.gohealthy.viewModel.HistoryVM
 import com.example.gohealthy.notification.NotificationService
+import com.example.gohealthy.viewModel.FirebaseVM
 import com.google.firebase.FirebaseApp
 import com.example.gohealthy.viewModel.StepsCounterVM
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
-import org.intellij.lang.annotations.Language
-import java.time.LocalDateTime
-import java.util.Locale
+import kotlinx.coroutines.launch
+
 class MainActivity : AppCompatActivity(), SensorEventListener {
 
     private lateinit var prefManager: PrefManager
     private var backPressedTime: Long = 0 // For tracking double back press to exit
     private lateinit var toast: Toast
     private val auth: FirebaseAuth by lazy { FirebaseAuth.getInstance() }
-
     private val stepsCounterVM: StepsCounterVM by viewModels()
     private var running = false
     private var sensorManager: SensorManager? = null
+    private val firebaseVM: FirebaseVM by viewModels()
+    private val historyVM: HistoryVM by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -116,6 +117,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         requestBatteryOptimizationExemption()
     }
 
+
     private fun handleBackPress() {
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -166,6 +168,13 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     }
     override fun onResume() {
         super.onResume()
+        prefManager.loadEmail()
+        lifecycleScope.launch {
+           historyVM.fetchHistoryData()
+            firebaseVM.getUser(prefManager.loadEmail())
+
+        }
+
         running = true
         val stepSensor = sensorManager?.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
         if (stepSensor == null) {

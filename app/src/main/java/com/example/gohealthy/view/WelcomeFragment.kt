@@ -68,7 +68,7 @@ class WelcomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         var alarmItem= AlarmItem(LocalDateTime.now().plusSeconds(10),"test")
         val scheduler= AndroidAlarmScheduler(requireContext())
-        alarmItem.let(scheduler::schedule)
+       // alarmItem.let(scheduler::schedule)
 
     }
 

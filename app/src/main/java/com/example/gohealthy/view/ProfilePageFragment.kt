@@ -38,6 +38,7 @@ import java.util.Locale
 
 class ProfilePageFragment : Fragment() {
     val firebaseVM: FirebaseVM by activityViewModels()
+    private lateinit var prefManager: PrefManager
     private lateinit var binding: FragmentProfilePageBinding
     private lateinit var cameraLauncher: ActivityResultLauncher<Intent>
     private lateinit var galleryLauncher: ActivityResultLauncher<Intent>
@@ -50,6 +51,7 @@ class ProfilePageFragment : Fragment() {
     ): View {
         binding=FragmentProfilePageBinding.inflate(layoutInflater)
         auth=FirebaseAuth.getInstance()
+        prefManager= PrefManager(requireContext())
         return binding.root
     }
 
@@ -99,6 +101,9 @@ class ProfilePageFragment : Fragment() {
         }
         binding.logoutBTN.setOnClickListener{
             auth.signOut()
+            prefManager.saveImageLocally(Uri.EMPTY)
+            prefManager.saveEmail("")
+
             findNavController().navigate(R.id.signinFragment)
 
         }
@@ -189,7 +194,8 @@ class ProfilePageFragment : Fragment() {
         val prefManager = PrefManager(requireContext())
         val imageUri = prefManager.loadSavedImage()
         imageUri?.let {
-            binding.profileImg.setImageURI(it)
+            if (it != Uri.EMPTY){
+            binding.profileImg.setImageURI(it)}
         }
     }
 
