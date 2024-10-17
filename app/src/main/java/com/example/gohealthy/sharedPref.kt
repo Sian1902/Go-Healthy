@@ -13,7 +13,7 @@ class PrefManager(context: Context) {
         editor.apply()
     }
     fun loadEmail():String {
-      val s:String =  pref.getString("email", "")?:""
+        val s:String =  pref.getString("email", "")?:""
         return s
     }
 
