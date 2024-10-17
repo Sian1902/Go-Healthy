@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
+import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -26,6 +27,9 @@ class ChatFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
+        activity?.window?.let { window ->
+            WindowCompat.setDecorFitsSystemWindows(window, false)
+        }
         val view = inflater.inflate(R.layout.fragment_chat, container, false)
         binding=FragmentChatBinding.inflate(layoutInflater)
         // Initialize RecyclerView

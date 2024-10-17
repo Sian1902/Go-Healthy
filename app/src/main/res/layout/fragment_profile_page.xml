@@ -49,7 +49,7 @@
                 android:id="@+id/profileImg"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:src="@drawable/running"
+                android:src="@drawable/addimage"
                 app:layout_constraintStart_toStartOf="@id/profile_name"
                 android:layout_marginLeft="10dp"
                 app:layout_constraintBottom_toTopOf="@id/profile_name"
