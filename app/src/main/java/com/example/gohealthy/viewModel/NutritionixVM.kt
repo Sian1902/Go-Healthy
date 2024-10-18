@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.gohealthy.helpers.DailyData
 import com.example.gohealthy.nutritionixAPI.CallDecider
 import com.example.gohealthy.nutritionixAPI.NutritionixQuery
 import com.example.gohealthy.nutritionixAPI.RetrofitClient
@@ -34,6 +35,7 @@ class NutritionixVM:ViewModel() {
                         calories += it.nf_calories
                     }
                 }
+                DailyData.newHistoryItem.kcalIn+=calories.toInt()
                 Log.d("response", "${response.body()}")
             } else {
                 Log.e("response", "Failed to get nutrition data: ${response.errorBody()}")
@@ -78,6 +80,7 @@ class NutritionixVM:ViewModel() {
                     calories+=it.nf_calories
                 }
             }
+            DailyData.newHistoryItem.kcalOut+=calories
         }
         withContext(Dispatchers.Main){
             val oldCal=_workoutCalories.value

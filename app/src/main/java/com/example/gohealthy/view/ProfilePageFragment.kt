@@ -4,13 +4,9 @@ import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
-import android.content.res.Configuration
-import android.content.res.Resources
 import android.content.pm.PackageManager
-
 import android.graphics.Bitmap
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
@@ -23,10 +19,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.app.ActivityCompat.recreate
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.example.gohealthy.PrefManager
+import com.example.gohealthy.helpers.PrefManager
 import com.example.gohealthy.R
 import com.example.gohealthy.databinding.FragmentProfilePageBinding
 import com.example.gohealthy.viewModel.FirebaseVM
@@ -109,13 +104,12 @@ class ProfilePageFragment : Fragment() {
         }
 
     }
-    fun setlocale(context: Context, lang:String){
+    private fun setlocale(context: Context, lang:String){
         val locale = Locale(lang)
         Locale.setDefault(locale)
 
         val config = resources.configuration
         config.setLocale(locale)
-
         resources.updateConfiguration(config, resources.displayMetrics)
 
     }

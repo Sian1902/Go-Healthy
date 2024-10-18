@@ -11,12 +11,9 @@ import com.example.gohealthy.R
 import com.example.gohealthy.viewModel.StepsCounterVM
 import com.example.gohealthy.databinding.FragmentHomePageBinding
 import com.mikhaellopez.circularprogressbar.CircularProgressBar
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.gohealthy.PrefManager
 import com.example.gohealthy.nutritionixAPI.CallDecider
 import com.example.gohealthy.viewModel.NutritionixVM
 import com.example.gohealthy.viewModel.WaterVM

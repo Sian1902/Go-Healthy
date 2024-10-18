@@ -30,14 +30,21 @@
        android:src="@drawable/arm"
        android:elevation="4dp"
        />
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dailyReportImage"
+        app:layout_constraintBottom_toTopOf="@id/backToHomeButton"
+        >
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/kcalInCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/dailyReportImage"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
+        android:layout_weight="1"
+        android:layout_marginHorizontal="5dp"
         app:cardBackgroundColor="@color/light_blue"
         android:elevation="4dp"
         app:cardCornerRadius="16dp"
@@ -80,15 +87,13 @@
         android:id="@+id/kcalOutCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/kcalInCard"
-        app:layout_constraintStart_toEndOf="@id/kcalInCard"
-        app:layout_constraintBottom_toBottomOf="@id/kcalInCard"
-        app:layout_constraintEnd_toStartOf="@id/stepsCard"
         app:cardBackgroundColor="@color/light_blue"
         android:elevation="4dp"
         app:cardCornerRadius="16dp"
         app:strokeColor="@color/white"
         app:strokeWidth="4dp"
+        android:layout_weight="1"
+        android:layout_marginHorizontal="5dp"
         >
         <LinearLayout
             android:layout_width="match_parent"
@@ -131,14 +136,13 @@
         android:id="@+id/stepsCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/kcalInCard"
-        app:layout_constraintEnd_toEndOf="parent"
         app:cardBackgroundColor="@color/light_blue"
         android:elevation="4dp"
         app:cardCornerRadius="16dp"
+        android:layout_weight="1"
         app:strokeColor="@color/white"
         app:strokeWidth="4dp"
-        android:layout_marginRight="10dp"
+       android:layout_marginHorizontal="5dp"
         >
         <LinearLayout
             android:layout_width="match_parent"
@@ -172,12 +176,14 @@
                 />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
     <com.google.android.material.button.MaterialButton
-        android:layout_width="0dp"
+        android:id="@+id/backToHomeButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/kcalInCard"
-        app:layout_constraintEnd_toStartOf="@id/stepsCard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         android:text="@string/back_to_home"
         android:textSize="20sp"
         android:textColor="@color/white"

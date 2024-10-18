@@ -1,7 +1,5 @@
 package com.example.gohealthy.view
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,12 +13,8 @@ import com.example.gohealthy.alarm.AndroidAlarmScheduler
 import com.example.gohealthy.viewModel.StepsCounterVM
 import com.example.gohealthy.databinding.FragmentWelcomeBinding
 import java.time.LocalDateTime
-import android.content.res.Configuration
-import android.content.res.Resources
-import android.os.Build
 import androidx.activity.OnBackPressedCallback
-import com.example.gohealthy.PrefManager
-import java.util.Locale
+import com.example.gohealthy.helpers.PrefManager
 
 class WelcomeFragment : Fragment() {
     private lateinit var prefManager: PrefManager
@@ -55,11 +49,7 @@ class WelcomeFragment : Fragment() {
             prefManager.setFirstTimeLaunch(false)
             findNavController().navigate((R.id.welcomeToSignIn))
         }
-        binding.lang.setOnClickListener {
-            val intent = Intent(requireContext(), MainActivity::class.java)
-            startActivity(intent)
-            if (activity != null) activity?.finish() else throw NullPointerException("Expression 'activity' must not be null")
-        }
+
 
         return binding.root
     }

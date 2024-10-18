@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.example.gohealthy.PrefManager
+import com.example.gohealthy.helpers.PrefManager
 import com.example.gohealthy.R
 import com.example.gohealthy.UserData.User
 import com.example.gohealthy.databinding.FragmentSignupBinding

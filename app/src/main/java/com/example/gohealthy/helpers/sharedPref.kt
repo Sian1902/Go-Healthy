@@ -1,4 +1,4 @@
-package com.example.gohealthy
+package com.example.gohealthy.helpers
 
 import android.content.Context
 import android.content.SharedPreferences

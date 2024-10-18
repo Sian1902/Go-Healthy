@@ -28,13 +28,14 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
-import com.example.gohealthy.PrefManager
+import com.example.gohealthy.helpers.PrefManager
 import com.example.gohealthy.R
 import com.example.gohealthy.viewModel.HistoryVM
 import com.example.gohealthy.notification.NotificationService
 import com.example.gohealthy.viewModel.FirebaseVM
 import com.google.firebase.FirebaseApp
 import com.example.gohealthy.viewModel.StepsCounterVM
+import com.google.android.gms.common.SignInButton.ColorScheme
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
@@ -56,7 +57,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         createNotificationChannel()
-
+        val c= ColorScheme()
         // Initialize Firebase
         FirebaseApp.initializeApp(this)
         prefManager = PrefManager(this)
@@ -189,7 +190,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     override fun onPause() {
         super.onPause()
         // Unregister the sensor listener when the activity is paused
-        sensorManager?.unregisterListener(this)
+        //sensorManager?.unregisterListener(this)
     }
 
     private fun checkActivityRecognitionPermission() {

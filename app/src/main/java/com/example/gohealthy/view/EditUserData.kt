@@ -13,9 +13,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.gohealthy.R
 import com.example.gohealthy.UserData.User
-import com.example.gohealthy.databinding.FragmentApiCallPopUpBinding
 import com.example.gohealthy.databinding.FragmentEditUserDataBinding
-import com.example.gohealthy.nutritionixAPI.CallDecider
 import com.example.gohealthy.viewModel.FirebaseVM
 import kotlinx.coroutines.launch
 
