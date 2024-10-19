@@ -22,7 +22,7 @@ class SignUpFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        auth = FirebaseAuth.getInstance() // Initialize Firebase Auth
+        auth = FirebaseAuth.getInstance()
     }
 
     override fun onCreateView(

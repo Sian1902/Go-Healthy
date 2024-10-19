@@ -44,17 +44,7 @@
             android:clipChildren="false"
             android:clipToPadding="false"
             >
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profileImg"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:src="@drawable/profile_pic"
-                app:layout_constraintStart_toStartOf="@id/profile_name"
-                android:layout_marginLeft="10dp"
-                app:layout_constraintBottom_toTopOf="@id/profile_name"
 
-
-                />
             <!-- Name and Edit Icon -->
             <TextView
                 android:id="@+id/profile_name"

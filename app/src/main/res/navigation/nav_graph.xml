@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/welcomeFragment">
+    app:startDestination="@id/homePageFragment">
 <fragment
     android:name="com.example.gohealthy.view.WelcomeFragment"
     android:id="@+id/welcomeFragment"
@@ -37,6 +37,11 @@
         android:id="@+id/historyFragment"
         android:name="com.example.gohealthy.History.HistoryFragment"
         android:label="HistoryFragment" />
+    <fragment
+        android:id="@+id/homePageFragment"
+        android:name="com.example.gohealthy.view.HomePageFragment"
+        android:label="fragment_home_page"
+        tools:layout="@layout/fragment_home_page" />
 
 
 </navigation>
