@@ -5,4 +5,7 @@
   <color name="calories">#4990E1</color>
   <color name="darkGrey">#2A2A2A </color>
   <color name="progressBar">#80FFFFFF </color>
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="card_background">#FFFFFF</color>
 </resources>

@@ -30,15 +30,34 @@ class HistoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Set up RecyclerView
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        historyVM.liveHistoryList.observe(viewLifecycleOwner){
+        // Show progress while loading
+        binding.progressBar.visibility = View.VISIBLE
 
-            historyAdapter = HistoryAdapter(it)
-            binding.recyclerView.adapter = historyAdapter
-        }
+        // Observe the ViewModel for the history list
+        historyVM.liveHistoryList.observe(viewLifecycleOwner) { historyList ->
 
+            // Hide progress bar when data is loaded
+            binding.progressBar.visibility = View.GONE
+
+            // If the history list is empty, show the empty message
+            if (historyList.isEmpty()) {
+                binding.emptyMessage.visibility = View.VISIBLE
+                binding.recyclerView.visibility = View.GONE
+            } else {
+                binding.emptyMessage.visibility = View.GONE
+                binding.recyclerView.visibility = View.VISIBLE
+
+                // Set up the adapter
+                historyAdapter = HistoryAdapter(historyList)
+                binding.recyclerView.adapter = historyAdapter
+            }
         }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
