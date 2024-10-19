@@ -38,6 +38,7 @@ import com.example.gohealthy.viewModel.StepsCounterVM
 import com.google.android.gms.common.SignInButton.ColorScheme
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.sagarkoli.chetanbottomnavigation.chetanBottomNavigation
 import kotlinx.coroutines.launch
 
 
@@ -92,16 +93,28 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         handleBackPress()
 
 
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.btmNavBar)
+        val bottomNavigationView = findViewById<chetanBottomNavigation>(R.id.btmNavBar)
+        bottomNavigationView.add(chetanBottomNavigation.Model(1, R.drawable.home))
+        bottomNavigationView.add(chetanBottomNavigation.Model(2, R.drawable.user))
+        bottomNavigationView.add(chetanBottomNavigation.Model(3, R.drawable.history))
+        bottomNavigationView.add(chetanBottomNavigation.Model(4, R.drawable.baseline_chat_24))
+        bottomNavigationView.setOnShowListener { item ->
 
-
-
-        NavigationUI.setupWithNavController(bottomNavigationView, navController)
+            true
+        }
+        bottomNavigationView.setOnClickMenuListener {
+            when (it.id) {
+                1 -> navController.navigate(R.id.homePageFragment)
+                2 -> navController.navigate(R.id.profileFragment)
+                3 -> navController.navigate(R.id.historyFragment)
+                4 -> navController.navigate(R.id.homePageFragment)
+            }
+        }
 
         // Hide/show bottom navigation based on fragment
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.welcomeFragment, R.id.signUpFragment, R.id.chatFragment, R.id.signinFragment,R.id.dailyReportFragment-> {
+                R.id.welcomeFragment, R.id.signUpFragment, R.id.signinFragment,R.id.dailyReportFragment-> {
                     bottomNavigationView.visibility = View.GONE
                 }
                 else -> {
@@ -184,12 +197,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         } else {
             sensorManager?.registerListener(this, stepSensor, SensorManager.SENSOR_DELAY_UI)
         }
-    }
-
-    override fun onPause() {
-        super.onPause()
-        // Unregister the sensor listener when the activity is paused
-        //sensorManager?.unregisterListener(this)
     }
 
     private fun checkActivityRecognitionPermission() {

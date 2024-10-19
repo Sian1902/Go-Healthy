@@ -67,7 +67,7 @@
             android:layout_weight="1"
             app:cardBackgroundColor="@color/exercise"
             android:elevation="12dp"
-            android:layout_marginHorizontal="8dp"
+            android:layout_marginHorizontal="10dp"
             app:strokeWidth="0dp"
 
             >
@@ -93,7 +93,7 @@
                     app:cpb_progressbar_color="@color/background"
                     app:cpb_progressbar_width="10dp"
                     android:layout_gravity="center"
-                    tools:cpb_progress="40"
+                    app:cpb_progress="40"
                     app:cpb_round_border="true"
                    />
                     <ImageView
@@ -110,7 +110,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    tools:text="2000 Step"
+                    android:text="2000 Step"
                     android:textStyle="bold"
                     android:fontFamily="@font/roboto_medium"
                     android:textColor="@color/background"
@@ -120,12 +120,13 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/caloriesCard"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:cardBackgroundColor="@color/calories"
             android:elevation="12dp"
             android:layout_weight="1"
-            android:layout_marginHorizontal="8dp"
+            android:layout_marginHorizontal="10dp"
             app:strokeWidth="0dp"
             >
             <LinearLayout
@@ -149,7 +150,7 @@
                         app:cpb_progressbar_color="@color/background"
                         app:cpb_progressbar_width="10dp"
                         android:layout_gravity="center"
-                        tools:cpb_progress="80"
+                        app:cpb_progress="80"
                         app:cpb_round_border="true"
                         />
                     <ImageView
@@ -166,7 +167,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    tools:text="2000 KCAL"
+                    android:text="2000 KCAL"
                     android:textStyle="bold"
                     android:fontFamily="@font/roboto_medium"
                     android:textColor="@color/background"
@@ -189,7 +190,8 @@
         android:textSize="20sp"
         android:textStyle="bold"
         />
-<HorizontalScrollView
+    <HorizontalScrollView
+        android:id="@+id/activityScrollView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:layout_constraintTop_toBottomOf="@id/activitiesText"
@@ -200,7 +202,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:layout_marginLeft="10dp"
+      android:layout_marginHorizontal="10dp"
         >
     <com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
@@ -208,7 +210,6 @@
         app:cardBackgroundColor="@color/exercise"
         android:elevation="12dp"
         app:strokeWidth="0dp"
-        app:cardCornerRadius="30dp"
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -222,7 +223,7 @@
                 android:fontFamily="@font/roboto_medium"
                 android:padding="10dp"
                 android:text="@string/exercise"
-                android:textColor="@android:color/black"
+                android:textColor="@color/background"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -234,7 +235,7 @@
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="10dp"
                 android:text="@string/suggestion_running"
-                android:textColor="@android:color/black"
+                android:textColor="@color/background"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@id/exerciseCardTitle"
@@ -247,7 +248,7 @@
                 android:paddingHorizontal="10dp"
                 android:paddingTop="5dp"
                 android:text="@string/duration_30_min_calories_50_kcal"
-                android:textColor="@color/darkGrey"
+                android:textColor="@color/background"
                 app:layout_constraintStart_toStartOf="@id/exerciseCardTitle"
                 app:layout_constraintTop_toBottomOf="@id/exerciseSuggestion" />
 
@@ -259,7 +260,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/exerciseSuggestion"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:padding="10dp"/>
 
             <com.google.android.material.button.MaterialButton
                 android:layout_width="wrap_content"
@@ -273,9 +275,9 @@
                 app:icon="@drawable/fire"
                 app:iconTint="@android:color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@id/insights"
                 app:layout_constraintStart_toStartOf="@id/insights"
-                app:layout_constraintTop_toBottomOf="@id/insights" />
+                app:layout_constraintTop_toBottomOf="@id/insights"
+                android:layout_marginHorizontal="10dp"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
     <com.google.android.material.card.MaterialCardView
@@ -285,7 +287,6 @@
         android:elevation="12dp"
         android:layout_marginHorizontal="10dp"
         app:strokeWidth="0dp"
-        app:cardCornerRadius="30dp"
         >
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -301,7 +302,7 @@
                 android:padding="10dp"
                 android:textSize="30sp"
                 android:textStyle="bold"
-                android:textColor="@android:color/black"
+                android:textColor="@color/background"
                 android:fontFamily="@font/roboto_medium"
                 />
             <TextView
@@ -314,7 +315,7 @@
                 android:textSize="20sp"
                 android:text="@string/suggestion_cezar_salad"
                 android:textStyle="bold"
-                android:textColor="@android:color/black"/>
+                android:textColor="@color/background"/>
             <TextView
                 android:id="@+id/foodInsights"
                 android:layout_width="wrap_content"
@@ -323,7 +324,7 @@
                 app:layout_constraintTop_toBottomOf="@id/foodSuggestion"
                 android:paddingHorizontal="10dp"
                 android:paddingTop="5dp"
-                android:textColor="@color/darkGrey"
+                android:textColor="@color/background"
                 android:text="@string/preparation_30_min_calories_300_kcal"/>
             <ImageView
                 android:id="@+id/foodImage"
@@ -333,7 +334,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:src="@drawable/food_suggestion"
-
+                android:padding="10dp"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
             <com.google.android.material.button.MaterialButton
@@ -345,7 +346,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@id/foodInsights"
                 app:layout_constraintTop_toBottomOf="@id/foodInsights"
-                app:layout_constraintEnd_toEndOf="@id/foodInsights"
+               android:layout_marginHorizontal="10dp"
                 android:text="@string/have_a_meal"
                 android:textSize="18sp"
                 android:textColor="@android:color/black"
@@ -355,5 +356,126 @@
     </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 </HorizontalScrollView>
+    <TextView
+        android:id="@+id/metricsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/metrics"
+        app:layout_constraintTop_toBottomOf="@id/activityScrollView"
+        app:layout_constraintStart_toStartOf="@id/logo"
+        android:paddingVertical="20dp"
+        android:textColor="@color/darkGrey"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/metricsText"
+        android:orientation="horizontal"
+        >
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/BMICard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/calories"
+            android:elevation="12dp"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="10dp"
+            app:strokeWidth="0dp"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/bmi"
+                        android:layout_gravity="center"
+                        android:layout_margin="5dp"
+                   />
+
+                <TextView
+                    android:id="@+id/BMItext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="20"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textColor="@color/background"
+                    android:textSize="25sp"
+                   android:padding="5dp"
+                    />
+
+                <TextView
+                    android:id="@+id/BMIRangeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/fit"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textColor="@color/background"
+                    android:textSize="25sp"
+                    android:padding="5dp"
+                    />
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/dailyCaloriesCard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/calories"
+            android:elevation="12dp"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="10dp"
+            app:strokeWidth="0dp"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/calories_calculator"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    />
+
+                <TextView
+                    android:id="@+id/dailyCaloriesText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="2500"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textColor="@color/background"
+                    android:textSize="25sp"
+                    android:padding="5dp"
+                    />
+
+                <TextView
+                    android:id="@+id/KCal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="KCAL"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textColor="@color/background"
+                    android:textSize="25sp"
+                    android:padding="5dp"
+                    />
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

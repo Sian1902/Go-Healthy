@@ -85,7 +85,7 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.appcompat)
-
+    implementation ("com.github.chetankoli1.BottomNavigation:chetanbottomnavigation:0.0.3")
 // Testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

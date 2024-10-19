@@ -70,6 +70,8 @@
     <string name="suggestion_cezar_salad">Suggestion: Cezar Salad</string>
     <string name="preparation_30_min_calories_300_kcal">Preparation: 30 min Calories: 300 KCAL</string>
     <string name="have_a_meal">Have a Meal</string>
+    <string name="metrics">Metrics</string>
+    <string name="fit">Fit</string>
 
 
 </resources>
