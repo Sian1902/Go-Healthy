@@ -27,6 +27,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_alignParentBottom="true"
-        android:background="@color/custom_orange"
-        app:menu="@menu/menu_nav_bar"/>
+        app:menu="@menu/menu_nav_bar"
+      />
 </androidx.constraintlayout.widget.ConstraintLayout>

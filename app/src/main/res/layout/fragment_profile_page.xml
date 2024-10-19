@@ -106,7 +106,6 @@
         app:cardElevation="4dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/profile_card"
-        app:strokeColor="@color/custom_orange"
         app:strokeWidth="2dp"
         android:layout_marginRight="16dp"
         android:layout_marginLeft="16dp"
@@ -147,8 +146,7 @@
                 android:layout_gravity="center"
                 android:layout_height="2dp"
                 android:layout_marginVertical="8dp"
-                android:layout_marginHorizontal="30dp"
-                android:background="@color/custom_orange" />
+                android:layout_marginHorizontal="30dp" />
 
             <!-- Second Row: Gender -->
 
@@ -185,7 +183,7 @@
                 android:layout_height="2dp"
                 android:layout_marginVertical="8dp"
                 android:layout_marginHorizontal="30dp"
-                android:background="@color/custom_orange" />
+                 />
 
             <!-- Fourth Row: Height -->
             <LinearLayout
@@ -218,7 +216,7 @@
                 android:layout_height="2dp"
                 android:layout_marginVertical="8dp"
                 android:layout_marginHorizontal="30dp"
-                android:background="@color/custom_orange" />
+                />
 
             <LinearLayout
                 android:id="@+id/languageChanger"
@@ -244,8 +242,7 @@
                 android:layout_gravity="center"
                 android:layout_height="2dp"
                 android:layout_marginVertical="8dp"
-                android:layout_marginHorizontal="30dp"
-                android:background="@color/custom_orange" />
+                android:layout_marginHorizontal="30dp" />
             <LinearLayout
                 android:id="@+id/logoutBTN"
                 xmlns:android="http://schemas.android.com/apk/res/android"

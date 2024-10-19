@@ -3,6 +3,6 @@
     <style name="Base.Theme.GoHealthy" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
-        <item name="hintTextColor">@color/hint_color_state</item>
+
     </style>
 </resources>

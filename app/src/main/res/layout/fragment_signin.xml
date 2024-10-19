@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/custom_orange"
     tools:context=".view.SignUpFragment">
 
 
@@ -35,12 +34,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/email"
-            android:textColorHint="@color/hint_color_state"
-            app:boxStrokeColor ="@color/test"
-            app:hintTextColor="@color/hint_color_state"
             android:minHeight="48dp"
             app:startIconDrawable="@drawable/email_24"
-            app:boxBackgroundColor="@color/textField_color"
+
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             app:boxCornerRadiusTopStart="28dp"
@@ -49,13 +45,12 @@
             app:boxCornerRadiusBottomStart="28dp"
             android:layout_marginTop="10dp"
             android:layout_gravity="center"
-            app:startIconTint="@color/black"
+
 
             >
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -64,12 +59,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/password"
-            android:textColorHint="@color/hint_color_state"
-            app:boxStrokeColor ="@color/test"
-            app:hintTextColor="@color/hint_color_state"
             android:minHeight="48dp"
             app:startIconDrawable="@drawable/baseline_lock_24"
-            app:boxBackgroundColor="@color/textField_color"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             app:boxCornerRadiusTopStart="28dp"
@@ -80,16 +71,12 @@
             android:layout_gravity="center"
 
             app:endIconMode="custom"
-            app:startIconTint="@color/black"
-            app:endIconTint="@color/black"
 
             >
             <com.google.android.material.textfield.TextInputEditText
                 android:inputType="textPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                app:endIconTint="@color/black"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -102,7 +89,6 @@
             android:background="@drawable/button_bg"
             android:text="@string/sign_in"
             android:textAllCaps="false"
-            android:textColor="@color/white"
             android:textStyle="bold"
             android:fontFamily="@font/roboto_medium"
             android:layout_marginTop="20dp"
@@ -128,7 +114,6 @@
             android:layout_marginBottom="30dp"
             android:gravity="center"
             android:text="@string/don_t_have_an_account"
-            android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
 
@@ -146,7 +131,6 @@
 android:layout_marginStart="8dp"
             android:layout_marginBottom="30dp"
             android:text="@string/register_now"
-            android:textColor="@color/text_color_selector"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/textdont"

@@ -1,21 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="custom_orange">#FF8C3D</color>
-    <color name="pale_orange">#FF9246</color>
-    <color name="textField_color">#ffe6e0e9</color>
-    <color name="test">#ff16224b</color>
-    <color name="blue">#ff504d73</color>
-    <color name="light_blue">#03A9F4</color>
-    <color name="grey">#BDBDBD</color>
-    <color name="baby_blue">#00CCFF</color>
-    <color name="navey">#0034AD</color>
-    <color name="light_background">#FFF5EE</color>
-
-
-    <color name="bgCard">#fffef7ff</color>
-    <color name="button">#79747E</color>
-
-
+  <color name="background">#E5E4E2</color>
+  <color name="exercise">#FF8C33 </color>
+  <color name="calories">#4990E1</color>
+  <color name="darkGrey">#2A2A2A </color>
+  <color name="progressBar">#80FFFFFF </color>
 </resources>

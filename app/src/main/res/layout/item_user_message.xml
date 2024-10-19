@@ -20,7 +20,6 @@ randroid:cardCornerRadius="16dp"
     android:layout_height="wrap_content"
     android:background="@drawable/user_message_background"
     android:padding="8dp"
-    android:textColor="@android:color/white"
     android:textSize="16sp" />
 </androidx.cardview.widget.CardView>
     </LinearLayout>

@@ -4,7 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/custom_orange"
     tools:context=".view.SignUpFragment">
 
     <ImageView
@@ -39,16 +38,12 @@
             android:layout_marginEnd="20dp"
             android:hint="@string/name"
             android:minHeight="48dp"
-            android:textColorHint="@color/hint_color_state"
-            app:boxBackgroundColor="@color/textField_color"
             app:boxCornerRadiusBottomEnd="28dp"
             app:boxCornerRadiusBottomStart="28dp"
             app:boxCornerRadiusTopEnd="28dp"
             app:boxCornerRadiusTopStart="28dp"
-            app:boxStrokeColor="@color/test"
-            app:hintTextColor="@color/hint_color_state"
             app:startIconDrawable="@drawable/account_circle"
-            app:startIconTint="@color/black">
+           >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -67,16 +62,12 @@
             android:hint="@string/email"
             android:minHeight="48dp"
 
-            android:textColorHint="@color/hint_color_state"
-            app:boxBackgroundColor="@color/textField_color"
+
             app:boxCornerRadiusBottomEnd="28dp"
             app:boxCornerRadiusBottomStart="28dp"
             app:boxCornerRadiusTopEnd="28dp"
             app:boxCornerRadiusTopStart="28dp"
-            app:boxStrokeColor="@color/test"
-            app:hintTextColor="@color/hint_color_state"
-            app:startIconDrawable="@drawable/email_24"
-            app:startIconTint="@color/black">
+            app:startIconDrawable="@drawable/email_24">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -94,17 +85,11 @@
             android:layout_marginEnd="20dp"
             android:hint="@string/password"
             android:minHeight="48dp"
-
-            android:textColorHint="@color/hint_color_state"
-            app:boxBackgroundColor="@color/textField_color"
             app:boxCornerRadiusBottomEnd="28dp"
             app:boxCornerRadiusBottomStart="28dp"
             app:boxCornerRadiusTopEnd="28dp"
             app:boxCornerRadiusTopStart="28dp"
-            app:boxStrokeColor="@color/test"
-            app:hintTextColor="@color/hint_color_state"
-            app:startIconDrawable="@drawable/baseline_lock_24"
-            app:startIconTint="@color/black">
+            app:startIconDrawable="@drawable/baseline_lock_24">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -131,19 +116,13 @@
                 android:layout_weight="2"
                 android:hint="@string/your_gender"
                 android:minHeight="48dp"
-                android:textColorHint="@color/hint_color_state"
-                app:boxBackgroundColor="@color/textField_color"
                 app:boxCornerRadiusBottomEnd="28dp"
                 app:boxCornerRadiusBottomStart="28dp"
                 app:boxCornerRadiusTopEnd="28dp"
                 app:boxCornerRadiusTopStart="28dp"
-                app:boxStrokeColor="@color/custom_orange"
                 app:boxStrokeWidth="0dp"
                 app:endIconMode="dropdown_menu"
-                app:endIconTint="@color/black"
-                app:hintTextColor="@color/hint_color_state"
-                app:startIconDrawable="@drawable/gender"
-                app:startIconTint="@color/black">
+                app:startIconDrawable="@drawable/gender">
 
                 <AutoCompleteTextView
                     android:layout_width="match_parent"
@@ -167,16 +146,12 @@
                 android:layout_weight="2"
                 android:hint="@string/age"
                 android:minHeight="48dp"
-                android:textColorHint="@color/hint_color_state"
-                app:boxBackgroundColor="@color/textField_color"
                 app:boxCornerRadiusBottomEnd="28dp"
                 app:boxCornerRadiusBottomStart="28dp"
                 app:boxCornerRadiusTopEnd="28dp"
                 app:boxCornerRadiusTopStart="28dp"
-                app:boxStrokeColor="@color/test"
-                app:hintTextColor="@color/hint_color_state"
                 app:startIconDrawable="@drawable/access_time_filled"
-                app:startIconTint="@color/black">
+              >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -204,20 +179,15 @@
                 android:layout_weight="2"
                 android:hint="@string/height"
                 android:minHeight="48dp"
-                android:textColorHint="@color/hint_color_state"
-                app:boxBackgroundColor="@color/textField_color"
                 app:boxCornerRadiusBottomEnd="28dp"
                 app:boxCornerRadiusBottomStart="28dp"
                 app:boxCornerRadiusTopEnd="28dp"
                 app:boxCornerRadiusTopStart="28dp"
-                app:boxStrokeColor="@color/test"
+
                 app:endIconDrawable="@drawable/centimeter"
 
                 app:endIconMode="custom"
-                app:endIconTint="@color/black"
-                app:hintTextColor="@color/hint_color_state"
-                app:startIconDrawable="@drawable/up_down_arrow_svgrepo_com"
-                app:startIconTint="@color/black">
+                app:startIconDrawable="@drawable/up_down_arrow_svgrepo_com">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -236,22 +206,21 @@
                 android:layout_weight="2"
                 android:hint="@string/weight"
                 android:minHeight="48dp"
-                android:textColorHint="@color/hint_color_state"
-                app:boxBackgroundColor="@color/textField_color"
                 app:boxCornerRadiusBottomEnd="28dp"
 
                 app:boxCornerRadiusBottomStart="28dp"
                 app:boxCornerRadiusTopEnd="28dp"
                 app:boxCornerRadiusTopStart="28dp"
-                app:boxStrokeColor="@color/test"
+
                 app:endIconDrawable="@drawable/kilogram"
                 app:endIconMode="custom"
 
 
-                app:endIconTint="@color/black"
-                app:hintTextColor="@color/hint_color_state"
+
+
+
                 app:startIconDrawable="@drawable/scale_svgrepo_com"
-                app:startIconTint="@color/black">
+             >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -277,7 +246,7 @@
             android:paddingRight="60dp"
             android:text="@string/sign_up"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -297,7 +266,6 @@
             android:layout_marginBottom="18dp"
             android:gravity="center"
             android:text="@string/already_have_an_account"
-            android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -311,7 +279,6 @@
             android:layout_marginStart="8dp"
             android:layout_marginBottom="18dp"
             android:text="@string/sign_in"
-            android:textColor="@color/text_color_selector"
             android:textSize="18dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/textdont" />

@@ -61,6 +61,15 @@
     <string name="home">Home</string>
     <string name="history">History</string>
     <string name="profile">Profile</string>
+    <string name="good_day">Good Day</string>
+    <string name="daily_stats">Daily Stats</string>
+    <string name="activities">Activities</string>
+    <string name="exercise">Exercise</string>
+    <string name="suggestion_running">Suggestion : running</string>
+    <string name="food">Food</string>
+    <string name="suggestion_cezar_salad">Suggestion: Cezar Salad</string>
+    <string name="preparation_30_min_calories_300_kcal">Preparation: 30 min Calories: 300 KCAL</string>
+    <string name="have_a_meal">Have a Meal</string>
 
 
 </resources>

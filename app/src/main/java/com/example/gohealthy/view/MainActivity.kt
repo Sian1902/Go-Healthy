@@ -55,7 +55,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         createNotificationChannel()
         val c= ColorScheme()
         // Initialize Firebase

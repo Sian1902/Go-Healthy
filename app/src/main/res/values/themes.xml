@@ -1,11 +1,12 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+    <!-- Base application theme -->
     <style name="Base.Theme.GoHealthy" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <item name="background">@color/light_background</item>
-        <item name="hintTextColor">@color/hint_color_state</item>
-        <item name="android:statusBarColor">@color/custom_orange</item>
+
     </style>
 
+
+
+
+    <!-- Theme to be applied throughout the app -->
     <style name="Theme.GoHealthy" parent="Base.Theme.GoHealthy" />
 </resources>

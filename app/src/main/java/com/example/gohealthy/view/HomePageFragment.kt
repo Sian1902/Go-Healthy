@@ -32,14 +32,14 @@ class HomePageFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home_page, container, false)
 
        binding=FragmentHomePageBinding.inflate(inflater,container,false)
-        waterVM.setContext(requireContext())
+       // waterVM.setContext(requireContext())
         return binding.root // Return the inflated view
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        stepsCounterVM.currentSteps.observe(viewLifecycleOwner){
+       /* stepsCounterVM.currentSteps.observe(viewLifecycleOwner){
             binding.circularProgressBar.progress=it.toFloat()
             binding.currentStepstext.text= "$it/"
         }
@@ -83,15 +83,13 @@ class HomePageFragment : Fragment() {
         }
         binding.plusImg.setOnClickListener{
             waterVM.incWater()
-        }
+        }*/
     }
-   private fun setCircularProgress(){
+ /*  private fun setCircularProgress(){
 
         binding.circularProgressBar.apply {
             progress = 0f
             progressMax = 8000f
-            progressBarColor = Color.rgb(230,97,4)
-            backgroundProgressBarColor = Color.rgb(230,97,4)
             backgroundProgressBarColorDirection = CircularProgressBar.GradientDirection.RIGHT_TO_LEFT
             progressBarWidth = 7f // in DP
             backgroundProgressBarWidth = 3f // in DP
@@ -99,7 +97,7 @@ class HomePageFragment : Fragment() {
             startAngle = 0f
             progressDirection = CircularProgressBar.ProgressDirection.TO_RIGHT
         }
-    }
+    }*/
 
 
     }
