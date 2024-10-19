@@ -47,6 +47,7 @@ dependencies {
     implementation("com.google.firebase:firebase-functions:20.1.2")
     implementation(platform("com.google.firebase:firebase-bom:32.2.3"))
     implementation("com.google.firebase:firebase-analytics-ktx")
+
 // AndroidX libraries
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
@@ -55,6 +56,8 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.navigation:navigation-fragment-ktx:2.8.2")
     implementation("androidx.navigation:navigation-ui-ktx:2.8.2")
+    implementation ("com.google.android.material:material:1.10.0")
+
 
 // Material and UI libraries
     implementation("com.google.android.material:material:1.9.0")

@@ -31,11 +31,14 @@ class HomePageFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home_page, container, false)
 
+
        binding=FragmentHomePageBinding.inflate(inflater,container,false)
        // waterVM.setContext(requireContext())
         return binding.root // Return the inflated view
 
     }
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
