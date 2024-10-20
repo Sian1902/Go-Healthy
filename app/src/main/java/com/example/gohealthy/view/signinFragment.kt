@@ -65,7 +65,7 @@ class signinFragment : Fragment() {
                     prefManager.setLoggedIn(true)
                     prefManager.saveEmail(email)
 
-                    findNavController().navigate(R.id.signinToHome)
+                    findNavController().navigate(R.id.homeToChat)
                     prefManager.saveEmail(email)
                 } else {
                     Toast.makeText(requireContext(), "Authentication failed", Toast.LENGTH_SHORT).show()
