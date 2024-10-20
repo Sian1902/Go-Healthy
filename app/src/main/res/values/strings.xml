@@ -73,5 +73,6 @@
     <string name="eat">Eat</string>
     <string name="have_a_meal">Have a Meal</string>
     <string name="no_history_available">No History Available</string>
+    <string name="dark_mode">Dark Mode</string>
 
 </resources>

@@ -5,6 +5,15 @@
     android:fitsSystemWindows="true"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/themeSwitchCompat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/dark_mode"
+        android:textColor="@color/calories" />
+
     <TextView
         android:id="@+id/urLifeStats"
         android:layout_width="wrap_content"
@@ -40,8 +49,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+       android:indeterminateTint="@color/calories"
 
-        android:visibility="gone" />
+        android:visibility="visible" />
 
     <!-- Empty List Message -->
     <TextView
@@ -51,7 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/no_history_available"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:textColor="@android:color/darker_gray"
        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

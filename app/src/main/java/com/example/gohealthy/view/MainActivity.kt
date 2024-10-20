@@ -23,6 +23,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
@@ -60,6 +61,17 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         // Initialize Firebase
         FirebaseApp.initializeApp(this)
         prefManager = PrefManager(this)
+
+       
+       //Dark mode
+        val  isDarkMode= prefManager.isDarkMode()
+        if (isDarkMode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+
+
         val currentUser = auth.currentUser
         // Set the content view to the activity_main layout
         setContentView(R.layout.activity_main)
