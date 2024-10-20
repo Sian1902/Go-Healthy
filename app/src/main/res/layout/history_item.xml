@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:fitsSystemWindows="true"
-    android:padding="6dp">
+    android:padding="8dp">
 
 
     <!-- MaterialCardView Container -->
@@ -20,9 +20,12 @@ android:layout_marginHorizontal="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:cardCornerRadius="12dp"
         app:strokeWidth="2dp"
-        app:cardElevation="4dp">
+        app:cardElevation="4dp"
+app:strokeColor="@color/exercise"
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:padding="2dp"
             android:paddingHorizontal="1dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -31,23 +34,24 @@ android:layout_marginHorizontal="3dp"
 
             <ImageView
                 android:id="@+id/image"
-                android:layout_width="135dp"
-                android:layout_height="0dp"
+                android:layout_width="120dp"
+                android:layout_height="190dp"
                 android:layout_marginStart="3dp"
-                android:scaleY="1"
+
                 android:scaleType="centerCrop"
-                android:src="@drawable/shoeimg"
+                android:src="@drawable/run"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 />
 
             <LinearLayout
+                android:layout_margin="8dp"
                 android:id="@+id/detailsID"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingHorizontal="12dp"
+
                 app:layout_constraintStart_toEndOf="@id/image"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -56,12 +60,13 @@ android:layout_marginHorizontal="3dp"
 
                 <!-- Date Card -->
                 <androidx.cardview.widget.CardView
+                    app:cardBackgroundColor="#D9D9D9"
                     android:layout_marginTop="8dp"
                     app:cardElevation="4dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="15dp"
-                    app:cardCornerRadius="8dp">
+                    app:cardCornerRadius="14dp">
 
                     <TextView
                         android:id="@+id/Date"
@@ -69,10 +74,14 @@ android:layout_marginHorizontal="3dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:gravity="center"
-                        android:text="Date"
+                        tools:text="20/10/2024"
                         android:fontFamily="@font/poppins_medium"
                         android:textSize="14sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:padding="4dp"
+                        android:layout_marginTop="2dp"
+                        />
                 </androidx.cardview.widget.CardView>
 
                 <!-- Stats Row (KCAL IN, KCAL OUT, Steps) -->
@@ -85,13 +94,16 @@ android:layout_marginHorizontal="3dp"
 
                     <!-- KCAL IN Section -->
                     <LinearLayout
+                        android:paddingHorizontal="7dp"
+                        android:paddingVertical="6dp"
                         android:background="@drawable/rounded_corners"
                         android:layout_gravity="center"
                         android:layout_width="0dp"
+
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical"
-                        android:layout_marginHorizontal="1dp"
+                        android:layout_marginHorizontal="3dp"
                         android:gravity="center">
 
                         <ImageView
@@ -112,32 +124,36 @@ android:layout_marginHorizontal="3dp"
                             android:gravity="center">
 
                             <LinearLayout
-
-                                android:padding="12dp"
-                                android:layout_width="wrap_content"
+                                android:background="@color/calories"
+                                android:layout_width="80dp"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical"
                                 android:layout_gravity="center"
-                                android:gravity="bottom">
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:padding="14dp"
+
+                                >
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/KcalIn"
-                                    android:fontFamily="@font/poppins_medium"
-                                    android:textSize="10sp"
                                     android:layout_gravity="center"
-                                    android:gravity="center"/>
+                                    android:fontFamily="@font/poppins_medium"
+                                    android:gravity="center"
+                                    android:textColor="@color/background"
+                                    android:text="@string/KcalIn"
+                                    android:textSize="12sp" />
 
                                 <TextView
                                     android:id="@+id/KcalIn"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/KcalInCount"
-                                    android:textSize="14sp"
-                                    android:textStyle="bold"
                                     android:layout_gravity="center"
-                                    android:gravity="center"/>
+                                    android:gravity="center"
+                                    android:text="@string/KcalInCount"
+                                    android:textColor="@color/background"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
                     </LinearLayout>
@@ -145,12 +161,14 @@ android:layout_marginHorizontal="3dp"
                     <!-- KCAL OUT Section -->
                     <LinearLayout
                         android:layout_gravity="center"
+                        android:paddingHorizontal="7dp"
+                        android:paddingVertical="6dp"
 
                         android:background="@drawable/rounded_corners"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:layout_marginHorizontal="1dp"
+                        android:layout_marginHorizontal="3dp"
                         android:orientation="vertical"
                         android:gravity="center">
 
@@ -170,19 +188,21 @@ android:layout_marginHorizontal="3dp"
                             android:gravity="center">
 
                             <LinearLayout
-                                android:padding="12dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:background="@color/calories"
+
+                                android:padding="14dp"
+                                android:layout_width="85dp"                                android:layout_height="wrap_content"
                                 android:orientation="vertical"
                                 android:layout_gravity="center"
-                                android:gravity="bottom">
+                                android:gravity="center">
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/poppins_medium"
                                     android:text="@string/KcalOut"
-                                    android:textSize="10sp"
+                                    android:textSize="12sp"
+                                    android:textColor="@color/background"
                                     android:layout_gravity="center"
                                     android:gravity="center"/>
 
@@ -193,7 +213,9 @@ android:layout_marginHorizontal="3dp"
                                     android:text="@string/KcalOutCount"
                                     android:textSize="14sp"
                                     android:textStyle="bold"
+                                    android:textColor="@color/background"
                                     android:layout_gravity="center"
+
                                     android:gravity="center"/>
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
@@ -202,12 +224,13 @@ android:layout_marginHorizontal="3dp"
                     <!-- Steps Section -->
                     <LinearLayout
                         android:layout_gravity="center"
-
+                        android:paddingHorizontal="7dp"
+                        android:paddingVertical="6dp"
                         android:background="@drawable/rounded_corners"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:layout_marginHorizontal="1dp"
+                        android:layout_marginHorizontal="3dp"
                         android:orientation="vertical"
                         android:gravity="center">
 
@@ -230,8 +253,10 @@ android:layout_marginHorizontal="3dp"
                             android:gravity="center">
 
                             <LinearLayout
-                                android:padding="12dp"
-                                android:layout_width="wrap_content"
+                                android:background="@color/calories"
+
+                                android:padding="14dp"
+                                android:layout_width="85dp"
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical"
                                 android:layout_gravity="center"
@@ -242,7 +267,8 @@ android:layout_marginHorizontal="3dp"
                                     android:layout_height="wrap_content"
                                     android:text="@string/Steps"
                                     android:fontFamily="@font/poppins_medium"
-                                    android:textSize="10sp"
+                                    android:textSize="12sp"
+                                    android:textColor="@color/background"
                                     android:layout_gravity="center"
                                     android:gravity="center"/>
 
@@ -253,6 +279,7 @@ android:layout_marginHorizontal="3dp"
                                     android:text="@string/StepsCount"
                                     android:textSize="14sp"
                                     android:textStyle="bold"
+                                    android:textColor="@color/background"
                                     android:layout_gravity="center"
                                     android:gravity="center"/>
                             </LinearLayout>

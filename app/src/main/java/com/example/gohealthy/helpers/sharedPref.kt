@@ -26,6 +26,17 @@ class PrefManager(context: Context) {
         editor.apply()
     }
 
+    fun isDarkMode(): Boolean {
+        return pref.getBoolean("isDarkMode", false)
+    }
+
+    fun setDarkMode(setDarkMode: Boolean) {
+        editor.putBoolean("isDarkMode", setDarkMode)
+        editor.apply()
+    }
+
+
+
     fun isLoggedIn(): Boolean {
         return pref.getBoolean("is_logged_in", false)
     }
