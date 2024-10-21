@@ -3,11 +3,14 @@
     <item android:id="@+id/homePageFragment"
         android:title="@string/home"
         android:icon="@drawable/home" />
-    <item android:id="@+id/historyFragment"
-        android:title="@string/history"
-        android:icon="@drawable/history" />
     <item android:id="@+id/profileFragment"
         android:title="@string/profile"
         android:icon="@drawable/user" />
+    <item android:id="@+id/historyFragment"
+        android:title="@string/history"
+        android:icon="@drawable/history" />
+    <item android:id="@+id/chatFragment"
+        android:title="@string/chatbot"
+        android:icon="@drawable/baseline_chat_24" />
 
 </menu>

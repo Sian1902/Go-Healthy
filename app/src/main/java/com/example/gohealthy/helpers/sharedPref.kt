@@ -7,7 +7,20 @@ import android.net.Uri
 class PrefManager(context: Context) {
     private val pref: SharedPreferences = context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
     private val editor: SharedPreferences.Editor = pref.edit()
-
+    fun saveCaloriesIn(calories: Int){
+        editor.putInt("calories", calories)
+        editor.apply()
+    }
+    fun loadCaloriesIn():Int {
+        return pref.getInt("calories", 0)
+    }
+    fun saveCaloriesOut(calories: Int){
+        editor.putInt("caloriesOut", calories)
+        editor.apply()
+    }
+    fun loadCaloriesOut():Int {
+        return pref.getInt("caloriesOut", 0)
+    }
     fun saveEmail(email: String){
         editor.putString("email", email)
         editor.apply()

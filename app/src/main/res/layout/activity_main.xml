@@ -14,24 +14,22 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/btmNavBar"
+        app:layout_constraintBottom_toTopOf="@id/nav_view"
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_graph"
      />
-
     <com.sagarkoli.chetanbottomnavigation.chetanBottomNavigation
-        android:id="@+id/btmNavBar"
+        android:id="@+id/nav_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:sk_circleColor="#ffffff"
+        app:sk_circleColor="@color/calories"
         app:sk_backgroundBottomColor="#ffffff"
         app:sk_countBackgroundColor="#ff6f00"
         app:sk_countTextColor="#ffffff"
-        app:sk_defaultIconColor="#90a4ae"
+        app:sk_defaultIconColor="@color/calories"
         app:sk_rippleColor="#2f424242"
-        app:sk_selectedIconColor="#3c415e"
+        app:sk_selectedIconColor="@android:color/white"
         app:sk_shadowColor="#1f212121">
     </com.sagarkoli.chetanbottomnavigation.chetanBottomNavigation>
 

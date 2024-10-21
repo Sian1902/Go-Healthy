@@ -26,22 +26,18 @@ class ChatFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        activity?.window?.let { window ->
-            WindowCompat.setDecorFitsSystemWindows(window, false)
-        }
+
         binding = FragmentChatBinding.inflate(inflater, container, false)
 
-        // Initialize RecyclerView
-        binding.chatRecyclerView.layoutManager = LinearLayoutManager(context)
+       // Initialize RecyclerView
+       binding.chatRecyclerView.layoutManager = LinearLayoutManager(context)
         chatAdapter = ChatAdapter(messages)
         binding.chatRecyclerView.adapter = chatAdapter
 
         // Add the first welcome message
         addWelcomeMessage()
 
-        binding.backButton.setOnClickListener {
-            findNavController().navigate(R.id.homePageFragment)
-        }
+
 
         binding.sendButton.setOnClickListener {
             val message = binding.inputMessage.text.toString().trim()
@@ -52,7 +48,6 @@ class ChatFragment : Fragment() {
                 Toast.makeText(context, "Please type a message", Toast.LENGTH_SHORT).show()
             }
         }
-
         return binding.root
     }
 

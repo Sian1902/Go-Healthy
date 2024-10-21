@@ -60,14 +60,17 @@ class signinFragment : Fragment() {
             }
 
             viewLifecycleOwner.lifecycleScope.launch {
+                binding.loading.visibility = View.VISIBLE
                 firebaseVM.signIn(email, password)
                 if (firebaseVM.status) {
                     prefManager.setLoggedIn(true)
                     prefManager.saveEmail(email)
 
-                    findNavController().navigate(R.id.homeToChat)
+                    findNavController().navigate(R.id.homePageFragment)
                     prefManager.saveEmail(email)
                 } else {
+                    binding.loading.visibility = View.GONE
+
                     Toast.makeText(requireContext(), "Authentication failed", Toast.LENGTH_SHORT).show()
                 }
             }

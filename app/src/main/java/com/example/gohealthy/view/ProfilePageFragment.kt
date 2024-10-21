@@ -98,6 +98,8 @@ class ProfilePageFragment : Fragment() {
             auth.signOut()
             prefManager.saveImageLocally(Uri.EMPTY)
             prefManager.saveEmail("")
+            prefManager.saveCaloriesIn(0)
+            prefManager.saveCaloriesOut(0)
 
             findNavController().navigate(R.id.signinFragment)
 

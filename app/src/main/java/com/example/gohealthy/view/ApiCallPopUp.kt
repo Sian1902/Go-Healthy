@@ -7,13 +7,16 @@ import android.view.LayoutInflater
 import com.example.gohealthy.nutritionixAPI.CallDecider
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import com.example.gohealthy.R
 import com.example.gohealthy.viewModel.NutritionixVM
 import com.example.gohealthy.databinding.FragmentApiCallPopUpBinding
+import com.example.gohealthy.viewModel.GeminiVM
 
 class ApiCallPopUp(val callDecider: CallDecider) : DialogFragment() {
     private lateinit var binding: FragmentApiCallPopUpBinding
     private val nutritionixVM:NutritionixVM by activityViewModels()
+    private val geminiVM:GeminiVM by viewModels()
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         // Inflate the layout using FragmentPopUpBinding
         binding = FragmentApiCallPopUpBinding.inflate(LayoutInflater.from(requireContext()))
@@ -23,13 +26,14 @@ class ApiCallPopUp(val callDecider: CallDecider) : DialogFragment() {
         dialog.window?.setBackgroundDrawableResource(R.drawable.rounded_bg)
         decidePopUp()
         binding.save.setOnClickListener{
-            val query=binding.inputField.editText!!.text.toString()
 
-                if(callDecider!=CallDecider.Exercise){
-                    nutritionixVM.foodCall(query,callDecider)
+                var query=binding.inputField.editText!!.text.toString()
+                query= geminiVM.translat(query)
+                if(callDecider!=CallDecider.EXERCISE){
+                    nutritionixVM.foodCall(query,callDecider,requireContext())
                 }
                 else{
-                    nutritionixVM.exercisCall(query)
+                    nutritionixVM.exercisCall(query,requireContext())
                 }
 
               dismiss()
@@ -38,21 +42,12 @@ class ApiCallPopUp(val callDecider: CallDecider) : DialogFragment() {
     }
     private fun decidePopUp(){
         when(callDecider){
-            CallDecider.BreakFast->{
+            CallDecider.FOOD->{
                 binding.title.text=getString(R.string.add_your_breakfast)
                 binding.inputField.hint= getString(R.string.breakfastHint)
             }
-            CallDecider.Lunch->{
-                binding.title.text=getString(R.string.add_your_lunch)
-                binding.inputField.hint= getString(R.string.lunchHint)
 
-            }
-            CallDecider.Dinner->{
-                binding.title.text=getString(R.string.add_your_dinner)
-                binding.inputField.hint= getString(R.string.dinnerHint)
-
-            }
-            CallDecider.Exercise->{
+            CallDecider.EXERCISE->{
                 binding.title.text=getString(R.string.add_your_workout)
                 binding.inputField.hint= getString(R.string.workoutHint)
             }

@@ -26,6 +26,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/welcomeText"
         android:fontFamily="@font/uni_sans"
+        android:textColor="@color/calories"
         android:textSize="24sp"
         android:textStyle="bold"
         android:text="@string/app_name"
@@ -42,13 +43,13 @@
         app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/welcome_bg"
         />
-  <androidx.appcompat.widget.AppCompatButton
+  <com.google.android.material.button.MaterialButton
       android:id="@+id/welcomeButton"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_marginHorizontal="30dp"
       android:layout_marginTop="200dp"
-
+      app:backgroundTint="@color/calories"
       android:background="@drawable/button_bg"
       android:fontFamily="@font/roboto_medium"
       android:paddingLeft="40dp"

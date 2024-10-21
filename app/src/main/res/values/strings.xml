@@ -76,5 +76,6 @@
     <string name="dark_mode">Dark Mode</string>
     <string name="metrics">Metrics</string>
     <string name="fit">Fit</string>
+    <string name="loading">loading...</string>
 
 </resources>
