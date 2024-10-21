@@ -60,7 +60,7 @@ class HomePageFragment : Fragment() {
             val totalCal=it.weight*2.205f*15
             val hSquared=(it.height/100.0f)*(it.height/100.0f)
             val BMI=it.weight/hSquared
-            binding.name.text=it.name
+            binding.name.text=" "+it.name
             binding.dailyCaloriesText.text="${totalCal.toInt()}"
             binding.BMItext.text=String.format("%.2f", BMI)
             binding.caloriesCircularProgressBar.progressMax=totalCal

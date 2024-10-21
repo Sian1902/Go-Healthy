@@ -2,6 +2,8 @@
 <resources>
   <color name="black">#000000</color>
   <color name="white">#FFFFFF</color>
+  <color name="historyCard">#D9D9D9</color>
+  <color name="iconColor">#212121</color>
   <color name="background">#E5E4E2</color>
   <color name="exercise">#FF8C33 </color>
   <color name="calories">#4990E1</color>

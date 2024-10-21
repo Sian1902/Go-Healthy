@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FFFFFF</color>
+    <color name="white">#000000</color>
+    <color name="historyCard">#424242</color>
+    <color name="iconColor">#FFFFFF</color>
+    <color name="background">#2A2A2A</color>
+    <color name="exercise">#FF8C33</color>
+    <color name="calories">#4990E1</color>
+    <color name="darkGrey">#E5E4E2</color>
+    <color name="progressBar">#80FFFFFF</color>
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#B3B3B3</color>
+    <color name="card_background">#424242</color>
+
+</resources>

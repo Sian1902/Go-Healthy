@@ -87,7 +87,7 @@
             app:boxCornerRadiusTopEnd="30dp"
             app:boxCornerRadiusBottomEnd="30dp"
             app:endIconMode="custom"
-            app:endIconDrawable="@drawable/up_down_arrow_svgrepo_com"
+            app:endIconDrawable="@drawable/kilogram"
             app:endIconTint="@color/calories"
             app:boxStrokeColor="@color/calories"
             >
@@ -109,7 +109,7 @@
             app:boxCornerRadiusTopEnd="30dp"
             app:boxCornerRadiusBottomEnd="30dp"
             app:endIconMode="custom"
-            app:endIconDrawable="@drawable/kilogram"
+            app:endIconDrawable="@drawable/up_down_arrow_svgrepo_com"
             app:endIconTint="@color/calories"
             >
             <com.google.android.material.textfield.TextInputEditText

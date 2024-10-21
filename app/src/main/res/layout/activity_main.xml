@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:sk_circleColor="@color/calories"
-        app:sk_backgroundBottomColor="#ffffff"
+        app:sk_backgroundBottomColor="@color/card_background"
         app:sk_countBackgroundColor="#ff6f00"
         app:sk_countTextColor="#ffffff"
         app:sk_defaultIconColor="@color/calories"

@@ -41,6 +41,9 @@ android {
 }
 
 dependencies {
+    //bottom navBar
+    implementation ("com.github.chetankoli1.BottomNavigation:chetanbottomnavigation:0.0.3")
+    // Firebase
     implementation(platform("com.google.firebase:firebase-bom:33.4.0"))
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-firestore-ktx")

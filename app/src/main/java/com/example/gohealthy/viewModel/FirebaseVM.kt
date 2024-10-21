@@ -39,10 +39,17 @@ class FirebaseVM : ViewModel() {
 
     suspend fun updateUserData(newUser: User, context: Context) {
         _user.value = newUser
+    var  updatedUser= mapOf(
+            "name" to newUser.name,
+            "gender" to newUser.gender,
+            "weight" to newUser.weight,
+            "height" to newUser.height,
+            "email" to newUser.email,
+        )
         try {
             val currentUser = auth.currentUser
             if (currentUser != null) {
-                DB.collection("users").document(currentUser.uid).set(newUser).await()
+                DB.collection("users").document(currentUser.uid).set(updatedUser).await()
             } else {
                 _errorMessage.value = "User is not logged in"
             }

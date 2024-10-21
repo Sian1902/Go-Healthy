@@ -44,6 +44,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.sagarkoli.chetanbottomnavigation.chetanBottomNavigation
 import kotlinx.coroutines.launch
 import java.time.LocalDateTime
+import java.util.Locale
 
 
 class MainActivity : AppCompatActivity(), SensorEventListener {
@@ -75,7 +76,16 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         FirebaseApp.initializeApp(this)
         prefManager = PrefManager(this)
 
-       
+        val lang=prefManager.loadLanguage()
+
+        if(lang=="ar"){
+            setlocale(this,"ar")
+        }
+        else{
+            setlocale(this,"en")
+        }
+
+
        //Dark mode
         val  isDarkMode= prefManager.isDarkMode()
         if (isDarkMode) {
@@ -122,9 +132,9 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
         val navView = findViewById<chetanBottomNavigation>(R.id.nav_view)
         navView.add(chetanBottomNavigation.Model(1, R.drawable.home))
-        navView.add(chetanBottomNavigation.Model(2, R.drawable.user))
-        navView.add(chetanBottomNavigation.Model(3, R.drawable.history))
-        navView.add(chetanBottomNavigation.Model(4, R.drawable.baseline_chat_24))
+        navView.add(chetanBottomNavigation.Model(2, R.drawable.history))
+        navView.add(chetanBottomNavigation.Model(3, R.drawable.baseline_chat_24))
+        navView.add(chetanBottomNavigation.Model(4, R.drawable.user))
 
         navView?.let {
             it.setOnClickMenuListener{
@@ -136,9 +146,9 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                 }
                 when (index.id) {
                     1-> navController.navigate(R.id.homePageFragment)
-                    2-> navController.navigate(R.id.profileFragment)
-                    3-> navController.navigate(R.id.historyFragment)
-                    4-> navController.navigate(R.id.chatFragment)
+                    2-> navController.navigate(R.id.historyFragment)
+                    3-> navController.navigate(R.id.chatFragment)
+                    4-> navController.navigate(R.id.profileFragment)
 
                 }
             }
@@ -181,6 +191,16 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         var alarmItem= AlarmItem(LocalDateTime.now().withHour(0).withMinute(0).withSecond(0),"test")
         val scheduler= AndroidAlarmScheduler(this)
         alarmItem.let(scheduler::schedule)
+    }
+
+    private fun setlocale(context: Context, lang:String){
+        val locale = Locale(lang)
+        Locale.setDefault(locale)
+
+        val config = resources.configuration
+        config.setLocale(locale)
+        resources.updateConfiguration(config, resources.displayMetrics)
+
     }
 
 

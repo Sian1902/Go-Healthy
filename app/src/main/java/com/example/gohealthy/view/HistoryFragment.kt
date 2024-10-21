@@ -28,38 +28,12 @@ class HistoryFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         prefManager = PrefManager(requireContext())
         _binding = FragmentHistoryBinding.inflate(inflater, container, false)
 
-     val  isDarkMode= prefManager.isDarkMode()
-
-        binding.themeSwitchCompat.isChecked = isDarkMode
-
-        binding.themeSwitchCompat.setOnCheckedChangeListener{ _, isChecked ->
-
-
-                if (isChecked) {
-                    // Enable dark mode
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                    val intent = Intent(requireContext(), MainActivity::class.java)
-                    startActivity(intent)
-                    recreate(requireActivity())
-                    prefManager.setDarkMode(true)
-                } else {
-                    // Enable light mode
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                    val intent = Intent(requireContext(), MainActivity::class.java)
-                    startActivity(intent)
-                    recreate(requireActivity())
-                    prefManager.setDarkMode(false)
-                }
-
-
-
-        }
-
-
+        // Set up theme toggle
+        historyVM.fetchHistoryData()
+        setupThemeSwitch()
 
         return binding.root
     }
@@ -75,11 +49,9 @@ class HistoryFragment : Fragment() {
 
         // Observe the ViewModel for the history list
         historyVM.liveHistoryList.observe(viewLifecycleOwner) { historyList ->
-
             // Hide progress bar when data is loaded
             binding.progressBar.visibility = View.GONE
 
-            // If the history list is empty, show the empty message
             if (historyList.isEmpty()) {
                 binding.emptyMessage.visibility = View.VISIBLE
                 binding.recyclerView.visibility = View.GONE
@@ -87,10 +59,36 @@ class HistoryFragment : Fragment() {
                 binding.emptyMessage.visibility = View.GONE
                 binding.recyclerView.visibility = View.VISIBLE
 
-                // Set up the adapter
-                historyAdapter = HistoryAdapter(historyList)
-                binding.recyclerView.adapter = historyAdapter
+                // Set up or update the adapter
+                if (!::historyAdapter.isInitialized) {
+                    historyAdapter = HistoryAdapter(historyList)
+                    binding.recyclerView.adapter = historyAdapter
+                } else {
+                    // Update the adapter when new data comes in
+                    historyAdapter.notifyDataSetChanged()
+                }
             }
+        }
+
+
+    }
+
+    private fun setupThemeSwitch() {
+        val isDarkMode = prefManager.isDarkMode()
+        binding.themeSwitchCompat.isChecked = isDarkMode
+
+        binding.themeSwitchCompat.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                // Enable dark mode
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                prefManager.setDarkMode(true)
+            } else {
+                // Enable light mode
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                prefManager.setDarkMode(false)
+            }
+            // Recreate activity to apply theme change
+            recreate(requireActivity())
         }
     }
 
@@ -98,11 +96,7 @@ class HistoryFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-
-    }
-
-
+}
 
 
 

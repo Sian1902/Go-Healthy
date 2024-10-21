@@ -69,4 +69,12 @@ class PrefManager(context: Context) {
         return savedUri?.let { Uri.parse(it) }
     }
 
+    fun saveLanguage(language: String) {
+        editor.putString("language", language)
+        editor.apply()
+
+    }
+    fun loadLanguage(): String {
+        return pref.getString("language", "en") ?: "en"
+    }
 }
