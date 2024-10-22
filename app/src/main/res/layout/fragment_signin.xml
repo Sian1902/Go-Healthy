@@ -5,6 +5,11 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.SignUpFragment">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </View>
 
 
     <ImageView
@@ -20,6 +25,7 @@
 
 
     <LinearLayout
+        android:id="@+id/credentials_container"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -36,7 +42,9 @@
             android:hint="@string/email"
             android:minHeight="48dp"
             app:startIconDrawable="@drawable/email_24"
-
+            app:startIconTint="@color/calories"
+            app:boxStrokeColor="@color/calories"
+            app:boxStrokeWidth="2dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             app:boxCornerRadiusTopStart="28dp"
@@ -45,6 +53,7 @@
             app:boxCornerRadiusBottomStart="28dp"
             android:layout_marginTop="10dp"
             android:layout_gravity="center"
+            app:hintTextColor="@color/calories"
 
 
             >
@@ -61,6 +70,9 @@
             android:hint="@string/password"
             android:minHeight="48dp"
             app:startIconDrawable="@drawable/baseline_lock_24"
+            app:startIconTint="@color/calories"
+            app:boxStrokeWidth="2dp"
+            app:boxStrokeColor="@color/calories"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             app:boxCornerRadiusTopStart="28dp"
@@ -69,24 +81,27 @@
             app:boxCornerRadiusBottomStart="28dp"
             android:layout_marginTop="10dp"
             android:layout_gravity="center"
-
-            app:endIconMode="custom"
+            app:hintTextColor="@color/calories"
+            app:endIconMode="password_toggle"
+            app:endIconTint="@color/calories"
 
             >
             <com.google.android.material.textfield.TextInputEditText
                 android:inputType="textPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <androidx.appcompat.widget.AppCompatButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/singUpButton"
             android:minHeight="48dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@drawable/button_bg"
+            app:backgroundTint="@color/calories"
             android:text="@string/sign_in"
             android:textAllCaps="false"
             android:textStyle="bold"
@@ -132,10 +147,56 @@ android:layout_marginStart="8dp"
             android:layout_marginBottom="30dp"
             android:text="@string/register_now"
             android:textSize="18sp"
+            android:textColor="@color/calories"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/textdont"
 
             />
 
     </LinearLayout>
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/loading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        app:strokeColor="@color/calories"
+        app:strokeWidth="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/credentials_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/white"
+        android:visibility="gone">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+           >
+            <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                android:layout_width="100dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_height="wrap_content"
+                app:cpb_background_progressbar_color="@color/calories"
+                app:cpb_background_progressbar_width="3dp"
+                app:cpb_progress_direction="to_right"
+                app:cpb_progressbar_color="@color/calories"
+                app:cpb_progressbar_width="10dp"
+                android:layout_gravity="center"
+                app:cpb_indeterminate_mode="true"
+                app:cpb_round_border="true"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/loading"
+                android:layout_gravity="bottom"
+                android:gravity="center"
+                android:textSize="30sp"
+                android:layout_margin="10dp"
+                android:textColor="@color/calories"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

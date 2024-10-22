@@ -108,6 +108,7 @@ class SignUpFragment : Fragment() {
 
         // Launch the sign-up process asynchronously using lifecycleScope
         viewLifecycleOwner.lifecycleScope.launch {
+            binding.loading.visibility = View.VISIBLE
             firebaseVM.signUp(User(name, gender, weight, height, email, password, age))
             if (firebaseVM.status) {
                 prefManager.saveEmail(email)
@@ -115,6 +116,8 @@ class SignUpFragment : Fragment() {
 
             } else {
                 Toast.makeText(requireContext(), "Authentication failed", Toast.LENGTH_SHORT).show()
+                binding.loading.visibility = View.GONE
+
             }
         }
     }

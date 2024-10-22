@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/background"
     tools:context=".view.HomePageFragment">
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/logo"
@@ -21,7 +20,7 @@
         android:layout_height="wrap_content"
         android:text="@string/good_day"
 
-        android:textSize="30sp"
+        android:textSize="20sp"
         android:fontFamily="@font/roboto_medium"
         android:textColor="@color/darkGrey"
         app:layout_constraintStart_toEndOf="@id/logo"
@@ -35,7 +34,7 @@
         app:layout_constraintStart_toEndOf="@id/welcomeText"
         app:layout_constraintTop_toTopOf="@id/welcomeText"
         app:layout_constraintBottom_toBottomOf="@id/welcomeText"
-        android:textSize="30sp"
+        android:textSize="20sp"
         android:fontFamily="@font/roboto_medium"
        tools:text=" Ahmed"
         android:textColor="@android:color/black"
@@ -93,7 +92,8 @@
                     app:cpb_progressbar_color="@color/background"
                     app:cpb_progressbar_width="10dp"
                     android:layout_gravity="center"
-                    app:cpb_progress="40"
+                    app:cpb_progress="0"
+                    app:cpb_progress_max="8000"
                     app:cpb_round_border="true"
                    />
                     <ImageView
@@ -110,7 +110,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="2000 Step"
+                    tools:text="2000 Step"
                     android:textStyle="bold"
                     android:fontFamily="@font/roboto_medium"
                     android:textColor="@color/background"
@@ -150,7 +150,7 @@
                         app:cpb_progressbar_color="@color/background"
                         app:cpb_progressbar_width="10dp"
                         android:layout_gravity="center"
-                        app:cpb_progress="80"
+                        app:cpb_progress="0"
                         app:cpb_round_border="true"
                         />
                     <ImageView
@@ -167,7 +167,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="2000 KCAL"
+                    tools:text="2000 KCAL"
                     android:textStyle="bold"
                     android:fontFamily="@font/roboto_medium"
                     android:textColor="@color/background"
@@ -264,6 +264,7 @@
                 android:padding="10dp"/>
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/addExerciseBTN"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10dp"
@@ -338,6 +339,7 @@
                 app:layout_constraintEnd_toEndOf="parent"/>
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/addMealBTN"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10dp"
@@ -401,7 +403,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="20"
+                    tools:text="20"
                     android:textStyle="bold"
                     android:fontFamily="@font/roboto_medium"
                     android:textColor="@color/background"
@@ -451,8 +453,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="2500"
-                    android:textStyle="bold"
+                    tools:text="2500"
+                    tools:textStyle="bold"
                     android:fontFamily="@font/roboto_medium"
                     android:textColor="@color/background"
                     android:textSize="25sp"

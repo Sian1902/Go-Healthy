@@ -54,13 +54,6 @@ class WelcomeFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        var alarmItem= AlarmItem(LocalDateTime.now().plusSeconds(10),"test")
-        val scheduler= AndroidAlarmScheduler(requireContext())
-       // alarmItem.let(scheduler::schedule)
-
-    }
 
 
 

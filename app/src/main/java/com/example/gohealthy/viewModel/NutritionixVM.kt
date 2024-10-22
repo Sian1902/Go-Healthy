@@ -1,10 +1,12 @@
 package com.example.gohealthy.viewModel
 
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.gohealthy.helpers.DailyData
+import com.example.gohealthy.helpers.PrefManager
 import com.example.gohealthy.nutritionixAPI.CallDecider
 import com.example.gohealthy.nutritionixAPI.NutritionixQuery
 import com.example.gohealthy.nutritionixAPI.RetrofitClient
@@ -13,80 +15,73 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class NutritionixVM:ViewModel() {
-    private var _breakfastCalories= MutableLiveData(0.0)
-    private var _lunchCalories= MutableLiveData(0.0)
-    private var _dinnerCalories= MutableLiveData(0.0)
-    private var _workoutCalories= MutableLiveData(0)
+    private var _caloriesIn=0.0f
+    private var _caloriesOut=0
+    private var _totalCal=MutableLiveData<Int>(0)
+    val totalCal:MutableLiveData<Int> get() = _totalCal
+    lateinit var prefManager: PrefManager
 
-    val breakFastCalories:MutableLiveData<Double> get() = _breakfastCalories
-    val lunchCalories:MutableLiveData<Double> get() = _lunchCalories
-    val dinnerCalories:MutableLiveData<Double> get() = _dinnerCalories
-    val workoutCalories:MutableLiveData<Int> get() = _workoutCalories
-     fun foodCall(food: String, callDecider: CallDecider) =viewModelScope.launch(Dispatchers.IO) {
+    fun loadCal(context: Context){
+        prefManager= PrefManager(context)
+        _caloriesIn=prefManager.loadCaloriesIn().toFloat()
+        _caloriesOut=prefManager.loadCaloriesOut()
+        _totalCal.value=(_caloriesIn-_caloriesOut).toInt()
+    }
+    fun saveCal(context: Context){
+        prefManager= PrefManager(context)
+        prefManager.saveCaloriesIn(_caloriesIn.toInt())
+        prefManager.saveCaloriesOut(_caloriesOut)
+    }
+     fun foodCall(food: String, callDecider: CallDecider,context: Context) =viewModelScope.launch(Dispatchers.IO) {
             Log.d("response", "function called")
             val query = NutritionixQuery(food)
 
             val response = RetrofitClient.instance.getNutritionData(query)
-            var calories = 0.0
+
 
             if (response.isSuccessful && response.body() != null) {
                 response.body()!!.foods.let { foods ->
                     foods.forEach {
-                        calories += it.nf_calories
+                        _caloriesIn += it.nf_calories.toFloat()
                     }
                 }
-                DailyData.newHistoryItem.kcalIn+=calories.toInt()
-                Log.d("response", "${response.body()}")
+                DailyData.newHistoryItem.kcalIn=_caloriesIn.toInt()
+                withContext(Dispatchers.Main){
+
+                    _totalCal.value=(_caloriesIn-_caloriesOut).toInt()
+                }
+                saveCal(context)
             } else {
                 Log.e("response", "Failed to get nutrition data: ${response.errorBody()}")
 
             }
-            withContext(Dispatchers.Main){
-                when (callDecider) {
-
-                    CallDecider.BreakFast -> {
-                        val oldCal = _breakfastCalories.value ?: 0.0
-                        calories+=oldCal
-                        _breakfastCalories.value = calories
-                    }
-                    CallDecider.Lunch -> {
-                        val oldCal = _lunchCalories.value ?: 0.0
-                        calories+=oldCal
-                        _lunchCalories.value = calories
-                    }
-                    CallDecider.Dinner -> {
-                        val oldCal = _dinnerCalories.value ?: 0.0
-                        calories+=oldCal
-                        _dinnerCalories.value = calories
-                    }
-                    else->calories=0.0
-                }
-            }
 
 
-            Log.d("response", "calories $calories")
+
         }
 
 
 
-     fun exercisCall(workout:String)=viewModelScope.launch(Dispatchers.IO) {
+     fun exercisCall(workout:String,context: Context)=viewModelScope.launch(Dispatchers.IO) {
         val query=(NutritionixQuery(workout))
         val response=RetrofitClient.instance.getExerciseData(query)
-        var calories=0
+
 
         if (response.isSuccessful){
             response.body()!!.exercises.let {
                 it.forEach {
-                    calories+=it.nf_calories
+                    _caloriesOut+=it.nf_calories
                 }
             }
-            DailyData.newHistoryItem.kcalOut+=calories
+            DailyData.newHistoryItem.kcalOut=_caloriesOut
+            withContext(Dispatchers.Main){
+                    _totalCal.value=(_caloriesIn-_caloriesOut).toInt()
+
+
+            }
+            saveCal(context)
         }
-        withContext(Dispatchers.Main){
-            val oldCal=_workoutCalories.value
-            calories+=oldCal!!
-            _workoutCalories.value=calories
-        }
+
 
     }
 

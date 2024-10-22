@@ -60,7 +60,7 @@ app:strokeColor="@color/exercise"
 
                 <!-- Date Card -->
                 <androidx.cardview.widget.CardView
-                    app:cardBackgroundColor="#D9D9D9"
+                    app:cardBackgroundColor="@color/historyCard"
                     android:layout_marginTop="8dp"
                     app:cardElevation="4dp"
                     android:layout_width="match_parent"
@@ -113,7 +113,9 @@ app:strokeColor="@color/exercise"
 
                             android:layout_marginTop="8dp"
                             android:layout_marginBottom="25dp"
-                            android:src="@drawable/fastfood" />
+                            android:src="@drawable/fastfood"
+
+                            />
 
                         <androidx.cardview.widget.CardView
 
@@ -140,7 +142,7 @@ app:strokeColor="@color/exercise"
                                     android:layout_gravity="center"
                                     android:fontFamily="@font/poppins_medium"
                                     android:gravity="center"
-                                    android:textColor="@color/background"
+                                    android:textColor="#E5E4E2"
                                     android:text="@string/KcalIn"
                                     android:textSize="12sp" />
 
@@ -151,7 +153,7 @@ app:strokeColor="@color/exercise"
                                     android:layout_gravity="center"
                                     android:gravity="center"
                                     android:text="@string/KcalInCount"
-                                    android:textColor="@color/background"
+                                    android:textColor="#E5E4E2"
                                     android:textSize="14sp"
                                     android:textStyle="bold" />
                             </LinearLayout>
@@ -202,7 +204,7 @@ app:strokeColor="@color/exercise"
                                     android:fontFamily="@font/poppins_medium"
                                     android:text="@string/KcalOut"
                                     android:textSize="12sp"
-                                    android:textColor="@color/background"
+                                    android:textColor="#E5E4E2"
                                     android:layout_gravity="center"
                                     android:gravity="center"/>
 
@@ -213,7 +215,7 @@ app:strokeColor="@color/exercise"
                                     android:text="@string/KcalOutCount"
                                     android:textSize="14sp"
                                     android:textStyle="bold"
-                                    android:textColor="@color/background"
+                                    android:textColor="#E5E4E2"
                                     android:layout_gravity="center"
 
                                     android:gravity="center"/>
@@ -268,7 +270,7 @@ app:strokeColor="@color/exercise"
                                     android:text="@string/Steps"
                                     android:fontFamily="@font/poppins_medium"
                                     android:textSize="12sp"
-                                    android:textColor="@color/background"
+                                    android:textColor="#E5E4E2"
                                     android:layout_gravity="center"
                                     android:gravity="center"/>
 
@@ -279,7 +281,7 @@ app:strokeColor="@color/exercise"
                                     android:text="@string/StepsCount"
                                     android:textSize="14sp"
                                     android:textStyle="bold"
-                                    android:textColor="@color/background"
+                                    android:textColor="#E5E4E2"
                                     android:layout_gravity="center"
                                     android:gravity="center"/>
                             </LinearLayout>

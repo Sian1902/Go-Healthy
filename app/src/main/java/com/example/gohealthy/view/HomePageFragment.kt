@@ -1,6 +1,6 @@
 package com.example.gohealthy.view
 
-import android.graphics.Color
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,100 +10,68 @@ import androidx.fragment.app.activityViewModels
 import com.example.gohealthy.R
 import com.example.gohealthy.viewModel.StepsCounterVM
 import com.example.gohealthy.databinding.FragmentHomePageBinding
-import com.mikhaellopez.circularprogressbar.CircularProgressBar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
+import com.example.gohealthy.alarm.AlarmItem
+import com.example.gohealthy.alarm.AndroidAlarmScheduler
 import com.example.gohealthy.nutritionixAPI.CallDecider
+import com.example.gohealthy.viewModel.FirebaseVM
 import com.example.gohealthy.viewModel.NutritionixVM
-import com.example.gohealthy.viewModel.WaterVM
+import java.time.LocalDateTime
 
 class HomePageFragment : Fragment() {
 
     private val nutritionixVM:NutritionixVM by activityViewModels()
     private lateinit var binding: FragmentHomePageBinding
     private val stepsCounterVM:StepsCounterVM by activityViewModels()
-    private val waterVM:WaterVM by viewModels()
+    private val firebaseVM: FirebaseVM by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_home_page, container, false)
+
 
 
        binding=FragmentHomePageBinding.inflate(inflater,container,false)
-       // waterVM.setContext(requireContext())
+
         return binding.root // Return the inflated view
 
     }
-
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-       /* stepsCounterVM.currentSteps.observe(viewLifecycleOwner){
+        nutritionixVM.loadCal(requireContext())
+        stepsCounterVM.currentSteps.observe(viewLifecycleOwner){
             binding.circularProgressBar.progress=it.toFloat()
-            binding.currentStepstext.text= "$it/"
+            binding.stepCount.text= "$it ${getString(R.string.Steps)}"
         }
-        waterVM.waterIntake.observe(viewLifecycleOwner){
-            binding.noWaters.text="$it"
+        nutritionixVM.totalCal.observe(viewLifecycleOwner){
+            binding.toalcalories.text="${it.toInt()} KCal "
+            binding.caloriesCircularProgressBar.progress=it.toFloat()
         }
-        nutritionixVM.breakFastCalories.observe(viewLifecycleOwner){
-            binding.breakfastCal.text="${it.toInt()} KCal "
+        binding.addMealBTN.setOnClickListener {
+            val dialogFragment = ApiCallPopUp(CallDecider.FOOD)
+            dialogFragment.show((activity as AppCompatActivity).supportFragmentManager,"Meal")
         }
-        nutritionixVM.lunchCalories.observe(viewLifecycleOwner){
-            binding.lunchCal.text="${it.toInt()} KCal "
+        binding.addExerciseBTN.setOnClickListener {
+            val dialogFragment = ApiCallPopUp(CallDecider.EXERCISE)
+            dialogFragment.show((activity as AppCompatActivity).supportFragmentManager,"Exercise")
         }
-        nutritionixVM.dinnerCalories.observe(viewLifecycleOwner){
-            binding.DinnerCal.text="${it.toInt()} KCal "
-        }
-        nutritionixVM.workoutCalories.observe(viewLifecycleOwner){
-            binding.WorkoutCaloriesNo.text="${it.toInt()} KCal "
-        }
-        setCircularProgress()
-        binding.chatButton.setOnClickListener{
-            findNavController().navigate(R.id.homeToChat)
-        }
-        binding.addBreakfastButton.setOnClickListener {
-            val dialogFragment = ApiCallPopUp(CallDecider.BreakFast)
-            dialogFragment.show((activity as AppCompatActivity).supportFragmentManager,"breakfast")
-        }
-        binding.addLunchButton.setOnClickListener{
-            val dialogFragment = ApiCallPopUp(CallDecider.Lunch)
-            dialogFragment.show((activity as AppCompatActivity).supportFragmentManager,"Lunch")
-        }
-        binding.addDinnerButton.setOnClickListener{
-            val dialogFragment = ApiCallPopUp(CallDecider.Dinner)
-            dialogFragment.show((activity as AppCompatActivity).supportFragmentManager,"Dinner")
-        }
-        binding.AddWorkoutButton.setOnClickListener{
-            val dialogFragment = ApiCallPopUp(CallDecider.Exercise)
-            dialogFragment.show((activity as AppCompatActivity).supportFragmentManager,"Workout")
-        }
-        binding.minusImg.setOnClickListener{
-            waterVM.decWater()
-        }
-        binding.plusImg.setOnClickListener{
-            waterVM.incWater()
-        }*/
-    }
- /*  private fun setCircularProgress(){
+        firebaseVM.user.observe(viewLifecycleOwner){
+            val totalCal=it.weight*2.205f*15
+            val hSquared=(it.height/100.0f)*(it.height/100.0f)
+            val BMI=it.weight/hSquared
+            binding.name.text=" "+it.name
+            binding.dailyCaloriesText.text="${totalCal.toInt()}"
+            binding.BMItext.text=String.format("%.2f", BMI)
+            binding.caloriesCircularProgressBar.progressMax=totalCal
 
-        binding.circularProgressBar.apply {
-            progress = 0f
-            progressMax = 8000f
-            backgroundProgressBarColorDirection = CircularProgressBar.GradientDirection.RIGHT_TO_LEFT
-            progressBarWidth = 7f // in DP
-            backgroundProgressBarWidth = 3f // in DP
-            roundBorder = true
-            startAngle = 0f
-            progressDirection = CircularProgressBar.ProgressDirection.TO_RIGHT
         }
-    }*/
 
 
     }
+
+
+}
 
 
 

@@ -16,31 +16,35 @@ import android.os.Build
 import android.os.Bundle
 import android.os.PowerManager
 import android.provider.Settings
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
-import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.get
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI
 import com.example.gohealthy.helpers.PrefManager
 import com.example.gohealthy.R
+import com.example.gohealthy.alarm.AlarmItem
+import com.example.gohealthy.alarm.AndroidAlarmScheduler
+import com.example.gohealthy.databinding.ActivityMainBinding
 import com.example.gohealthy.viewModel.HistoryVM
 import com.example.gohealthy.notification.NotificationService
 import com.example.gohealthy.viewModel.FirebaseVM
 import com.google.firebase.FirebaseApp
 import com.example.gohealthy.viewModel.StepsCounterVM
-import com.google.android.gms.common.SignInButton.ColorScheme
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.sagarkoli.chetanbottomnavigation.chetanBottomNavigation
 import kotlinx.coroutines.launch
+import java.time.LocalDateTime
+import java.util.Locale
 
 
 class MainActivity : AppCompatActivity(), SensorEventListener {
@@ -54,16 +58,34 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     private var sensorManager: SensorManager? = null
     private val firebaseVM: FirebaseVM by viewModels()
     private val historyVM: HistoryVM by viewModels()
-
+    private var currID=0
+    private val requestPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
+            if (isGranted) {
+                // Permission is granted
+                Toast.makeText(this, "Notifications permission granted", Toast.LENGTH_SHORT).show()
+            } else {
+                // Permission is denied
+                Toast.makeText(this, "Notifications permission denied", Toast.LENGTH_SHORT).show()
+            }
+        }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         createNotificationChannel()
-        val c= ColorScheme()
         // Initialize Firebase
         FirebaseApp.initializeApp(this)
         prefManager = PrefManager(this)
 
-       
+        val lang=prefManager.loadLanguage()
+
+        if(lang=="ar"){
+            setlocale(this,"ar")
+        }
+        else{
+            setlocale(this,"en")
+        }
+
+
        //Dark mode
         val  isDarkMode= prefManager.isDarkMode()
         if (isDarkMode) {
@@ -85,8 +107,12 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
         // Set up navigation
         val navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.fragmentContainerView) as NavHostFragment
-        val navController = navHostFragment.navController
+            .findFragmentById(R.id.fragmentContainerView) as? NavHostFragment
+        val navController = navHostFragment?.navController
+        if (navController == null) {
+            Log.e("Navigation", "NavController is null. Ensure that the fragment exists.")
+            return
+        }
 
         when {
             prefManager.isFirstTimeLaunch() -> {
@@ -96,44 +122,52 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                 navController.navigate(R.id.signinFragment)
             }
             else -> {
-                //replace with main screen
                 navController.navigate(R.id.homePageFragment)
             }
         }
 
-        // Handle back pressed events
+// Handle back pressed events
         handleBackPress()
 
 
-        val bottomNavigationView = findViewById<chetanBottomNavigation>(R.id.btmNavBar)
-        bottomNavigationView.add(chetanBottomNavigation.Model(1, R.drawable.home))
-        bottomNavigationView.add(chetanBottomNavigation.Model(2, R.drawable.user))
-        bottomNavigationView.add(chetanBottomNavigation.Model(3, R.drawable.history))
-        bottomNavigationView.add(chetanBottomNavigation.Model(4, R.drawable.baseline_chat_24))
-        bottomNavigationView.setOnShowListener { item ->
+        val navView = findViewById<chetanBottomNavigation>(R.id.nav_view)
+        navView.add(chetanBottomNavigation.Model(1, R.drawable.home))
+        navView.add(chetanBottomNavigation.Model(2, R.drawable.history))
+        navView.add(chetanBottomNavigation.Model(3, R.drawable.baseline_chat_24))
+        navView.add(chetanBottomNavigation.Model(4, R.drawable.user))
 
-            true
-        }
-        bottomNavigationView.setOnClickMenuListener {
-            when (it.id) {
-                1 -> navController.navigate(R.id.homePageFragment)
-                2 -> navController.navigate(R.id.profileFragment)
-                3 -> navController.navigate(R.id.historyFragment)
-                4 -> navController.navigate(R.id.homePageFragment)
+        navView?.let {
+            it.setOnClickMenuListener{
+
+            }
+            it.setOnShowListener{ index ->
+                if (index.id==currID){
+                    return@setOnShowListener
+                }
+                when (index.id) {
+                    1-> navController.navigate(R.id.homePageFragment)
+                    2-> navController.navigate(R.id.historyFragment)
+                    3-> navController.navigate(R.id.chatFragment)
+                    4-> navController.navigate(R.id.profileFragment)
+
+                }
             }
         }
+        navView.setOnReselectListener {
 
-        // Hide/show bottom navigation based on fragment
+        }
+
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.welcomeFragment, R.id.signUpFragment, R.id.signinFragment,R.id.dailyReportFragment-> {
-                    bottomNavigationView.visibility = View.GONE
+                R.id.welcomeFragment, R.id.signUpFragment, R.id.signinFragment, R.id.dailyReportFragment -> {
+                    navView?.visibility = View.GONE
                 }
                 else -> {
-                    bottomNavigationView.visibility = View.VISIBLE
+                    navView?.visibility = View.VISIBLE
                 }
             }
         }
+
 
         // Check if the intent contains the extra to open the DailyReportFragment
         if (intent?.getStringExtra("openFragment") == "DailyReport") {
@@ -142,6 +176,31 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
         // Manage battery optimizations
         requestBatteryOptimizationExemption()
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            // Check if the permission is already granted
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.POST_NOTIFICATIONS
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                // Request the notification permission
+                requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+            }
+        }
+        var alarmItem= AlarmItem(LocalDateTime.now().withHour(0).withMinute(0).withSecond(0),"test")
+        val scheduler= AndroidAlarmScheduler(this)
+        alarmItem.let(scheduler::schedule)
+    }
+
+    private fun setlocale(context: Context, lang:String){
+        val locale = Locale(lang)
+        Locale.setDefault(locale)
+
+        val config = resources.configuration
+        config.setLocale(locale)
+        resources.updateConfiguration(config, resources.displayMetrics)
+
     }
 
 
@@ -269,4 +328,5 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     }
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {}
+
 }

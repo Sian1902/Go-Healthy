@@ -82,10 +82,12 @@ class ProfilePageFragment : Fragment() {
         binding.languageChanger.setOnClickListener {
             if(Locale.getDefault().language=="ar"){
               setlocale(requireContext(),"en")
+                prefManager.saveLanguage("en")
               binding.languageText.text=getString(R.string.arabic)
             }
             else{
                 setlocale(requireContext(),"ar")
+                prefManager.saveLanguage("ar")
                 binding.languageText.text=getString(R.string.english)
             }
             recreate(requireActivity())
@@ -93,17 +95,23 @@ class ProfilePageFragment : Fragment() {
         binding.editBTN.setOnClickListener {
             val dialog=EditUserData()
             dialog.show((activity as AppCompatActivity).supportFragmentManager,"edit dialog")
+
         }
         binding.logoutBTN.setOnClickListener{
             auth.signOut()
             prefManager.saveImageLocally(Uri.EMPTY)
             prefManager.saveEmail("")
+            prefManager.saveCaloriesIn(0)
+            prefManager.saveCaloriesOut(0)
 
             findNavController().navigate(R.id.signinFragment)
 
         }
 
+
     }
+
+
     private fun setlocale(context: Context, lang:String){
         val locale = Locale(lang)
         Locale.setDefault(locale)

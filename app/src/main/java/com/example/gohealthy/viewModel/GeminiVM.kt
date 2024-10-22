@@ -23,6 +23,14 @@ class GeminiVM: ViewModel() {
         }
        return Pair(response, false)
     }
+    fun translat(query: String): String {
+        val prompt="translate this text from arabic to english and return the answer only. $query"
+        var response: String
+        runBlocking(Dispatchers.IO) {
+            response = generativeModel.generateContent(prompt).text.toString()
+        }
+        return response
+    }
 
     }
 
