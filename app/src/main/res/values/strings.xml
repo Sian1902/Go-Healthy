@@ -24,9 +24,9 @@
     <string name="lunchHint">ex:chicken curry</string>
     <string name="dinnerHint">ex:Alfredo pasta</string>
     <string name="workoutHint">ex:30 min run</string>
-    <string name="english">English</string>
+    <string name="english">العربية</string>
     <string name="get_started">Get Started</string>
-    <string name="arabic">Arabic</string>
+    <string name="arabic">English</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="your_data">Your Data</string>
     <string name="save">save</string>
@@ -77,5 +77,13 @@
     <string name="metrics">Metrics</string>
     <string name="fit">Fit</string>
     <string name="loading">loading...</string>
+    <string name="log_out">Logout</string>
+    <string name="change_language">العربية</string>
+    <string name="date_of_birth">Date Of Birth</string>
+    <string name="underweight">Underweight</string>
+    <string name="normal">Normal</string>
+    <string name="overweight">Overweight</string>
+    <string name="obese">Obese</string>
+    <string name="edit_profile">Edit Profile</string>
 
 </resources>

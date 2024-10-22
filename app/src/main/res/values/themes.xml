@@ -12,7 +12,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
 
         <!-- Background colors -->
-        <item name="android:colorBackground">@color/background</item>
+        <item name="android:colorBackground">@color/surface</item>
         <item name="colorSurface">@color/card_background</item>
         <item name="colorOnSurface">@color/text_primary</item>
         <item name="android:textColorPrimary">@color/text_primary</item>

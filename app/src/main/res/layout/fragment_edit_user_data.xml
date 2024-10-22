@@ -33,6 +33,7 @@
             />
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/nameField"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:boxStrokeWidth="2dp"
@@ -118,16 +119,17 @@
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.button.MaterialButton
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/save"
             android:textStyle="bold"
+            android:textColor="#E5E4E2"
             app:layout_constraintTop_toBottomOf="@id/inputField"
-            android:layout_marginBottom="10dp"
-            android:backgroundTint="@color/calories"
-
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/edit_btn"
             android:layout_marginHorizontal="20dp"
             />
     </LinearLayout>

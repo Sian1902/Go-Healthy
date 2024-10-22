@@ -45,7 +45,7 @@ class HomePageFragment : Fragment() {
             binding.stepCount.text= "$it ${getString(R.string.Steps)}"
         }
         nutritionixVM.totalCal.observe(viewLifecycleOwner){
-            binding.toalcalories.text="${it.toInt()} KCal "
+            binding.toalcalories.text="${it.toInt()} Kcal "
             binding.caloriesCircularProgressBar.progress=it.toFloat()
         }
         binding.addMealBTN.setOnClickListener {
@@ -62,7 +62,16 @@ class HomePageFragment : Fragment() {
             val BMI=it.weight/hSquared
             binding.name.text=" "+it.name
             binding.dailyCaloriesText.text="${totalCal.toInt()}"
+
             binding.BMItext.text=String.format("%.2f", BMI)
+
+            when{
+                BMI<18.5 -> binding.BMIRangeText.text=getString(R.string.underweight)
+                BMI in 18.5..24.9 -> binding.BMIRangeText.text=getString(R.string.normal)
+                BMI in 25.0..29.9 -> binding.BMIRangeText.text=getString(R.string.overweight)
+                BMI>30 -> binding.BMIRangeText.text=getString(R.string.obese)
+            }
+
             binding.caloriesCircularProgressBar.progressMax=totalCal
 
         }

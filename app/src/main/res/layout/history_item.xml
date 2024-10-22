@@ -126,7 +126,7 @@ app:strokeColor="@color/exercise"
                             android:gravity="center">
 
                             <LinearLayout
-                                android:background="@color/calories"
+                                android:background="@drawable/container"
                                 android:layout_width="80dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -190,7 +190,7 @@ app:strokeColor="@color/exercise"
                             android:gravity="center">
 
                             <LinearLayout
-                                android:background="@color/calories"
+                                android:background="@drawable/container"
 
                                 android:padding="14dp"
                                 android:layout_width="85dp"                                android:layout_height="wrap_content"
@@ -255,7 +255,7 @@ app:strokeColor="@color/exercise"
                             android:gravity="center">
 
                             <LinearLayout
-                                android:background="@color/calories"
+                                android:background="@drawable/container"
 
                                 android:padding="14dp"
                                 android:layout_width="85dp"

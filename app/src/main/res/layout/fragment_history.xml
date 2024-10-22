@@ -5,14 +5,6 @@
     android:fitsSystemWindows="true"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/themeSwitchCompat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:text="@string/dark_mode"
-        android:textColor="@color/calories" />
 
     <TextView
         android:id="@+id/urLifeStats"

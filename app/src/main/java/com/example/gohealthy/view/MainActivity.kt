@@ -159,6 +159,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
+
                 R.id.welcomeFragment, R.id.signUpFragment, R.id.signinFragment, R.id.dailyReportFragment -> {
                     navView?.visibility = View.GONE
                 }
@@ -258,7 +259,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         lifecycleScope.launch {
            historyVM.fetchHistoryData()
             firebaseVM.getUser(prefManager.loadEmail())
-
         }
 
         running = true

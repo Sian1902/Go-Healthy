@@ -23,7 +23,6 @@ class signinFragment : Fragment() {
     private lateinit var binding: FragmentSigninBinding
     private lateinit var auth: FirebaseAuth
     private val firebaseVM: FirebaseVM by activityViewModels()
-    private val historyVM: HistoryVM by activityViewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = FirebaseAuth.getInstance()
@@ -38,7 +37,7 @@ class signinFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentSigninBinding.inflate(inflater, container, false)
 
         // Set up sign-in button
@@ -79,7 +78,7 @@ class signinFragment : Fragment() {
 
         // Set up register now click listener
         binding.registerNowTextView.setOnClickListener {
-            findNavController().navigate(R.id.signUpFragment)
+            findNavController().navigate(R.id.signinToSignUp)
         }
 
         return binding.root

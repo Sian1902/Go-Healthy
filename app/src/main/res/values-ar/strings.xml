@@ -25,9 +25,9 @@
     <string name="lunchHint">مثال: دجاج بالكاري</string>
     <string name="dinnerHint">مثال: معكرونة </string>
     <string name="workoutHint">مثال: الجري ثلاثين دقيقة</string>
-    <string name="english">الانجليزيه</string>
+    <string name="english">English</string>
     <string name="get_started">أبدأ</string>
-    <string name="arabic">العربيه</string>
+    <string name="arabic">العربية</string>
     <string name="your_data">بياناتك</string>
     <string name="save">حفظ</string>
     <string name="edit_your_data">عدل بياناتك</string>
@@ -47,7 +47,7 @@
     <string name="your_gender">الجنس</string>
     <string name="age">السن</string>
     <string name="height">الطول</string>
-    <string name="weight">االوزن</string>
+    <string name="weight">الوزن</string>
     <string name="sign_up">حساب جديد</string>
     <string name="already_have_an_account">بالفعل لديك حساب؟</string>
     <string name="_8000_step">8000 خطوة</string>
@@ -58,23 +58,31 @@
     <string name="water">مياه</string>
     <string name="send">ارسل</string>
     <string name="logout">خروج</string>
-    <string name="home">Home</string>
-    <string name="history">History</string>
-    <string name="profile">Profile</string>
-    <string name="good_day">Good Day</string>
-    <string name="daily_stats">Daily Stats</string>
-    <string name="activities">Activities</string>
-    <string name="exercise">Exercise</string>
+    <string name="home">الرئيسية</string>
+    <string name="history">السجل</string>
+    <string name="profile">الصفحة الشخصية</string>
+    <string name="good_day">يوم سعيد</string>
+    <string name="daily_stats">الاحصائيات اليومية</string>
+    <string name="activities">النشاطات</string>
+    <string name="exercise">التمرين</string>
     <string name="suggestion_running">Suggestion : running</string>
-    <string name="food">Food</string>
+    <string name="food">طعام</string>
     <string name="suggestion_cezar_salad">Suggestion: Cezar Salad</string>
     <string name="preparation_30_min_calories_300_kcal">Preparation: 30 min Calories: 300 KCAL</string>
+    <string name="eat">تناول الطعام</string>
     <string name="have_a_meal">Have a Meal</string>
     <string name="no_history_available">لا يوجد سجل</string>
     <string name="dark_mode">الوضع المظلم</string>
-    <string name="metrics">Metrics</string>
-    <string name="fit">Fit</string>
-    <string name="loading">loading...</string>
+    <string name="metrics">الحسابات</string>
+    <string name="fit">لائق</string>
+    <string name="loading">جاري التحميل...</string>
+    <string name="log_out">تسجيل خروج</string>
+    <string name="date_of_birth">تاريخ الميلاد</string>
+    <string name="underweight">نحيف</string>
+    <string name="normal">طبيعي</string>
+    <string name="overweight">زائد في الوزن</string>
+    <string name="obese">سمين</string>
+    <string name="edit_profile">عدل البيانات</string>
 
 
 </resources>

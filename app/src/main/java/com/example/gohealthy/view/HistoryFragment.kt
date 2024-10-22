@@ -31,9 +31,6 @@ class HistoryFragment : Fragment() {
         prefManager = PrefManager(requireContext())
         _binding = FragmentHistoryBinding.inflate(inflater, container, false)
 
-        // Set up theme toggle
-        historyVM.fetchHistoryData()
-        setupThemeSwitch()
 
         return binding.root
     }
@@ -68,29 +65,13 @@ class HistoryFragment : Fragment() {
                     historyAdapter.notifyDataSetChanged()
                 }
             }
-        }
 
+        }
+        historyVM.fetchHistoryData()
 
     }
 
-    private fun setupThemeSwitch() {
-        val isDarkMode = prefManager.isDarkMode()
-        binding.themeSwitchCompat.isChecked = isDarkMode
 
-        binding.themeSwitchCompat.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                // Enable dark mode
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                prefManager.setDarkMode(true)
-            } else {
-                // Enable light mode
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                prefManager.setDarkMode(false)
-            }
-            // Recreate activity to apply theme change
-            recreate(requireActivity())
-        }
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()

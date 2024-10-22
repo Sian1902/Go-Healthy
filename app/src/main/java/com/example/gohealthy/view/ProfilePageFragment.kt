@@ -16,6 +16,7 @@ import android.view.ViewGroup
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
 import androidx.core.app.ActivityCompat.recreate
 import androidx.fragment.app.Fragment
@@ -47,6 +48,9 @@ class ProfilePageFragment : Fragment() {
         binding=FragmentProfilePageBinding.inflate(layoutInflater)
         auth=FirebaseAuth.getInstance()
         prefManager= PrefManager(requireContext())
+
+        setupThemeSwitch()
+
         return binding.root
     }
 
@@ -79,7 +83,7 @@ class ProfilePageFragment : Fragment() {
             binding.languageText.text=getString(R.string.arabic)
             binding.languageText.text=getString(R.string.english)
         }
-        binding.languageChanger.setOnClickListener {
+        binding.languageText.setOnClickListener {
             if(Locale.getDefault().language=="ar"){
               setlocale(requireContext(),"en")
                 prefManager.saveLanguage("en")
@@ -112,6 +116,24 @@ class ProfilePageFragment : Fragment() {
     }
 
 
+    private fun setupThemeSwitch() {
+        val isDarkMode = prefManager.isDarkMode()
+        binding.themeSwitchCompat.isChecked = isDarkMode
+
+        binding.themeSwitchCompat.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                // Enable dark mode
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                prefManager.setDarkMode(true)
+            } else {
+                // Enable light mode
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                prefManager.setDarkMode(false)
+            }
+            // Recreate activity to apply theme change
+            recreate(requireActivity())
+        }
+    }
     private fun setlocale(context: Context, lang:String){
         val locale = Locale(lang)
         Locale.setDefault(locale)

@@ -24,7 +24,6 @@ import kotlinx.coroutines.launch
 class SignUpFragment : Fragment() {
     private lateinit var binding: FragmentSignupBinding
     private lateinit var prefManager: PrefManager
-    private val db = FirebaseFirestore.getInstance()
     private lateinit var auth: FirebaseAuth
     private val firebaseVM: FirebaseVM by activityViewModels()
 

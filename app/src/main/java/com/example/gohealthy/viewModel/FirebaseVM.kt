@@ -39,12 +39,14 @@ class FirebaseVM : ViewModel() {
 
     suspend fun updateUserData(newUser: User, context: Context) {
         _user.value = newUser
-    var  updatedUser= mapOf(
+        var updatedUser= mapOf(
             "name" to newUser.name,
             "gender" to newUser.gender,
             "weight" to newUser.weight,
             "height" to newUser.height,
             "email" to newUser.email,
+            "password" to newUser.password,
+            "age" to newUser.age
         )
         try {
             val currentUser = auth.currentUser
