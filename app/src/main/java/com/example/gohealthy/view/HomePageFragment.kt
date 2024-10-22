@@ -45,7 +45,7 @@ class HomePageFragment : Fragment() {
             binding.stepCount.text= "$it ${getString(R.string.Steps)}"
         }
         nutritionixVM.totalCal.observe(viewLifecycleOwner){
-            binding.toalcalories.text="${it.toInt()} Kcal "
+            binding.toalcalories.text="${it.toInt()}"+" ${getString(R.string.kcal)}"
             binding.caloriesCircularProgressBar.progress=it.toFloat()
         }
         binding.addMealBTN.setOnClickListener {

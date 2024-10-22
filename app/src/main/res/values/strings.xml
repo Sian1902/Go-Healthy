@@ -6,7 +6,7 @@
     <string name="toast">Toast</string>
     <string name="add">Add</string>
     <string name="add_your_lunch">Add Your Lunch</string>
-    <string name="add_your_breakfast">Add Your Breakfast</string>
+    <string name="add_your_meal">Add Your Meal</string>
     <string name="add_your_dinner">Add Your Dinner</string>
     <string name="add_your_workout">Add Your Workout</string>
     <string-array name="Gender">
@@ -85,5 +85,7 @@
     <string name="overweight">Overweight</string>
     <string name="obese">Obese</string>
     <string name="edit_profile">Edit Profile</string>
+    <string name="add_your_breakfast">Add Your Meal</string>
+    <string name="kcal">Kcal</string>
 
 </resources>

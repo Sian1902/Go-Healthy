@@ -23,7 +23,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="@string/add_your_breakfast"
+            tools:text="@string/add_your_meal"
             android:gravity="center"
             android:fontFamily="sans-serif-black"
             android:textSize="20sp"
@@ -54,19 +54,21 @@
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.button.MaterialButton
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:text="@string/add"
+            android:textColor="@color/background"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/inputField"
-            android:layout_marginBottom="10dp"
-            android:backgroundTint="@color/exercise"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+android:background="@drawable/container2"
             android:layout_marginHorizontal="20dp"
             />
 

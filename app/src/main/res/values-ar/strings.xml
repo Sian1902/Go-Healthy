@@ -7,7 +7,8 @@
     <string name="toast">خبز</string>
     <string name="add">اضافة</string>
     <string name="add_your_lunch">اضف وجبة الغداء</string>
-    <string name="add_your_breakfast">اضف وجبة الفطور</string>
+    <string name="add_your_meal">اضف وجبتك</string>
+    <string name="add_your_breakfast">اضف وجبتك</string>
     <string name="add_your_dinner">اضف وجبة العشاء</string>
     <string name="add_your_workout">اضف تمرين</string>
     <string-array name="Gender">
@@ -65,24 +66,27 @@
     <string name="daily_stats">الاحصائيات اليومية</string>
     <string name="activities">النشاطات</string>
     <string name="exercise">التمرين</string>
-    <string name="suggestion_running">Suggestion : running</string>
-    <string name="food">طعام</string>
-    <string name="suggestion_cezar_salad">Suggestion: Cezar Salad</string>
-    <string name="preparation_30_min_calories_300_kcal">Preparation: 30 min Calories: 300 KCAL</string>
+    <string name="suggestion_running">اقتراح: الجري</string>
+    <string name="duration_30_min_calories_50_kcal">المدة: 30 دقيقة السعرات: 50 سعرة</string>
+    <string name="food">الوجبات </string>
+    <string name="suggestion_cezar_salad">اقتراح: سلطة سيزر</string>
+    <string name="preparation_30_min_calories_300_kcal">التحضير: 30 دقيقة السعرات: 300سعرة</string>
     <string name="eat">تناول الطعام</string>
-    <string name="have_a_meal">Have a Meal</string>
+    <string name="have_a_meal">تناول وجبة</string>
     <string name="no_history_available">لا يوجد سجل</string>
     <string name="dark_mode">الوضع المظلم</string>
     <string name="metrics">الحسابات</string>
     <string name="fit">لائق</string>
     <string name="loading">جاري التحميل...</string>
     <string name="log_out">تسجيل خروج</string>
+    <string name="change_language">Arabic</string>
     <string name="date_of_birth">تاريخ الميلاد</string>
     <string name="underweight">نحيف</string>
     <string name="normal">طبيعي</string>
     <string name="overweight">زائد في الوزن</string>
     <string name="obese">سمين</string>
-    <string name="edit_profile">عدل البيانات</string>
+    <string name="edit_profile">تعديل البيانات</string>
+    <string name="kcal">سعرة</string>
 
 
 </resources>
