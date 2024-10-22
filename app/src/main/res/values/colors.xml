@@ -10,4 +10,6 @@
     <color name="text_primary">#212121</color>
     <color name="text_secondary">#757575</color>
     <color name="card_background">#FFFFFF</color>
+  <color name="color_red">#FF0000</color>
+
 </resources>
