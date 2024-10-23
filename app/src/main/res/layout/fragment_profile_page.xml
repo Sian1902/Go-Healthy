@@ -22,25 +22,18 @@
 
 
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_profile"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:cardCornerRadius="50dp"
-        app:cardElevation="4dp"
-        android:layout_marginTop="130dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+
 
         <!-- Profile Picture -->
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profileImg"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/addimage"
-            android:scaleType="centerCrop" />
-    </androidx.cardview.widget.CardView>
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/addimage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/ll_weight"/>
 
 
 
@@ -291,6 +284,7 @@
     </LinearLayout>
 
     <View
+        android:id="@+id/separator"
         android:layout_width="0dp"
         android:layout_height="1dp"
 
@@ -331,6 +325,7 @@
 
 
     <View
+        android:id="@+id/endOfList"
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:background="@color/divider"

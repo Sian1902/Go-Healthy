@@ -152,7 +152,7 @@
                     android:inputType="none"
                     android:minHeight="48dp"
                     android:padding="16dp"
-                    android:textSize="18dp"
+                    android:textSize="18sp"
                     />
             </com.google.android.material.textfield.TextInputLayout>
 

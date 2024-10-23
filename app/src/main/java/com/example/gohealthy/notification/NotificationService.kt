@@ -8,7 +8,9 @@ import android.util.Log
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import com.example.gohealthy.R
-import com.example.gohealthy.view.DailyReportFragment
+import com.example.gohealthy.helpers.DailyData
+import com.example.gohealthy.helpers.PrefManager
+import com.example.gohealthy.history.HistoryItem
 import com.example.gohealthy.view.MainActivity
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
@@ -19,20 +21,25 @@ class NotificationService(private val context: Context) {
     private val auth: FirebaseAuth by lazy { FirebaseAuth.getInstance() }
     private val db = Firebase.firestore
     private val currentUser = auth.currentUser
+    val prefManager: PrefManager =PrefManager(context)
     private val notificationManager=context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
     fun showNotification(){
-
+        DailyData.oldHistoryItem=DailyData.newHistoryItem
+        DailyData.newHistoryItem= HistoryItem()
         if(currentUser!=null){
             db.collection("users").document(currentUser.uid).collection("history").add(
                mapOf( "date" to LocalDateTime.now().toLocalDate().toString(),
-                "steps" to 0,
-                "kcalIn" to 0,
-                "kcalOut" to 0)
+                "steps" to DailyData.oldHistoryItem.steps,
+                "kcalIn" to DailyData.oldHistoryItem.kcalIn,
+                "kcalOut" to DailyData.oldHistoryItem.kcalOut,)
             ).addOnSuccessListener {
                 Log.d("success","Fetch is successful")
             }.addOnFailureListener {
                 Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_SHORT).show()
             }
+            prefManager.saveCaloriesIn(0)
+            prefManager.saveCaloriesOut(0)
+
         }
         val activityIntent = Intent(context, MainActivity::class.java)
         activityIntent.putExtra("openFragment", "DailyReport")

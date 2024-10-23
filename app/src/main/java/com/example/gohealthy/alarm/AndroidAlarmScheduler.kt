@@ -26,7 +26,7 @@ class AndroidAlarmScheduler(
         alarmManager.setRepeating(
             AlarmManager.RTC_WAKEUP,
             item.time.atZone(ZoneId.systemDefault()).toEpochSecond()*1000,
-            AlarmManager.INTERVAL_FIFTEEN_MINUTES,
+            AlarmManager.INTERVAL_DAY,
             PendingIntent.getBroadcast(
                 context,
                 item.hashCode(),
