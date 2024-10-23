@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.example.gohealthy.history.HistoryItem
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 
 class HistoryVM: ViewModel() {
     private val historyList = mutableListOf<HistoryItem>()
@@ -21,7 +22,7 @@ class HistoryVM: ViewModel() {
         val db = FirebaseFirestore.getInstance()
         db.collection("users")
             .document(userId)
-            .collection("history")
+            .collection("history").orderBy("date", Query.Direction.DESCENDING)
             .get()
             .addOnSuccessListener { documents ->
                 for (document in documents) {
