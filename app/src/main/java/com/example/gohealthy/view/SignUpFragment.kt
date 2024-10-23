@@ -111,6 +111,7 @@ class SignUpFragment : Fragment() {
             firebaseVM.signUp(User(name, gender, weight, height, email, password, age))
             if (firebaseVM.status) {
                 prefManager.saveEmail(email)
+                prefManager.setLoggedIn(true)
                 findNavController().navigate(R.id.homePageFragment)
 
             } else {
