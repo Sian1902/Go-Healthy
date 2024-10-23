@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.compose.ui.text.toLowerCase
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -63,10 +64,9 @@ class signinFragment : Fragment() {
                 firebaseVM.signIn(email, password)
                 if (firebaseVM.status) {
                     prefManager.setLoggedIn(true)
-                    prefManager.saveEmail(email)
-
+                    prefManager.saveEmail(email.lowercase())
                     findNavController().navigate(R.id.homePageFragment)
-                    prefManager.saveEmail(email)
+
                 } else {
                     binding.loading.visibility = View.GONE
 

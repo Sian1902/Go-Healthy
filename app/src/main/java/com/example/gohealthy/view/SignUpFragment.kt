@@ -110,7 +110,7 @@ class SignUpFragment : Fragment() {
             binding.loading.visibility = View.VISIBLE
             firebaseVM.signUp(User(name, gender, weight, height, email, password, age))
             if (firebaseVM.status) {
-                prefManager.saveEmail(email)
+                prefManager.saveEmail(email.lowercase())
                 prefManager.setLoggedIn(true)
                 findNavController().navigate(R.id.homePageFragment)
 
