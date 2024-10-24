@@ -32,7 +32,7 @@ class DailyReportFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.stepsText.text="${DailyData.oldHistoryItem.steps}"
         binding.kcalInText.text="${DailyData.oldHistoryItem.kcalIn}"
-        binding.kcalOutText.text="${DailyData.oldHistoryItem.kcalOut}"
+        binding.kcalOutText.text="${DailyData.oldHistoryItem.steps}"
         binding.backToHomeButton.setOnClickListener {
             findNavController().navigate(R.id.homePageFragment)
         }

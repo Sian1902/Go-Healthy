@@ -189,9 +189,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                 requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
             }
         }
-        var alarmItem= AlarmItem(LocalDateTime.now().withHour(0).withMinute(0).withSecond(0),"test")
-        val scheduler= AndroidAlarmScheduler(this)
-        alarmItem.let(scheduler::schedule)
+
     }
 
     private fun setlocale(context: Context, lang:String){

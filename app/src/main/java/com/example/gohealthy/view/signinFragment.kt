@@ -13,11 +13,14 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.gohealthy.helpers.PrefManager
 import com.example.gohealthy.R
+import com.example.gohealthy.alarm.AlarmItem
+import com.example.gohealthy.alarm.AndroidAlarmScheduler
 import com.example.gohealthy.databinding.FragmentSigninBinding
 import com.example.gohealthy.viewModel.HistoryVM
 import com.example.gohealthy.viewModel.FirebaseVM
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
+import java.time.LocalDateTime
 
 class signinFragment : Fragment() {
     private lateinit var prefManager: PrefManager
@@ -65,6 +68,9 @@ class signinFragment : Fragment() {
                 if (firebaseVM.status) {
                     prefManager.setLoggedIn(true)
                     prefManager.saveEmail(email.lowercase())
+                    val alarmItem= AlarmItem(LocalDateTime.now().withHour(23).withMinute(55),"test")
+                    val scheduler= AndroidAlarmScheduler(requireContext())
+                    alarmItem.let(scheduler::schedule)
                     findNavController().navigate(R.id.homePageFragment)
 
                 } else {

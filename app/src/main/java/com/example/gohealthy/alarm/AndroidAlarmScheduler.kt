@@ -23,10 +23,9 @@ class AndroidAlarmScheduler(
         val intent = Intent(context, AlarmReciever::class.java).apply {
             putExtra("EXTRA_MESSAGE",item.message)
         }
-        alarmManager.setRepeating(
+        alarmManager.setExact(
             AlarmManager.RTC_WAKEUP,
             item.time.atZone(ZoneId.systemDefault()).toEpochSecond()*1000,
-            AlarmManager.INTERVAL_DAY,
             PendingIntent.getBroadcast(
                 context,
                 item.hashCode(),

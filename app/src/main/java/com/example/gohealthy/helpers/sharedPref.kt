@@ -14,6 +14,14 @@ class PrefManager(context: Context) {
     fun loadCaloriesIn():Int {
         return pref.getInt("calories", 0)
     }
+    fun loadSteps(): Float {
+       return pref.getFloat("key1", 0f)
+
+    }
+    fun resetSteps(steps:Float) {
+        editor.putFloat("key1", steps)
+        editor.apply()
+    }
     fun saveCaloriesOut(calories: Int){
         editor.putInt("caloriesOut", calories)
         editor.apply()

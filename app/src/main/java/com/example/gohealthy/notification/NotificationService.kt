@@ -8,6 +8,8 @@ import android.util.Log
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import com.example.gohealthy.R
+import com.example.gohealthy.alarm.AlarmItem
+import com.example.gohealthy.alarm.AndroidAlarmScheduler
 import com.example.gohealthy.helpers.DailyData
 import com.example.gohealthy.helpers.PrefManager
 import com.example.gohealthy.history.HistoryItem
@@ -24,14 +26,15 @@ class NotificationService(private val context: Context) {
     val prefManager: PrefManager =PrefManager(context)
     private val notificationManager=context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
     fun showNotification(){
-        DailyData.oldHistoryItem=DailyData.newHistoryItem
-        DailyData.newHistoryItem= HistoryItem()
+        DailyData.oldHistoryItem.steps=prefManager.loadSteps().toInt()
+        DailyData.oldHistoryItem.kcalIn=prefManager.loadCaloriesIn()
+        DailyData.oldHistoryItem.kcalOut=prefManager.loadCaloriesOut()
         if(currentUser!=null){
             db.collection("users").document(currentUser.uid).collection("history").add(
                mapOf( "date" to LocalDateTime.now().toLocalDate().toString(),
-                "steps" to DailyData.oldHistoryItem.steps,
-                "kcalIn" to DailyData.oldHistoryItem.kcalIn,
-                "kcalOut" to DailyData.oldHistoryItem.kcalOut,)
+                "steps" to prefManager.loadSteps().toInt(),
+                "kcalIn" to prefManager.loadCaloriesIn(),
+                "kcalOut" to prefManager.loadCaloriesOut())
             ).addOnSuccessListener {
                 Log.d("success","Fetch is successful")
             }.addOnFailureListener {
@@ -39,6 +42,7 @@ class NotificationService(private val context: Context) {
             }
             prefManager.saveCaloriesIn(0)
             prefManager.saveCaloriesOut(0)
+            prefManager.resetSteps(0f)
 
         }
         val activityIntent = Intent(context, MainActivity::class.java)
@@ -60,7 +64,10 @@ class NotificationService(private val context: Context) {
             .build()
 
         notificationManager.notify(1, notification)
-
+        val date = LocalDateTime.now().plusDays(1)
+        val alarmItem= AlarmItem(date.withHour(23).withMinute(59),"test")
+        val scheduler= AndroidAlarmScheduler(context)
+        alarmItem.let(scheduler::schedule)
     }
     companion object{
         const val DAILY_REPORTS_CHANNEL_ID = "daily_reports_channel"

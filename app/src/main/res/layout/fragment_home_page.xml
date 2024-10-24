@@ -12,14 +12,14 @@
         android:layout_margin="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/go_healthy_icon"
+        android:src="@drawable/new_icon"
         />
     <TextView
         android:id="@+id/welcomeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/good_day"
-
+        android:layout_marginLeft="5dp"
         android:textSize="20sp"
         android:fontFamily="@font/roboto_medium"
         android:textColor="@color/darkGrey"
